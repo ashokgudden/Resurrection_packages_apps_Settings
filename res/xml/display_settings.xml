@@ -144,6 +144,12 @@
                 android:summary="%s"
                 android:title="@string/display_vr_pref_title" />
 
+    <!-- Smart cover -->
+    <PreferenceScreen
+        android:key="smart_cover"
+        android:title="@string/smart_cover_title"
+        android:fragment="com.android.settings.temasek.SmartCoverSettings" />
+
     </PreferenceCategory>
 
         <PreferenceCategory
