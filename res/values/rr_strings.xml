@@ -2670,4 +2670,10 @@
     <!-- Vibration mode entered indicated by vibrating switch -->
     <string name="vibration_mode_indication_title">Indicate vibration mode</string>
     <string name="vibration_mode_indication_summary">Indicate vibration mode by vibrating</string>
+
+    <string name="reset_all_settings">RESET ALL</string>
+    <string name="reset_selected_settings">RESET SELECTED</string>
+    <string name="reset_settings_title">Feature preferences</string>
+    <string name="reset_settings_summary">Reset Paranoid Android feature preferences</string>
+    <string name="keywords_settings_reset">reset</string>
 </resources>
