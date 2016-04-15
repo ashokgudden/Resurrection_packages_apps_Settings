@@ -36,11 +36,13 @@ import android.os.PersistableBundle;
 import android.os.UserHandle;
 import android.os.UserManager;
 import android.os.storage.StorageManager;
+import android.os.SystemProperties;
 import android.provider.SearchIndexableResource;
 import android.provider.Settings;
 import android.security.KeyStore;
 import android.service.trust.TrustAgentService;
 import android.support.v14.preference.SwitchPreference;
+import android.support.v7.preference.ListPreference;
 import android.support.v7.preference.Preference;
 import android.support.v7.preference.Preference.OnPreferenceChangeListener;
 import android.support.v7.preference.Preference.OnPreferenceClickListener;
@@ -120,10 +122,14 @@ public class SecuritySettings extends SettingsPreferenceFragment
     private static final int PASSWORD_VISIBLE = 1;
     private static final int PASSWORD_INVISIBLE = 0;
 
+    private static final String KEY_DENY_NEW_USB = "deny_new_usb";
+    private static final String DENY_NEW_USB_PROP = "security.deny_new_usb";
+    private static final String DENY_NEW_USB_PERSIST_PROP = "persist.security.deny_new_usb";
+
     // These switch preferences need special handling since they're not all stored in Settings.
     private static final String SWITCH_PREFERENCE_KEYS[] = {
             KEY_SHOW_PASSWORD, KEY_TOGGLE_INSTALL_APPLICATIONS, KEY_UNIFICATION,
-            KEY_VISIBLE_PATTERN_PROFILE
+            KEY_VISIBLE_PATTERN_PROFILE, KEY_DENY_NEW_USB
     };
 
     // Only allow one trust agent on the platform.
@@ -155,6 +161,8 @@ public class SecuritySettings extends SettingsPreferenceFragment
     private Intent mTrustAgentClickIntent;
 
     private int mProfileChallengeUserId;
+
+    private ListPreference mDenyNewUsb;
 
     private String mCurrentDevicePassword;
     private String mCurrentProfilePassword;
@@ -281,6 +289,16 @@ public class SecuritySettings extends SettingsPreferenceFragment
 
         // Add options for device encryption
         mIsAdmin = mUm.isAdminUser();
+
+        if (mIsAdmin) {
+            mDenyNewUsb = (ListPreference) findPreference(KEY_DENY_NEW_USB);
+        } else {
+            PreferenceGroup securityCategory = (PreferenceGroup)
+                    root.findPreference(KEY_SECURITY_CATEGORY);
+            if (securityCategory != null) {
+                securityCategory.removePreference(securityCategory.findPreference(KEY_DENY_NEW_USB));
+            }
+        }
 
         if (mIsAdmin) {
             if (LockPatternUtils.isDeviceEncryptionEnabled()) {
@@ -628,6 +646,10 @@ public class SecuritySettings extends SettingsPreferenceFragment
         if (mResetCredentials != null && !mResetCredentials.isDisabledByAdmin()) {
             mResetCredentials.setEnabled(!mKeyStore.isEmpty());
         }
+
+        if (mDenyNewUsb != null) {
+            mDenyNewUsb.setValue(SystemProperties.get(DENY_NEW_USB_PERSIST_PROP, "disabled"));
+        }
     }
 
     private boolean isPasswordVisible() {
@@ -822,6 +844,13 @@ public class SecuritySettings extends SettingsPreferenceFragment
                 result = false;
             } else {
                 setNonMarketAppsAllowed(false);
+            }
+        } else if (KEY_DENY_NEW_USB.equals(key)) {
+            String mode = (String) value;
+            SystemProperties.set(DENY_NEW_USB_PERSIST_PROP, mode);
+            // The dynamic mode defaults to the disabled state
+            if (mode.equals("dynamic")) {
+                SystemProperties.set(DENY_NEW_USB_PROP, "0");
             }
         }
         return result;

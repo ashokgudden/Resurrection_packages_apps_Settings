@@ -28,6 +28,14 @@
             android:summary="@string/unlock_set_unlock_mode_pattern"
             settings:keywords="@string/keywords_lockscreen" />
 
+        <ListPreference
+            android:key="deny_new_usb"
+            android:title="@string/deny_new_usb_title"
+            android:summary="@string/deny_new_usb_summary"
+            android:persistent="false"
+            android:entries="@array/deny_new_usb_entries"
+            android:entryValues="@array/deny_new_usb_values" />
+
     </PreferenceCategory>
 
 </PreferenceScreen>

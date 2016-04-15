@@ -7956,4 +7956,6 @@
     <string name="protected_apps">Protected apps</string>
     <string name="saving_protected_components">Saving component state</string>
 
+    <string name="deny_new_usb_title">USB accessories</string>
+    <string name="deny_new_usb_summary">Control support for USB peripherals such as input (mice, keyboards, joysticks) and storage devices.</string>
 </resources>
