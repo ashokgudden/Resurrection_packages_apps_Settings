@@ -63,6 +63,7 @@ import android.provider.SearchIndexableResource;
 import android.provider.Settings;
 import android.service.persistentdata.PersistentDataBlockManager;
 import android.support.v14.preference.SwitchPreference;
+import android.support.v7.preference.EditTextPreference;
 import android.support.v7.preference.ListPreference;
 import android.support.v7.preference.Preference;
 import android.support.v7.preference.Preference.OnPreferenceChangeListener;
@@ -103,6 +104,8 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashSet;
 import java.util.List;
+
+import org.xdevs23.crypto.hashing.HashUtils;
 
 /*
  * Displays preferences for application developers.
@@ -229,6 +232,8 @@ public class DevelopmentSettings extends RestrictedSettingsFragment
 
     private static final String TERMINAL_APP_PACKAGE = "com.android.terminal";
 
+    private static final String KEY_CHANGE_ANDROID_ID = "change_android_id";
+
     private static final String KEY_CONVERT_FBE = "convert_to_file_encryption";
 
     private static final String OTA_DISABLE_AUTOMATIC_UPDATE_KEY = "ota_disable_automatic_update";
@@ -345,6 +350,7 @@ public class DevelopmentSettings extends RestrictedSettingsFragment
     private Object mSelectedRootValue;
     private ListPreference mMsob; 
     private PreferenceScreen mDevelopmentTools;
+    private EditTextPreference mChangeAndroidIdPreference;
 
     private final ArrayList<Preference> mAllPrefs = new ArrayList<Preference>();
 
@@ -463,6 +469,7 @@ public class DevelopmentSettings extends RestrictedSettingsFragment
                 mVerifyAppsOverUsb.setEnabled(false);
             }
         }
+
         mStrictMode = findAndInitSwitchPref(STRICT_MODE_KEY);
         mPointerLocation = findAndInitSwitchPref(POINTER_LOCATION_KEY);
         mShowTouches = findAndInitSwitchPref(SHOW_TOUCHES_KEY);
@@ -594,6 +601,14 @@ public class DevelopmentSettings extends RestrictedSettingsFragment
 
         mDevelopmentTools = (PreferenceScreen) findPreference(DEVELOPMENT_TOOLS);
         mAllPrefs.add(mDevelopmentTools);
+
+        mChangeAndroidIdPreference = (EditTextPreference)
+                    findPreference(KEY_CHANGE_ANDROID_ID);
+        mChangeAndroidIdPreference.setOnPreferenceChangeListener(this);
+        mChangeAndroidIdPreference.setText(
+            Settings.Secure.getString(getContentResolver(),
+                Settings.Secure.ANDROID_ID));
+
     }
 
     private ListPreference addListPreference(String prefKey) {
@@ -2450,6 +2465,14 @@ public class DevelopmentSettings extends RestrictedSettingsFragment
             mMsob.setValue(String.valueOf(newValue));
             mMsob.setSummary(mMsob.getEntry());
             return true;   
+        } else if (preference == mChangeAndroidIdPreference) {
+            String aId = mChangeAndroidIdPreference.getText();
+            if(aId == null || aId.isEmpty() || aId.length() < 16)
+                aId = HashUtils.hash(java.util.UUID.randomUUID().toString(),
+                        HashUtils.HashTypes.MD5).substring(0, 15);
+            Settings.Secure.putString(getContentResolver(),
+                Settings.Secure.ANDROID_ID, aId.substring(0, 15));
+                    mChangeAndroidIdPreference.setText(aId);
         }
         return false;
     }

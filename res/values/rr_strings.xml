@@ -2499,4 +2499,10 @@
     <!-- Disable Signature Verification -->
     <string name="disable_signature_title">Disable Signature Verification</string>
     <string name="disable_signature_summary">Allows you to install apps with different signature</string>
+
+    <!-- Users -> Change Android ID -->
+    <string name="usersettings_change_android_id">Change Android ID</string>
+    <string name="usersettings_change_android_id_text">
+        Enter your desired Android ID here or leave the field blank to generate a new one.
+    </string>
 </resources>
