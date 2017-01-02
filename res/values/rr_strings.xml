@@ -2438,4 +2438,7 @@
     <!-- EdgeGesture service -->
     <string name="edge_gesture_service_title">Block gesture touch events</string>
     <string name="edge_gesture_service_summary">Don\'t send touch events for navigation and status bar gestures to apps</string>
+
+    <!-- Development QS -->
+    <string name="qs_disable_hw_overlays">@string/disable_overlays</string>
 </resources>
