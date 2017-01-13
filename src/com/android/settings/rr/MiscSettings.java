@@ -66,7 +66,6 @@ public class MiscSettings extends SettingsPreferenceFragment  implements OnPrefe
         super.onCreate(savedInstanceState);
 
         addPreferencesFromResource(R.xml.rr_misc);
-  	final ContentResolver resolver = getActivity().getContentResolver();
 
 	//SELinux
         mSelinux = (SwitchPreference) findPreference(SELINUX);
@@ -110,7 +109,7 @@ public class MiscSettings extends SettingsPreferenceFragment  implements OnPrefe
 
     @Override
     public boolean onPreferenceChange(Preference preference, Object value) {
-        ContentResolver resolver = getActivity().getContentResolver();
+
         if (preference == mSelinux) {
             if (value.toString().equals("true")) {
                 CMDProcessor.runSuCommand("setenforce 1");

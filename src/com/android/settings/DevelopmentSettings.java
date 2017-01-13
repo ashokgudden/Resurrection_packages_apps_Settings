@@ -249,6 +249,8 @@ public class DevelopmentSettings extends RestrictedSettingsFragment
 
     private static final int[] MOCK_LOCATION_APP_OPS = new int[] {AppOpsManager.OP_MOCK_LOCATION};
 
+    private static final String PREF_MEDIA_SCANNER_ON_BOOT = "media_scanner_on_boot"; 
+
     private IWindowManager mWindowManager;
     private IBackupManager mBackupManager;
     private IWebViewUpdateService mWebViewUpdateService;
@@ -341,6 +343,7 @@ public class DevelopmentSettings extends RestrictedSettingsFragment
 
     private ListPreference mRootAccess;
     private Object mSelectedRootValue;
+    private ListPreference mMsob; 
     private PreferenceScreen mDevelopmentTools;
 
     private final ArrayList<Preference> mAllPrefs = new ArrayList<Preference>();
@@ -374,6 +377,9 @@ public class DevelopmentSettings extends RestrictedSettingsFragment
     @Override
     public void onCreate(Bundle icicle) {
         super.onCreate(icicle);
+
+        Activity activity = getActivity();
+        final ContentResolver resolver = getActivity().getContentResolver();
 
         mWindowManager = IWindowManager.Stub.asInterface(ServiceManager.getService("window"));
         mBackupManager = IBackupManager.Stub.asInterface(
@@ -579,6 +585,12 @@ public class DevelopmentSettings extends RestrictedSettingsFragment
             mAllPrefs.add(mRootAccess);
             mAllPrefs.add(mRootAppops);
         }
+
+        mMsob = (ListPreference) findPreference(PREF_MEDIA_SCANNER_ON_BOOT);
+        mMsob.setValue(String.valueOf(Settings.System.getInt(getActivity().getContentResolver(),
+                Settings.System.MEDIA_SCANNER_ON_BOOT, 0)));
+        mMsob.setSummary(mMsob.getEntry());
+        mMsob.setOnPreferenceChangeListener(this);
 
         mDevelopmentTools = (PreferenceScreen) findPreference(DEVELOPMENT_TOOLS);
         mAllPrefs.add(mDevelopmentTools);
@@ -2411,6 +2423,13 @@ public class DevelopmentSettings extends RestrictedSettingsFragment
                 writeRootAccessOptions(newValue);
             }
             return true;
+        } else if (preference == mMsob) {
+            Settings.System.putInt(getActivity().getContentResolver(),
+                    Settings.System.MEDIA_SCANNER_ON_BOOT,
+                    Integer.valueOf(String.valueOf(newValue)));
+            mMsob.setValue(String.valueOf(newValue));
+            mMsob.setSummary(mMsob.getEntry());
+            return true;   
         }
         return false;
     }
