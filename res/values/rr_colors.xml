@@ -96,6 +96,12 @@
     <color name="expanded_button_color_normal">#4CAF50</color>
     <color name="expanded_button_color_close">#F44336</color>
 
+    <!-- Extra info -->
+    <color name="extrainfo_separator">#ffffffff</color>
+    <color name="extrainfo_cat_background">#ff263238</color>
+    <color name="extrainfo_cat_text">#ffffffff</color>
+    <color name="extrainfo_value_text">#ff263238</color>
+
     <!-- OMS Exposures -->
     <!-- Dashboard category and tile background -->
     <color name="dashboard_category_title_background">@color/card_background</color>

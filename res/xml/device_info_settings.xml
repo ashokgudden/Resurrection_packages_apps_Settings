@@ -111,6 +111,15 @@
                 android:shouldDisableView="false"
                 android:title="@string/device_name"
                 android:summary="@string/device_info_default"/>
+                
+        <!-- Extra Info -->
+        <PreferenceScreen android:key="extrainfo"
+                android:title="@string/lsextrainfo"
+                android:summary="@string/lsextrainfo_summary">
+            <intent android:action="android.intent.action.MAIN"
+                    android:targetPackage="com.android.settings"
+                    android:targetClass="com.android.settings.rr.extrainfo.MainActivity" />
+        </PreferenceScreen>
 
         <!-- Device hardware model -->
         <com.android.settings.DividerPreference
