@@ -15,7 +15,7 @@
  * the License.
  */
 
-package com.android.settings.aicp.qstile;
+package com.android.settings.rr.qstile;
 
 import android.os.IBinder;
 import android.os.Parcel;

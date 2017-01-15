@@ -3476,7 +3476,7 @@
             </intent-filter>
         </service>
         <service
-                android:name=".aicp.qstile.DevelopmentTiles$DisableHwOverlays"
+                android:name=".rr.qstile.DevelopmentTiles$DisableHwOverlays"
                 android:label="@string/qs_disable_hw_overlays"
                 android:icon="@drawable/tile_disable_overlays"
                 android:permission="android.permission.BIND_QUICK_SETTINGS_TILE"
@@ -3486,7 +3486,7 @@
             </intent-filter>
         </service>
         <service
-                android:name=".aicp.qstile.DevelopmentTiles$ShowTouches"
+                android:name=".rr.qstile.DevelopmentTiles$ShowTouches"
                 android:label="@string/qs_show_touches"
                 android:icon="@drawable/tile_show_touches"
                 android:permission="android.permission.BIND_QUICK_SETTINGS_TILE"
