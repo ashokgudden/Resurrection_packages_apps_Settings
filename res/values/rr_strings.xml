@@ -2582,4 +2582,5 @@
     <string name="recents_lock_icon_title">Lock icon</string>
     <string name="recents_lock_icon_summary">Show recents lock to task icon in header</string>
 
+	<string name="status_bar_battery_style_aoscp">Cio</string> 
 </resources>
