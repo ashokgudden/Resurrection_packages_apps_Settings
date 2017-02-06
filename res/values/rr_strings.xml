@@ -2505,4 +2505,6 @@
     <string name="usersettings_change_android_id_text">
         Enter your desired Android ID here or leave the field blank to generate a new one.
     </string>
+
+	<string name="status_bar_battery_style_aoscp">Cio</string> 
 </resources>
