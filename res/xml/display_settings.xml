@@ -92,13 +92,14 @@
                 android:summary="@string/heads_up_switch_summary"
                 android:defaultValue="true" />
 
+        <!-- Disable CM's Doze
         <cyanogenmod.preference.RemotePreference
                 android:key="doze_device_settings"
                 android:title="@string/doze_title"
                 android:summary="@string/doze_summary"
                 cm:replacesKey="doze">
             <intent android:action="org.cyanogenmod.settings.device.DOZE_SETTINGS" />
-        </cyanogenmod.preference.RemotePreference>
+        </cyanogenmod.preference.RemotePreference>  -->
 
         <cyanogenmod.preference.CMGlobalSettingSwitchPreference
                 android:key="wake_when_plugged_or_unplugged"
@@ -145,4 +146,21 @@
 
     </PreferenceCategory>
 
+        <PreferenceCategory
+            android:key="category_doze_options"
+            android:title="@string/display_category_doze_options_title" >
+
+            <SwitchPreference
+                    android:key="doze"
+                    android:title="@string/doze_title"
+                    android:summary="@string/doze_summary"
+                    android:persistent="false" />
+
+            <PreferenceScreen
+                android:fragment="com.android.settings.rr.DozeSettingsFragment"
+                android:key="advanced_doze_options"
+                android:title="@string/doze_settings_title"
+                android:dependency="doze" />
+
+        </PreferenceCategory>
 </PreferenceScreen>
