@@ -87,6 +87,17 @@
                     android:targetClass="com.resurrection.ota.MainActivity" />
        </PreferenceScreen>
 
+        <!-- OpenDelta Updates -->
+        <PreferenceScreen
+			android:key="delta_updates"
+            android:title="@string/deltaupdate_settings_title"
+            android:summary="@string/deltaupdate_settings_title_summary"
+            android:icon="@drawable/rr_ota_icon">
+            <intent android:action="android.intent.action.MAIN"
+                    android:targetPackage="eu.chainfire.opendelta"
+                    android:targetClass="eu.chainfire.opendelta.MainActivity" />
+		</PreferenceScreen>
+
         <!-- Wakelock blocker -->
         <PreferenceScreen
             android:key="wakelock_blocker"

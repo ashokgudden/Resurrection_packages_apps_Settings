@@ -19,6 +19,9 @@ package com.android.settings.rr;
 import android.content.Context;
 import android.content.ContentResolver;
 import android.content.Intent;
+import android.content.pm.ApplicationInfo;
+import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager.NameNotFoundException;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.content.pm.ResolveInfo;
@@ -33,17 +36,24 @@ import android.os.UserHandle;
 import android.support.v7.preference.ListPreference;
 import android.support.v14.preference.SwitchPreference;
 import android.support.v7.preference.Preference;
+import android.support.v7.preference.PreferenceGroup; 
 import android.support.v7.preference.Preference.OnPreferenceChangeListener;
 import android.support.v7.preference.PreferenceScreen;
 import android.provider.Settings;
 import com.android.settings.util.Helpers;
 import dalvik.system.VMRuntime;
 
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+import android.util.Log;
+
 import com.android.settings.R;
 import com.android.settings.SettingsPreferenceFragment;
 
 import java.util.List;
 import com.android.settings.Utils;
+
+import java.text.ParseException;
 
 import java.io.File;
 import java.io.IOException;
@@ -53,6 +63,7 @@ import com.android.internal.logging.MetricsProto.MetricsEvent;
 
 public class MiscSettings extends SettingsPreferenceFragment  implements OnPreferenceChangeListener{
 
+    private static final String LOG_TAG = "MiscSettings"; 
     private static final String SELINUX = "selinux";
     private static final String RR_OTA = "rr_ota_fab";
 
@@ -130,6 +141,30 @@ public class MiscSettings extends SettingsPreferenceFragment  implements OnPrefe
             fabIntent.setClassName("com.android.settings", "com.android.settings.Settings$MainSettingsLayoutActivity");
             startActivity(fabIntent);
             return true;
+        }
+        return false;
+    }
+
+        private boolean removePreferenceIfPackageNotInstalled(Preference preference) {
+        String intentUri=((PreferenceScreen) preference).getIntent().toUri(1);
+        Pattern pattern = Pattern.compile("component=([^/]+)/");
+        Matcher matcher = pattern.matcher(intentUri);
+
+        String packageName=matcher.find()?matcher.group(1):null;
+        if(packageName != null) {
+            try {
+                PackageInfo pi = getPackageManager().getPackageInfo(packageName,
+                        PackageManager.GET_ACTIVITIES);
+                if (!pi.applicationInfo.enabled) {
+                    Log.e(LOG_TAG,"package "+packageName+" is disabled, hiding preference.");
+                    getPreferenceScreen().removePreference(preference);
+                    return true;
+                }
+            } catch (NameNotFoundException e) {
+                Log.e(LOG_TAG,"package "+packageName+" not installed, hiding preference.");
+                getPreferenceScreen().removePreference(preference);
+                return true;
+            }
         }
         return false;
     }
