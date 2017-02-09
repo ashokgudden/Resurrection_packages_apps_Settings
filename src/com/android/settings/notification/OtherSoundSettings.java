@@ -16,6 +16,20 @@
 
 package com.android.settings.notification;
 
+import android.app.Activity;
+import android.app.Fragment;
+import android.app.AlertDialog;
+import android.app.Dialog;
+import android.app.DialogFragment;
+import android.content.DialogInterface;
+import android.content.Intent;
+import android.content.pm.UserInfo;
+import android.os.UserHandle;
+import android.os.UserManager;
+import android.preference.PreferenceScreen;
+import android.provider.Settings;
+import android.util.Log;
+
 import android.content.ContentResolver;
 import android.content.Context;
 import android.content.res.Resources;
@@ -60,6 +74,8 @@ public class OtherSoundSettings extends SettingsPreferenceFragment implements In
 
     private static final int DEFAULT_ON = 1;
 
+    private static final int DLG_SAFE_HEADSET_VOLUME = 0; 
+
     private static final int EMERGENCY_TONE_SILENT = 0;
     private static final int EMERGENCY_TONE_ALERT = 1;
     private static final int EMERGENCY_TONE_VIBRATE = 2;
@@ -68,6 +84,8 @@ public class OtherSoundSettings extends SettingsPreferenceFragment implements In
     private static final int DOCK_AUDIO_MEDIA_DISABLED = 0;
     private static final int DOCK_AUDIO_MEDIA_ENABLED = 1;
     private static final int DEFAULT_DOCK_AUDIO_MEDIA = DOCK_AUDIO_MEDIA_DISABLED;
+
+    private static final String KEY_SAFE_HEADSET_VOLUME = "safe_headset_volume"; 
 
     private static final String KEY_DIAL_PAD_TONES = "dial_pad_tones";
     private static final String KEY_SCREEN_LOCKING_SOUNDS = "screen_locking_sounds";
@@ -84,6 +102,8 @@ public class OtherSoundSettings extends SettingsPreferenceFragment implements In
 
     private ListPreference mAnnoyingNotifications;
     private SwitchPreference mCameraSounds;
+
+    private SwitchPreference mSafeHeadsetVolume; 
 
     // Boot Sounds needs to be a system property so it can be accessed during boot.
     private static final String KEY_BOOT_SOUNDS = "boot_sounds";
@@ -230,11 +250,15 @@ public class OtherSoundSettings extends SettingsPreferenceFragment implements In
                 System.MUTE_ANNOYING_NOTIFICATIONS_THRESHOLD, 0);
         mAnnoyingNotifications.setValue(Integer.toString(notificationThreshold));
         mAnnoyingNotifications.setOnPreferenceChangeListener(this);
-
  
         mCameraSounds = (SwitchPreference) findPreference(KEY_CAMERA_SOUNDS);
         mCameraSounds.setChecked(SystemProperties.getBoolean(PROP_CAMERA_SOUND, true));
         mCameraSounds.setOnPreferenceChangeListener(this);
+
+        mSafeHeadsetVolume = (SwitchPreference) findPreference(KEY_SAFE_HEADSET_VOLUME);
+        mSafeHeadsetVolume.setChecked(Settings.System.getInt(getActivity().getContentResolver(),
+				Settings.System.SAFE_HEADSET_VOLUME, 1) != 0);
+        mSafeHeadsetVolume.setOnPreferenceChangeListener(this);
 
         for (SettingPref pref : PREFS) {
             pref.init(this);
@@ -267,6 +291,14 @@ public class OtherSoundSettings extends SettingsPreferenceFragment implements In
 
     public boolean onPreferenceChange(Preference preference, Object objValue) {
         final String key = preference.getKey();
+        if (KEY_SAFE_HEADSET_VOLUME.equals(key)) {
+            if ((Boolean) objValue) {
+                    Settings.System.putInt(getActivity().getContentResolver(),
+                            Settings.System.SAFE_HEADSET_VOLUME, 1);
+            } else {
+                    showDialogInner(DLG_SAFE_HEADSET_VOLUME);
+            }
+        }
         if (PREF_LESS_NOTIFICATION_SOUNDS.equals(key)) {
             final int val = Integer.valueOf((String) objValue);
             System.putInt(getContentResolver(),
@@ -282,6 +314,63 @@ public class OtherSoundSettings extends SettingsPreferenceFragment implements In
                 return true;
         }
         return true;
+    }
+
+    private void showDialogInner(int id) {
+        DialogFragment newFragment = MyAlertDialogFragment.newInstance(id);
+        newFragment.setTargetFragment(this, 0);
+        newFragment.show(getFragmentManager(), "dialog " + id);
+    }
+
+    public static class MyAlertDialogFragment extends DialogFragment {
+
+        public static MyAlertDialogFragment newInstance(int id) {
+            MyAlertDialogFragment frag = new MyAlertDialogFragment();
+            Bundle args = new Bundle();
+            args.putInt("id", id);
+            frag.setArguments(args);
+            return frag;
+        }
+
+        OtherSoundSettings getOwner() {
+            return (OtherSoundSettings) getTargetFragment();
+        }
+
+        @Override
+        public Dialog onCreateDialog(Bundle savedInstanceState) {
+            int id = getArguments().getInt("id");
+                switch (id) {
+                   case DLG_SAFE_HEADSET_VOLUME:
+                       return new AlertDialog.Builder(getActivity())
+                           .setTitle(R.string.attention)
+                           .setMessage(R.string.safe_headset_volume_warning_dialog_text)
+                           .setPositiveButton(R.string.ok,
+                               new DialogInterface.OnClickListener() {
+                                   public void onClick(DialogInterface dialog, int which) {
+                                       Settings.System.putInt(getOwner().getActivity().getContentResolver(),
+                                       Settings.System.SAFE_HEADSET_VOLUME, 0);
+                                   }
+                               })
+                           .setNegativeButton(R.string.cancel,
+                               new DialogInterface.OnClickListener() {
+                                   public void onClick(DialogInterface dialog, int which) {
+                                       dialog.cancel();
+                                   }
+                               })
+                           .create();
+                }
+                   throw new IllegalArgumentException("unknown id " + id);
+        }
+
+        @Override
+        public void onCancel(DialogInterface dialog) {
+            int id = getArguments().getInt("id");
+                switch (id) {
+                   case DLG_SAFE_HEADSET_VOLUME:
+                       getOwner().mSafeHeadsetVolume.setChecked(true);
+                       break;
+                   }
+        }
     }
 
     @Override
