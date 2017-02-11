@@ -255,7 +255,7 @@ public class SettingsActivity extends SettingsDrawerActivity
     private static final String SUPERSU_FRAGMENT = "com.android.settings.SuperSU";
     private static final String SUPERUSER_FRAGMENT = "com.android.settings.SuperUser"; 
 
-    private static final String MAGISK_FRAGMENT = "com.android.settings.MagiskManager";
+    private static final String MAGISK_FRAGMENT = "com.android.settings.MagiskManager"; 
 
     private String mFragmentClass;
     private String mActivityAction;
@@ -1249,9 +1249,6 @@ public class SettingsActivity extends SettingsDrawerActivity
                         Settings.SuperUserActivity.class.getName()),
                 phhSupported, isAdmin, pm);
 
-        // Reveal development-only quick settings tiles
-        DevelopmentTiles.setTilesEnabled(this, showDev);
-
         // Magisk Manager
         boolean magiskSupported = false;
         try {
@@ -1261,6 +1258,9 @@ public class SettingsActivity extends SettingsDrawerActivity
         setTileEnabled(new ComponentName(packageName,
                         Settings.MagiskActivity.class.getName()),
                 magiskSupported, isAdmin, pm);
+
+        // Reveal development-only quick settings tiles
+        DevelopmentTiles.setTilesEnabled(this, showDev);
 
         // Show scheduled power on and off if support
         boolean showTimerSwitch = false;
