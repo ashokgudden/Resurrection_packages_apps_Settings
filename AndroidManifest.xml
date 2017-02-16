@@ -1084,6 +1084,20 @@
                 android:resource="@string/supersu_dashboard_summary" />
         </activity>
 
+      <!-- Data Saver -->
+        <activity android:name="Settings$DataSaverSettingsActivity"
+                android:label="@string/data_saver_title"
+                android:excludeFromRecents="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+            <meta-data android:name="com.android.settings.FRAGMENT_CLASS"
+                android:value="com.android.settings.datausage.DataSaverSummary" />
+            <meta-data android:name="com.android.settings.TOP_LEVEL_HEADER_ID"
+                android:resource="@string/data_saver_title" />
+        </activity>
+
         <activity android:name="Settings$SuperUserActivity"
             android:label="@string/superuser_title"
             android:icon="@drawable/ic_settings_superuser"
