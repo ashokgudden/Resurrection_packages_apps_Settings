@@ -648,6 +648,26 @@ public class DevelopmentSettings extends RestrictedSettingsFragment
             }
             return true;
         }
+
+        // SuperSu
+
+        boolean superSUSupported = false;
+        try {
+            superSUSupported = (getPackageManager().getPackageInfo("eu.chainfire.supersu", 0).versionCode > 0);
+        } catch (PackageManager.NameNotFoundException e) {
+        }
+
+        // if superSU is supported, management is done in SuperSu app.
+        // remove the root access and appops preferences
+        if (superSUSupported) {
+            if (mRootAccess != null) {
+                getPreferenceScreen().removePreference(mRootAccess);
+            }
+            if (mRootAppops != null) {
+                getPreferenceScreen().removePreference(mRootAppops);
+            }
+            return true;
+        }
         // user builds don't get root, and eng always gets root
         if (!(Build.IS_DEBUGGABLE || "eng".equals(Build.TYPE))) {
             if (mRootAccess != null) {
