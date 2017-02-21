@@ -29,6 +29,7 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.SharedPreferences;
 import android.content.pm.ActivityInfo;
+import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageManager;
 import android.content.pm.ResolveInfo;
 import android.content.pm.PackageManager.NameNotFoundException;
@@ -1233,33 +1234,42 @@ public class SettingsActivity extends SettingsDrawerActivity
 
         // SuperSU
         boolean suSupported = false;
+        boolean suEnabled = false;
         try {
             suSupported = (getPackageManager().getPackageInfo("eu.chainfire.supersu", 0).versionCode >= 185);
+            ApplicationInfo suAi = getPackageManager().getApplicationInfo("eu.chainfire.supersu",0);
+            suEnabled = suAi.enabled;
         } catch (PackageManager.NameNotFoundException e) {
         }
         setTileEnabled(new ComponentName(packageName,
                         Settings.SuperSUActivity.class.getName()),
-                suSupported, isAdmin, pm);
+                suSupported & suEnabled, isAdmin, pm);
 
         // SuperUser
         boolean phhSupported = false;
+        boolean phhEnabled = false;        
         try {
             phhSupported = (getPackageManager().getPackageInfo("me.phh.superuser", 0).versionCode > 0);
+            ApplicationInfo phhAi = getPackageManager().getApplicationInfo("me.phh.superuser",0);
+            phhEnabled = phhAi.enabled;
         } catch (PackageManager.NameNotFoundException e) {
         }
         setTileEnabled(new ComponentName(packageName,
                         Settings.SuperUserActivity.class.getName()),
-                phhSupported, isAdmin, pm);
+                phhSupported & phhEnabled, isAdmin, pm);
 
         // Magisk Manager
         boolean magiskSupported = false;
+        boolean magiskEnabled = false;
         try {
             magiskSupported = (getPackageManager().getPackageInfo("com.topjohnwu.magisk", 0).versionCode > 0);
+            ApplicationInfo magiskAi = getPackageManager().getApplicationInfo("com.topjohnwu.magisk",0);
+            magiskEnabled = magiskAi.enabled;
         } catch (PackageManager.NameNotFoundException e) {
         }
         setTileEnabled(new ComponentName(packageName,
                         Settings.MagiskActivity.class.getName()),
-                magiskSupported, isAdmin, pm);
+                magiskSupported & magiskEnabled, isAdmin, pm);
 
         // Reveal development-only quick settings tiles
         DevelopmentTiles.setTilesEnabled(this, showDev);
