@@ -2488,4 +2488,9 @@
     <!-- Magisk header name - the app hides itself from launcher based on this resource name being present in com.android.settings -->
     <string name="magisk_title">Magisk Manager</string>
     <string name="magisk_summary">Control modules and settings</string>
+
+    <!-- Emergency button -->
+    <string name="emergency_button_title">Emergency button</string>
+    <string name="emergency_button_summary_on">Emergency button shown on the lockscreen</string>
+    <string name="emergency_button_summary_off">Emergency button hidden on the lockscreen</string>
 </resources>
