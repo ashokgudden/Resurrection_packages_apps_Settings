@@ -67,7 +67,7 @@ public class QsLayout extends SettingsPreferenceFragment implements
 
         mQsColumns = (SeekBarPreference) findPreference(PREF_COLUMNS);
         int columnsQs = Settings.System.getInt(resolver,
-                Settings.System.QS_LAYOUT_COLUMNS, 3);
+                Settings.System.QS_LAYOUT_COLUMNS, 5);
         mQsColumns.setValue(columnsQs / 1);
         mQsColumns.setOnPreferenceChangeListener(this);
 
