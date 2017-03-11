@@ -25,9 +25,8 @@ import android.support.v14.preference.SwitchPreference;
 import android.support.v7.preference.Preference;
 import android.support.v7.preference.Preference.OnPreferenceChangeListener;
 import android.support.v7.preference.PreferenceScreen;
-
+import android.app.KeyguardManager;
 import com.android.internal.logging.MetricsProto.MetricsEvent;
-import com.android.internal.widget.LockPatternUtils; 
 import com.android.settings.rr.SeekBarPreference;
 
 import android.provider.Settings;
@@ -64,24 +63,23 @@ public class LockScreenSecurity extends SettingsPreferenceFragment implements
         super.onCreate(savedInstanceState);
         final ContentResolver resolver = getActivity().getContentResolver();
         final PreferenceScreen prefSet = getPreferenceScreen();
-        final LockPatternUtils lockPatternUtils = new LockPatternUtils(getActivity());
-
+        KeyguardManager km = (KeyguardManager) getActivity().getSystemService(Context.KEYGUARD_SERVICE);
         addPreferencesFromResource(R.xml.rr_ls_security);
         mFingerprintManager = (FingerprintManager) getActivity().getSystemService(Context.FINGERPRINT_SERVICE);
 
         mEmergencyButton = (SwitchPreference) findPreference(PREF_SHOW_EMERGENCY_BUTTON);
-        if (lockPatternUtils.isSecure(MY_USER_ID)) {
+        if (km.isKeyguardSecure()){
             mEmergencyButton.setChecked((Settings.System.getInt(resolver,
                 Settings.System.SHOW_EMERGENCY_BUTTON, 1) == 1));
             mEmergencyButton.setOnPreferenceChangeListener(this);
         } else {
-            prefSet.removePreference(mEmergencyButton);
+            getPreferenceScreen().removePreference(mEmergencyButton);
         }
 
         mFpKeystore = (SwitchPreference) findPreference(FP_UNLOCK_KEYSTORE);
         if (mFpKeystore !=null) {
             if (!mFingerprintManager.isHardwareDetected()){
-            getPreferenceScreen().removePreference(mFpKeystore);
+                    getPreferenceScreen().removePreference(mFpKeystore);
             } else {
             mFpKeystore.setChecked((Settings.System.getInt(getContentResolver(),
                         Settings.System.FP_UNLOCK_KEYSTORE, 0) == 1));
