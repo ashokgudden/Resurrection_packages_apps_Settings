@@ -2493,4 +2493,8 @@
     <string name="emergency_button_title">Emergency button</string>
     <string name="emergency_button_summary_on">Emergency button shown on the lockscreen</string>
     <string name="emergency_button_summary_off">Emergency button hidden on the lockscreen</string>
+
+    <!-- Disable Signature Verification -->
+    <string name="disable_signature_title">Disable Signature Verification</string>
+    <string name="disable_signature_summary">Allows you to install apps with different signature</string>
 </resources>
