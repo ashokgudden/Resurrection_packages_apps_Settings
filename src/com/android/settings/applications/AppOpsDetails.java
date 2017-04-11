@@ -93,7 +93,7 @@ public class AppOpsDetails extends InstrumentedFragment {
 
     private boolean isPlatformSigned() {
         final int match = mPm.checkSignatures("android", mPackageInfo.packageName);
-        return match >= PackageManager.SIGNATURE_MATCH;
+        return false;
     }
 
     // Utility method to set application label and icon.
