@@ -63,7 +63,7 @@
   <string name="rr_ls_gestures">Gestures</string>
   <string name="rr_ls_ui">Lock UI</string>
   <string name="rr_ls_security">Security</string>
-  <string name="updater_title">Updates</string>
+  <string name="updater_title">Unofficial OTA Updates</string>
   <string name="altan_summary">● Founder \n● Project leader \n● Head developer \n● UX designer \n● Maintainer</string>
   <string name="varun_summary">● Head developer \n● UX designer \n● Maintainer</string>
   <string name="akhil_summary">● Developer \n● Maintainer \n● Javascript master</string>
@@ -96,7 +96,7 @@
   <string name="changelog_unknown">Unknown</string>
   <string name="changelog_version">Version</string>
   <!--RR Configurations-->
-  <string name="fab_updates">Updates</string>
+  <string name="fab_updates">Unofficial Updates</string>
   <string name="fab_restartui">Restart UI</string>
   <string name="fab_reset">Reset</string>
   <string name="fab_about">About RR-OS</string>
