@@ -954,7 +954,7 @@
     <string name="long_press_kill_delay">App kill delay</string>
 
     <!-- Advanced data tile -->
-    <string name="qs_advanced_data_title">Advanced data tile</string>
+    <string name="qs_advanced_data_title">Data easy toggle</string>
     <string name="qs_advanced_data_summary">Enable one tap action to enable or disable data</string>
 
     <!-- Hardware button navigation -->
