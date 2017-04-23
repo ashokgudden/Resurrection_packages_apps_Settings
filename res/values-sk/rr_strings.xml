@@ -66,7 +66,6 @@
   <string name="updater_title">Aktualizácie</string>
   <string name="altan_summary">● Zakladateľ \n● Vedúci projektu \n● Hlavný vývojár \n● UX dizajnér \n● Správca</string>
   <string name="varun_summary">● Hlavný vývojár \n● UX dizajnér \n● Správca</string>
-  <string name="akhil_summary">● Vývojár \n● Správca \n● Javascript majster</string>
   <string name="brian_summary">● Vývojár \n● Správca</string>
   <string name="device_maintainers_title">Zariadenia a správcovia</string>
   <string name="device_maintainers_title_summary">Zoznam zariadení a ich správcovia v Resurrection ROM</string>
@@ -1310,7 +1309,7 @@
   <!-- QS shade transparency -->
   <string name="qs_transparent_shade">Priehľadnosť tieňov ikon rýchlych nastavení</string>
   <!-- QS header transparency -->
-  <string name="qs_transparent_header">Priehľadnosť hlavičky ikon rýchlych nastavení</string>
+  <string name="qs_transparent_header">Priehľadnosť záhlavia ikon rýchlych nastavení</string>
   <!-- Volume dialog transparency -->
   <string name="volume_dialog_transparency">Priehľadnosť okna hlasitosti</string>
   <!-- Power menu and dialogs transparency -->
@@ -1741,6 +1740,8 @@
   <string name="heads_up_time_out_6sec">6 sekúnd</string>
   <string name="heads_up_time_out_8sec">8 sekúnd</string>
   <string name="heads_up_time_out_10sec">10 sekúnd</string>
+  <string name="always_headsup_dialer_title">Vynútiť plávajúce okno číselníka</string>
+  <string name="always_headsup_dialer_summary">Pri prichádzajúcich hovoroch zobraziť plávajúce okno číselníka (vytáčanie hovoru), aj keď sú plávajúce oznámenia vypnuté, aby sa zabránilo zobrazeniu číselníka na celú obrazovku</string>
   <!-- Heads up snooze -->
   <string name="heads_up_snooze_title">Časovač odloženia</string>
   <string name="heads_up_snooze_summary_one_minute">Potiahnutím nahor dôjde k odloženiu plávajúcich oznámení po dobu 1 minúty</string>
@@ -1966,17 +1967,17 @@
   <string name="qs_brightness_slider_on">Posuvník povolený</string>
   <string name="qs_brightness_slider_off">Posuvník zakázáný</string>
   <!-- QS Header Icons -->
-  <string name="rr_header_title">Hlavička</string>
-  <string name="rr_header_summary">Nastavte jednotlivé prvky v hlavičke</string>
-  <string name="qs_header_items_title">Položky v hlavičke</string>
+  <string name="rr_header_title">Záhlavie</string>
+  <string name="rr_header_summary">Nastavte jednotlivé prvky v záhlaví</string>
+  <string name="qs_header_items_title">Položky v záhlaví</string>
   <string name="qs_settings_icon_title">Zástupca nastavení</string>
-  <string name="qs_settings_icon_summary">Zakázať zástupcu nastavení v hlavičke</string>
+  <string name="qs_settings_icon_summary">Zakázať zástupcu nastavení v záhlaví</string>
   <string name="qs_edit_title">Upraviť ikonu</string>
-  <string name="qs_edit_summary">Zakáže upraviť ikonu dlaždice v hlavičke</string>
+  <string name="qs_edit_summary">Zakáže upraviť ikonu dlaždice v záhlaví</string>
   <string name="qs_multiuser_switch_title">Prepínač viacerých užívateľov</string>
-  <string name="qs_multiuser_switch_summary">Zakáže prepínač viacerých ožívateľov v hlavičke</string>
+  <string name="qs_multiuser_switch_summary">Zakáže prepínač viacerých požívateľov v záhlaví</string>
   <string name="qs_expand_indicator_title">Indikátor rozšírenia</string>
-  <string name="qs_expand_indicator_summary">Zakáže Indikátor rozšírenia v hlavičke</string>
+  <string name="qs_expand_indicator_summary">Zakáže rozšírený indikátor v záhlaví</string>
   <!-- Center Date + Time in header -->
   <string name="qs_date_time_center_title">Vycentrovať dátum a čas</string>
   <string name="qs_date_time_center_summary">Vyžaduje vypnutie jednej alebo viacerých ikon</string>
@@ -1989,17 +1990,22 @@
   <string name="custom_density_summary">
 	<xliff:g name="count" example="520">%d</xliff:g> Hustota pixelov</string>
   <!-- Header images -->
-  <string name="status_bar_custom_header_title">Vlastný obrázok hlavičky</string>
+  <string name="status_bar_custom_header_title">Vlastný obrázok záhlavia</string>
   <string name="status_bar_custom_header_summary">Povolí vlastný obrázok na pozadí panela upozornení</string>
-  <string name="daylight_header_pack_title">Balík obrázkov hlavičky</string>
-  <string name="status_bar_custom_header_shadow_title">Balík obrázkov hlavičky</string>
+  <string name="daylight_header_pack_title">Balík obrázkov záhlavia</string>
+  <string name="status_bar_custom_header_shadow_title">Balík obrázkov záhlavia</string>
   <string name="status_bar_custom_header_shadow_summary">Pre lepšiu viditeľnosť na jasnom pozadí</string>
   <string name="unit_percent">\u0025</string>
   <string name="static_header_provider_title">Statické</string>
   <string name="daylight_header_provider_title">Dynamické</string>
-  <string name="custom_header_provider_title">Operátor v hlavičke</string>
-  <string name="custom_header_browse_title">Prehľadávať nainštalované hlavičky</string>
+  <string name="custom_header_provider_title">Operátor v záhlaví</string>
+  <string name="custom_header_browse_title">Prehľadávať nainštalované záhlavia</string>
   <string name="custom_header_browse_summary">Dlhé stlačenie na akýkoľvek obrázok spustiť statický režim</string>
+  <!-- Header Weather -->
+  <string name="header_weather_enabled_title">Počasie</string>
+  <string name="header_weather_enabled_summary">Povoliť informácie o počasí v rozšířenom záhlaví</string>
+  <string name="header_weather_image_enabled_title">Obrázok počasia</string>
+  <string name="header_weather_image_enabled_summary">Povoliť obrázok počasia v rozšírenom záhlaví</string>
   <!-- Task Manager -->
   <string name="enable_task_manager_title">Správca úloh</string>
   <string name="enable_task_manager_summary">Povoliť / zakázať akcie pre tlačidlo správcu úloh v oblasti rozšírenia stavového riadku</string>
@@ -2175,6 +2181,9 @@
   <!-- Data disabled icon -->
   <string name="data_disabled_icon_title">Zobraziť ikonu vypnuté dáta</string>
   <string name="data_disabled_icon_summary">Zobraziť znak X na ikone signálu siete, keď sú dáta zakázané</string>
+  <!-- Data/Wifi activity arrows -->
+  <string name="data_wifi_activity_arrows_title">Aktivita Dáta/Wi-Fi</string>
+  <string name="data_wifi_activity_arrows_summary">Zobrazit šípky pri aktivite Dát/Wi-Fi</string>
   <!-- Screen state service -->
   <string name="screen_state_toggles_summary">\@null</string>
   <string name="screen_state_toggles_title">Pozastavené akcie</string>

@@ -66,7 +66,7 @@
   <string name="updater_title">Güncellemeler</string>
   <string name="altan_summary">● Kurucu \n● Proje lideri \n● Baş geliştiricisi \n● UX tasarımcısı \n● Sorumlu</string>
   <string name="varun_summary">● Baş geliştirici \n● UX tasarımcı \n● Sorumlu</string>
-  <string name="akhil_summary">● Geliştirici \n● Sorumlu \n● Javascript ustası</string>
+  <string name="akhil_summary">● Geliştirici \n● Sorumlu \n● Komut Dosyası uzmanı</string>
   <string name="brian_summary">● Geliştirici \n● Sorumlu</string>
   <string name="device_maintainers_title">Cihazlar ve Sorumluları</string>
   <string name="device_maintainers_title_summary">Cihazlar ve resmi RR-OS sorumluları listesi</string>
@@ -974,8 +974,8 @@
   <string name="volume_keys_control_ring_stream_summary_on">Ses tuşları zil sesi düzeyini kontrol eder</string>
   <string name="volume_keys_control_ring_stream_summary_off">Ses tuşları medya düzeyini kontrol eder</string>
   <string name="volume_answer_call_title">Çağrıya cevap ver</string>
-  <string name="volume_answer_call_summary">Sesli düğmelere basarak gelen aramaları cevapla</string>
-  <string name="vol_up_disable_overlays_title">Sesi açma tuşu ile temaları devre dışı bırak</string>
+  <string name="volume_answer_call_summary">Ses tuşlarına basarak gelen aramaları cevaplayın</string>
+  <string name="vol_up_disable_overlays_title">Ses açma tuşu ile temaları devre dışı bırak</string>
   <string name="vol_up_disable_overlays_summary">Açılış sırasında, uygulanan tüm tema arayüzünü devre dışı bırakmak için ses açma tuşuna basılı tutun</string>
   <string name="camera_double_tap_power_gesture_title">Kamera için güç tuşuna iki kez basın</string>
   <!-- Description of setting that controls gesture to open camera by double tapping the power button [CHAR LIMIT=NONE] -->
@@ -1401,7 +1401,7 @@
   <string name="unlock_quick_unlock_control_title">Hızlı kilit açma</string>
   <string name="unlock_quick_unlock_control_summary">Doğru PIN/şifre girildiğinde kilit otomatik açılır</string>
   <!-- Disable OS on lockscreen -->
-  <string name="block_on_secure_keyguard_title">Hızlı ayarları devre dışı</string>
+  <string name="block_on_secure_keyguard_title">Hızlı ayarları devre dışı bırak</string>
   <string name="block_on_secure_keyguard_summary">Güvenli kilit ekranında hızlı ayarları devre dışı bırakır</string>
   <!-- Circle app bar -->
   <string name="category_app_circle_bar_title">Uygulama başlatıcısı</string>
@@ -1656,6 +1656,9 @@
   <string name="text_title">Metin</string>
   <string name="icon_title">Simge</string>
   <string name="colors_title">Renkler</string>
+  <string name="ticker_disabled">Şerit yok</string>
+  <string name="ticker_enabled">Bildirim şeridi</string>
+  <string name="ticker_media_enabled">Bildirimler ve müzik şeridi</string>
   <!-- Superuser indicator on status bar -->
   <string name="show_su_indicator_title">Superuser göstergesi</string>
   <string name="show_su_indicator_summary">Bir oturum etkin olduğunda superuser göstergesi görünür</string>
@@ -1727,7 +1730,7 @@
   <string name="pa_pie_always_right_summary">Pie yatay modda iken her zaman sağda gösterilir</string>
   <!-- Heads up switch -->
   <string name="heads_up_switch_title">Bildirim pencereleri</string>
-  <string name="heads_up_switch_summary">Bildirim pencereleri genel olarak her uygulama için etkinleştirilemez.</string>
+  <string name="heads_up_switch_summary">Bildirim pencerelerini her bir uygulama için ayrı olarak değil, genel olarak etkinleştir.</string>
   <string name="heads_up_settings">Bildirim pencereleri</string>
   <!-- Heads up timeout -->
   <string name="heads_up_time_out_title">Zaman aşımı</string>
@@ -1738,6 +1741,8 @@
   <string name="heads_up_time_out_6sec">6 saniye</string>
   <string name="heads_up_time_out_8sec">8 saniye</string>
   <string name="heads_up_time_out_10sec">10 saniye</string>
+  <string name="always_headsup_dialer_title">Telefon için bildirim pencerelerini zorla</string>
+  <string name="always_headsup_dialer_summary">Gelen aramaların tam ekran olmaması için, bildirim pencereleri kapalıysa bile telefon için bildirim pencerelerini zorla</string>
   <!-- Heads up snooze -->
   <string name="heads_up_snooze_title">Erteleme zamanlayıcı</string>
   <string name="heads_up_snooze_summary_one_minute">Bildirim pencerelerini kaydırılarak 1 dakika boyunca uygulamalardan gelecek olan bildirimler ertelenir</string>
@@ -1999,6 +2004,11 @@ Piksel yoğunluğu <xliff:g name="count" example="520">%d</xliff:g></string>
   <string name="custom_header_provider_title">Başlık sağlayıcı</string>
   <string name="custom_header_browse_title">Yüklü başlıklara gözat</string>
   <string name="custom_header_browse_summary">Herhangi bir resmi sabit modda kullanmak için uzun bas</string>
+  <!-- Header Weather -->
+  <string name="header_weather_enabled_title">Hava Durumu</string>
+  <string name="header_weather_enabled_summary">Genişletilmiş başlıkta hava durumu bilgisini etkinleştir</string>
+  <string name="header_weather_image_enabled_title">Hava Durumu Görüntüsü</string>
+  <string name="header_weather_image_enabled_summary">Genişletilmiş başlıkta hava durumu görüntüsünü etkinleştir</string>
   <!-- Task Manager -->
   <string name="enable_task_manager_title">Görev yöneticisi</string>
   <string name="enable_task_manager_summary">Genişletilmiş durum çubuğu alanında ki görev yöneticisi tuşunu etkinleştir/devre dışı bırak</string>
@@ -2174,6 +2184,9 @@ Piksel yoğunluğu <xliff:g name="count" example="520">%d</xliff:g></string>
   <!-- Data disabled icon -->
   <string name="data_disabled_icon_title">Mobil veri devre dışı simgesini göster</string>
   <string name="data_disabled_icon_summary">Mobil veri devre dışı bırakıldığında sinyal çubuğunun yanında çapraz işaretini gösterin</string>
+  <!-- Data/Wifi activity arrows -->
+  <string name="data_wifi_activity_arrows_title">Veri/Wi-Fi etkinliği</string>
+  <string name="data_wifi_activity_arrows_summary">Veri/Wi-Fi etkinliği oklarını göster</string>
   <!-- Screen state service -->
   <string name="screen_state_toggles_summary">\@null</string>
   <string name="screen_state_toggles_title">Eylemleri askıya al</string>

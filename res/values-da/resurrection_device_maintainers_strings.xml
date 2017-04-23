@@ -36,7 +36,6 @@
   <string name="device_moto_x_summary">Ghost \nMaintainer- </string>
   <string name="device_moto_x14">Moto X 2014</string>
   <string name="device_moto_x14_summary">Victara \nMaintainer - Megatron007</string>
-  <string name="device_moto_x_clark">Moto X 2015</string>
   <string name="device_lux_x">Moto X Play</string>
   <string name="device_lux_x_summary">Lux \nMaintainer - GtrCraft</string>
   <string name="device_peregrine">Moto G LTE</string>
@@ -106,7 +105,6 @@
   <string name="device_falcon">Moto G</string>
   <string name="device_titan">Moto G 2014</string>
   <string name="device_titan_summary">Titan \nMaintainer - mrunalkaran</string>
-  <string name="device_osprey">Moto G 2015</string>
   <string name="device_togari">Xperia Z Ultra</string>
   <string name="device_yuga">Xperia Z</string>
   <string name="device_odin">Xperia ZL</string>
@@ -124,7 +122,6 @@
   <string name="device_urushi">Xperia Ray</string>
   <string name="device_urushi_summary">Urushi\nMaintainer - </string>
   <string name="device_sirius">Xperia Z2</string>
-  <string name="device_sirius_summary">sirius\nMaintainer - </string>
   <string name="device_sirius">Xperia Z3</string>
   <string name="device_maguro_summary">Maguro\nMaintainer - Varun Date</string>
   <string name="device_tomato">Yu Yureka</string>

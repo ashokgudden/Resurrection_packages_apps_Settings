@@ -55,8 +55,6 @@
   <string name="device_moto_x_summary">Ghost \nMainteneur - </string>
   <string name="device_moto_x14">Moto X 2014</string>
   <string name="device_moto_x14_summary">Victara \nMainteneur(s) - Megatron007</string>
-  <string name="device_moto_x_clark">Moto X 2015</string>
-  <string name="device_moto_x_clark_summary">Clark \nMainteneur - </string>
   <string name="device_lux_x">Moto X Play</string>
   <string name="device_lux_x_summary">Lux \nMainteneur - GtrCraft</string>
   <string name="device_peregrine">Moto G LTE</string>
@@ -86,7 +84,6 @@
   <string name="device_klte">Galaxy S5</string>
   <string name="device_klte_summary">Toutes les variantes klte \nMainteneur - ScrawnyB</string>
   <string name="device_n9">Nexus 9</string>
-  <string name="device_n9_summary">Flounder \nMainteneur -</string>
   <string name="device_og">LG Optimus G</string>
   <string name="device_og_summary">Int \nMainteneur(s) - </string>
   <string name="device_o4x">Optimus 4X HD</string>
@@ -112,7 +109,6 @@
   <string name="device_i9100">Galaxy S II</string>
   <string name="device_i9100_summary">GT-I9100 \nMainteneur - GreekDragon</string>
   <string name="device_herolte">Galaxy S7</string>
-  <string name="device_herolte_summary">SM-G930F/FD/W8/S/K/L \nMainteneur - Gwolf2u (gwolfu@xda) </string>
   <string name="device_j5ltexx">Galaxy J5</string>
   <string name="device_j5ltexx_summary">SM-J500F/FN/M/G \nMainteneur - SoUnd001 </string>
   <string name="device_i9001">Galaxy S Plus</string>
@@ -145,14 +141,10 @@
   <string name="device_i9105p_summary">GT-I9105P \nMainteneur(s) - </string>
   <string name="device_att">Galaxy S II AT&amp;T</string>
   <string name="device_att_summary">SGH-I777 \nMainteneur - </string>
-  <string name="device_s3tm">Galaxy S III T-Mobile</string>
-  <string name="device_s3tm_summary">D2LTE \nMainteneur(s) - </string>
-  <string name="device_s3att">Galaxy S III AT&amp;T</string>
-  <string name="device_s3att_summary">D2LTE \nMainteneur(s) - </string>
-  <string name="device_d2spr">Galaxy S III Sprint</string>
-  <string name="device_d2spr_summary">D2SPR \nMainteneur(s) - </string>
   <string name="device_i9305">Galaxy S III LTE</string>
   <string name="device_i9305_summary">GT-I9305 \nMainteneur - rodman01</string>
+  <string name="device_s3tm">Galaxy S III T-Mobile</string>
+  <string name="device_s3att">Galaxy S III AT&amp;T</string>
   <string name="device_sm_t217s">Galaxy TAB 3 7.0</string>
   <string name="device_sm_t217s_summary">SM-T217S \nMainteneur - DarkFrenzy </string>
   <string name="device_g2">LG G2</string>
@@ -181,6 +173,8 @@
   <string name="device_hayabusa_summary">Hayabusa \nMainteneur - CodeZero, Adrian DC</string>
   <string name="device_tsubasa">Xperia V</string>
   <string name="device_tsubasa_summary">Tsubasa \nMainteneur - CodeZero, Adrian DC</string>
+  <string name="device_castor">Xperia Z2 Tablet</string>
+  <string name="device_castor_summary">Castor \nMainteneur - opendata</string>
   <string name="device_z3c">Xperia Z3 Compact</string>
   <string name="device_z3c_summary">Z3C \nMainteneur - </string>
   <string name="device_maguro">Galaxy Nexus</string>
@@ -206,12 +200,12 @@
   <string name="device_deb">Nexus 7 LTE 2013</string>
   <string name="device_deb_summary">Deb \nMainteneur - Aclegg2011</string>
   <string name="device_falcon">Moto G</string>
+  <string name="device_falcon_summary">Falcon \nMainteneur - Hasan Okarci</string>
   <string name="device_titan">Moto G 2014</string>
   <string name="device_titan_summary">Titan \nMainteneur - mrunalkaran</string>
-  <string name="device_osprey">Moto G 2015</string>
-  <string name="device_osprey_summary">Osprey \nMainteneur(s) -</string>
+  <string name="device_osprey">Moto G 2015 </string>
+  <string name="device_osprey_summary">Osprey\nMainteneur - Pavan Jadhaw (Arcade)</string>
   <string name="device_athene">Moto G4 Plus</string>
-  <string name="device_athene_summary">athene \nMainteneur - Silesh.Nair</string>
   <string name="device_harpia">Moto G4 Play</string>
   <string name="device_harpia_summary">Harpia \nMainteneur - SubhrajyotiSen</string>
   <string name="device_g3_tmo">LG G3 T-Mobile</string>
@@ -243,7 +237,7 @@
   <string name="device_amami">Xperia Z1 Compact</string>
   <string name="device_amami_summary">Amiami \nMainteneur(s) -</string>
   <string name="device_togari">Xperia Z Ultra</string>
-  <string name="device_togari_summary">Togari \nMainteneur(s) - </string>
+  <string name="device_togari_summary">Togari \nMainteneur - Markakash</string>
   <string name="device_yuga">Xperia Z</string>
   <string name="device_yuga_summary">Yuga \nMainteneur - Chippa_a</string>
   <string name="device_odin">Xperia ZL</string>
@@ -269,7 +263,6 @@
   <string name="device_urushi">Xperia Ray</string>
   <string name="device_urushi_summary">Urushi\nMainteneur(s) - </string>
   <string name="device_sirius">Xperia Z2</string>
-  <string name="device_sirius_summary">sirius\nMainteneur(s) - </string>
   <string name="device_sirius">Xperia Z3</string>
   <string name="device_sirius_summary">Leo\nMainteneur -</string>
   <string name="device_maguro">Galaxy Nexus</string>

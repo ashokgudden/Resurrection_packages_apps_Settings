@@ -58,7 +58,6 @@
   <string name="updater_title">تحديثات</string>
   <string name="altan_summary">● مؤسس \n● المشروع زعيم \n● الرأس المطور \n● قرينة مصمم \n● معيل</string>
   <string name="varun_summary">● رئيس المطور \n● قرينة مصمم \n● معيل</string>
-  <string name="akhil_summary">● المطور \n● معيل \n● سكريبت ماجستير</string>
   <string name="device_maintainers_title">الأجهزة و المشرفين</string>
   <string name="device_maintainers_title_summary">قائمة بالأجهزة وعلى مشرفي RR-نظام التشغيل الرسمي</string>
   <string name="maintainers_note_title">ملاحظة</string>
@@ -839,6 +838,7 @@
   <!-- Settings drawer switch -->
   <!-- Custom LCD density -->
   <!-- Header images -->
+  <!-- Header Weather -->
   <!-- Task Manager -->
   <!-- Wakelock blocker -->
   <!-- Alarm blocker -->
@@ -862,6 +862,7 @@
   <!-- Statusbar expanded empty shade view settings -->
   <!-- Roaming indicator icon -->
   <!-- Data disabled icon -->
+  <!-- Data/Wifi activity arrows -->
   <!-- Screen state service -->
   <!-- In-call DND -->
   <!-- Advanced night mode brightness -->

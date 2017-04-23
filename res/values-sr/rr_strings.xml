@@ -63,7 +63,6 @@
   <string name="updater_title">Ажурирање</string>
   <string name="altan_summary">● Оснивач \n● Вођа пројекта \n● Главни девелопер \n● UX дизајнер \n● Одржавач</string>
   <string name="varun_summary">● Главни девелопер \n● UX дизајнер \n● Одржавач</string>
-  <string name="akhil_summary">● Девелопер \n● Održavač \n● ЈаваСкрипт мастер</string>
   <string name="brian_summary">● Девелопер \n● Одржавач</string>
   <string name="device_maintainers_title">Уређаји и одржавачи</string>
   <string name="device_maintainers_title_summary">Листа уређаја и њихових официјалних RR-OS одржавача</string>
@@ -344,6 +343,7 @@
   <!-- Settings drawer switch -->
   <!-- Custom LCD density -->
   <!-- Header images -->
+  <!-- Header Weather -->
   <!-- Task Manager -->
   <!-- Wakelock blocker -->
   <!-- Alarm blocker -->
@@ -366,6 +366,7 @@
   <!-- Statusbar expanded empty shade view settings -->
   <!-- Roaming indicator icon -->
   <!-- Data disabled icon -->
+  <!-- Data/Wifi activity arrows -->
   <!-- Screen state service -->
   <!-- In-call DND -->
   <!-- Advanced night mode brightness -->

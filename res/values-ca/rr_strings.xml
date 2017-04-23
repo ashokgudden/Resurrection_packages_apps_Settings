@@ -164,6 +164,7 @@
   <!-- Settings drawer switch -->
   <!-- Custom LCD density -->
   <!-- Header images -->
+  <!-- Header Weather -->
   <!-- Task Manager -->
   <!-- Wakelock blocker -->
   <!-- Alarm blocker -->
@@ -186,6 +187,7 @@
   <!-- Statusbar expanded empty shade view settings -->
   <!-- Roaming indicator icon -->
   <!-- Data disabled icon -->
+  <!-- Data/Wifi activity arrows -->
   <!-- Screen state service -->
   <!-- In-call DND -->
   <!-- Advanced night mode brightness -->

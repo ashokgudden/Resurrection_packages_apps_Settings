@@ -49,7 +49,6 @@
   <string name="device_moto_x_summary">Ghost \nMəsul şəxs - </string>
   <string name="device_moto_x14">Moto X 2014</string>
   <string name="device_moto_x14_summary">Victara \nMəsul şəxs - Megatron007</string>
-  <string name="device_moto_x_clark">Moto X 2015</string>
   <string name="device_lux_x">Moto X Play</string>
   <string name="device_lux_x_summary">Lux \nMəsul şəxs -GtrCraft</string>
   <string name="device_peregrine">Moto G LTE</string>
@@ -130,14 +129,10 @@
   <string name="device_i9105p_summary">GT-I9105P \nMəsul şəxs - </string>
   <string name="device_att">Galaxy S II AT&amp;T</string>
   <string name="device_att_summary">SGH-I777 \nMəsul şəxs - </string>
-  <string name="device_s3tm">Galaxy S III T-Mobile</string>
-  <string name="device_s3tm_summary">D2LTE \nMəsul şəxs - </string>
-  <string name="device_s3att">Galaxy S III AT&amp;T</string>
-  <string name="device_s3att_summary">D2LTE \nMəsul şəxs - </string>
-  <string name="device_d2spr">Galaxy S III Sprint</string>
-  <string name="device_d2spr_summary">D2SPR \nMəsul şəxs - </string>
   <string name="device_i9305">Galaxy S III LTE</string>
   <string name="device_i9305_summary">GT-I9305 \nMəsul şəxs - rodman01</string>
+  <string name="device_s3tm">Galaxy S III T-Mobile</string>
+  <string name="device_s3att">Galaxy S III AT&amp;T</string>
   <string name="device_sm_t217s">Galaxy Tab 3 7.0</string>
   <string name="device_sm_t217s_summary">SM-T217S \nMəsul şəxs - DarkFrenzy </string>
   <string name="device_g2">LG G2</string>
@@ -193,9 +188,7 @@
   <string name="device_falcon">Moto G</string>
   <string name="device_titan">Moto G 2014</string>
   <string name="device_titan_summary">Titan \nMəsul şəxs - mrunalkaran</string>
-  <string name="device_osprey">Moto G 2015</string>
   <string name="device_athene">Moto G4 Plus</string>
-  <string name="device_athene_summary">athene \nMəsul şəxs - Silesh.Nair</string>
   <string name="device_harpia">Moto G4 Play</string>
   <string name="device_harpia_summary">Harpia \nMəsul şəxs - SubhrajyotiSen</string>
   <string name="device_g3_tmo">LG G3 T-Mobile</string>
@@ -227,7 +220,6 @@
   <string name="device_amami">Xperia Z1 Compact</string>
   <string name="device_amami_summary">Amiami \nMəsul şəxs -</string>
   <string name="device_togari">Xperia Z Ultra</string>
-  <string name="device_togari_summary">Togari \nMəsul şəxs - </string>
   <string name="device_yuga">Xperia Z</string>
   <string name="device_yuga_summary">Yuga \nMəsul şəxs - Chippa_a</string>
   <string name="device_odin">Xperia ZL</string>
@@ -253,7 +245,6 @@
   <string name="device_urushi">Xperia Ray</string>
   <string name="device_urushi_summary">Urushi\nMəsul şəxs - </string>
   <string name="device_sirius">Xperia Z2</string>
-  <string name="device_sirius_summary">sirius\nMəsul şəxs - </string>
   <string name="device_sirius">Xperia Z3</string>
   <string name="device_sirius_summary">Leo\nMəsul -</string>
   <string name="device_maguro">Galaxy Nexus</string>
