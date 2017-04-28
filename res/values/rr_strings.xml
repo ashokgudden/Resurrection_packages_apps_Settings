@@ -2533,4 +2533,8 @@
     <string name="usersettings_change_android_id_text">
         Enter your desired Android ID here or leave the field blank to generate a new one.
     </string>
+
+    <!-- Disable Secure Flag -->
+    <string name="disable_secure_flag_title">Disable Secure Flag</string>
+    <string name="disable_secure_flag_summary">Allows you to take screenshot in case some apps won\'t allow you to.</string>
 </resources>
