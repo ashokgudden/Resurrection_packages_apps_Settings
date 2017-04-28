@@ -66,11 +66,12 @@
   <string name="updater_title">Updates</string>
   <string name="altan_summary">● Oprichter \n● Projectleider \n● Hoofdontwikkelaar \n● UX ontwerper \n● Onderhouder</string>
   <string name="varun_summary">● Hoofdontwikkelaar \n● UX ontwerper \n● Onderhouder</string>
+  <string name="akhil_summary">● Ontwikkelaar \n● Onderhouder \n● Javascript meester</string>
   <string name="brian_summary">● Ontwikkelaar \n● Onderhouder</string>
   <string name="device_maintainers_title">Apparaten en Onderhouders</string>
   <string name="device_maintainers_title_summary">Lijst van apparaten en hun officiële RR-OS onderhouders</string>
   <string name="maintainers_note_title">Notitie</string>
-  <string name="maintainers_note_title_summary">Stuur \'Varun Date\' een PB via Hangouts met de link naar jouw ROM thread als je jouw naam wilt laten toevoegen aan de Apparaat Onderhouders-lijst.</string>
+  <string name="maintainers_note_title_summary">Stuur \'Varun Date\' een prive bericht via Hangouts met de link naar jouw ROM thread als je jouw naam wilt laten toevoegen aan de lijst.</string>
   <!-- The Drill -->
   <string name="rr_drill_title">Zoals het hoort</string>
   <string name="drill_summary">Logcat of wegwezen</string>
@@ -139,12 +140,12 @@
   <string name="rr_notif_settings_title">Meldingen</string>
   <!--RR Configurations Summaries-->
   <string name="clock_custom_summary">Aanpassen van de statusbalk klok en datum weergave</string>
-  <string name="status_bar_logo_summary">Toon of verberg het Resurrection pictogram in de statusbalk</string>
+  <string name="status_bar_logo_summary">Toon of verberg het Resurrection beeldmerk in de statusbalk</string>
   <string name="sb_custom_logos_summary">Toon of verberg een gekozen pictogram in de statusbalk</string>
   <string name="rr_battery_summary">Uiterlijk van de accu in de statusbalk aanpassen</string>
   <string name="rr_sb_icons_summary">Toon of verberg systeempictogrammen in de statusbalk</string>
   <string name="ticker_screen_summary">Aanpassen ticker-stijl in statusbalk</string>
-  <string name="status_bar_temperature_summary">In- of uitschakelen van de temperatuur in de statusbar </string>
+  <string name="status_bar_temperature_summary">In- of uitschakelen van de temperatuur in de statusbalk </string>
   <string name="network_traffic_summary">In- of uitschakelen netwerkverkeer weergave in statusbalk</string>
   <string name="carrier_summary">In- of uitschakelen van providernaam in statusbalk </string>
   <string name="rr_sb_gestures_summary">Gebaren op statusbalk aan- of uitzetten</string>
@@ -198,10 +199,37 @@
   <string name="task_close_title">Taak sluiten animatie</string>
   <string name="task_move_to_front_title">Verplaatsen naar voren animatie</string>
   <string name="task_move_to_back_title">Verplaats naar achteren animatie</string>
+  <string name="wallpaper_open_title">Bureaubladachtergrond open animatie</string>
+  <string name="wallpaper_close_title">Bureaubladachtergrond sluiten animatie</string>
   <string name="animation_duration_title">Animatieduur</string>
   <string name="title_animation_no_override">Voorkom App overschrijvingen</string>
   <string name="summary_animation_no_override">Voorkom dat apps de ingestelde overgangen negeren</string>
   <string name="animation_duration_default">Standaard</string>
+  <string name="lv_dur_default">Standaard</string>
+  <string name="lv_dur_100">100ms</string>
+  <string name="lv_dur_200">200ms</string>
+  <string name="lv_dur_300">300ms</string>
+  <string name="lv_dur_400">400ms</string>
+  <string name="lv_dur_500">500ms</string>
+  <string name="lv_dur_1000">1000ms</string>
+  <string name="lv_dur_1500">1500ms</string>
+  <string name="lv_dur_2000">2000ms</string>
+  <string name="lv_dur_2500">2500ms</string>
+  <string name="lv_dur_3000">3000ms</string>
+  <string name="lv_dur_3500">3500ms</string>
+  <string name="lv_dur_4000">4000ms</string>
+  <string name="lv_dur_4500">4500ms</string>
+  <string name="lv_dur_5000">5000ms</string>
+  <string name="lv_dur_5500">5500ms</string>
+  <string name="lv_dur_6000">6000ms</string>
+  <string name="lv_dur_6500">6500ms</string>
+  <string name="lv_dur_7000">7000ms</string>
+  <string name="lv_dur_7500">7500ms</string>
+  <string name="lv_dur_8000">8000ms</string>
+  <string name="lv_dur_8500">8500ms</string>
+  <string name="lv_dur_9000">9000ms</string>
+  <string name="lv_dur_9500">9500ms</string>
+  <string name="lv_dur_10000">10000ms</string>
   <!-- Toast Animation -->
   <string name="toast_animation_title">Melding animatie</string>
   <string name="toast_none_animation">Geen</string>
@@ -316,7 +344,7 @@
   <string name="network_traffic_autohide_threshold">Inactiviteitsdrempel</string>
   <!-- Statusbar RR logo -->
   <string name="status_bar_rr_logo_title">Inschakelen van beeldmerk</string>
-  <string name="status_bar_rr_logo_summary">Schakel RR-OS pictogram op de statusbalk in</string>
+  <string name="status_bar_rr_logo_summary">Schakel RR-OS beeldmerk op de statusbalk in</string>
   <!-- Color picker -->
   <string name="color_picker_fragment_title">Kleurenkiezer</string>
   <string name="apply_color_title">Kleur toepassen</string>
@@ -1240,10 +1268,13 @@
   <string name="button13">Vind ik leuk knop</string>
   <string name="button14">Vegen Kubus</string>
   <string name="button15">Bel </string>
+  <string name="button16">Pijl lijnen links </string>
   <string name="button17">Lagen Uit </string>
+  <string name="button18">Pijl lijnen achter</string>
   <string name="button19">Layers</string>
   <string name="button20">Archive </string>
   <string name="button21">Database Plus</string>
+  <string name="button22">Tegengestelde pijlen</string>
   <string name="button23">Google</string>
   <string name="button24">Database Minus </string>
   <string name="button25">Sequential Cube</string>
@@ -1254,8 +1285,11 @@
   <string name="button30">Android N</string>
   <string name="animation0">Rotatie </string>
   <string name="animation1">Recente apps sluiten</string>
+  <string name="animation2">Doorzichtig sluiten </string>
+  <string name="animation3">Doorzichtige sluiten strook</string>
   <string name="animation4">Melding sluiten</string>
   <string name="animation5">Glijd Uit Beneden </string>
+  <string name="animation6">Xylon sluiten </string>
   <string name="animation8">Glijd Uit Rechts </string>
   <string name="animation10">Traag vervagen </string>
   <string name="animation11">Glijd Uit Links</string>
@@ -1343,10 +1377,10 @@
   <string name="network_traffic_color_reset">Kleur terugzetten</string>
   <string name="network_traffic_color_reset_message">Netwerkverkeer kleur naar standaard terugzetten?</string>
   <string name="status_bar_weather_color_title">Temperatuur kleur</string>
-  <string name="status_bar_rr_logo_color">Pictogram kleur</string>
+  <string name="status_bar_rr_logo_color">Kleur van beeldmerk</string>
   <string name="status_bar_logo">Resurrection beeldmerk</string>
   <string name="status_bar_logo_title">Beeldmerk</string>
-  <string name="status_bar_rr_logo_position">Logo locatie</string>
+  <string name="status_bar_rr_logo_position">Beeldmerk locatie</string>
   <string name="status_bar_rr_logo_position_summary">Kies waar het beeldmerk zichtbaar is</string>
   <string name="status_bar_logo_position_right">Rechts</string>
   <string name="status_bar_logo_position_left">Links</string>
@@ -1358,7 +1392,7 @@
   <string name="status_bar_temperature_image_show_scale">Temperatuur tonen met eenheid en plaatje</string>
   <string name="status_bar_temperature_image_hide_scale">Temperatuur tonen met plaatje, maar zonder eenheid</string>
   <string name="status_bar_temperature_show_scale_hide_image">Temperatuur met eenheid</string>
-  <string name="status_bar_temperature_hide_scale_hide_image">Temperatuur zonder eendheid</string>
+  <string name="status_bar_temperature_hide_scale_hide_image">Temperatuur zonder eenheid</string>
   <string name="status_bar_show_image">Afbeeldingen weergeven</string>
   <string name="status_bar_weather_image_color_title">Afbeeldingskleur</string>
   <string name="sb_weather_ic_title">Pictogrampakket</string>
@@ -1451,11 +1485,14 @@
   <string name="fling_short_swipe_left">Korte veeg naar links</string>
   <string name="fling_long_swipe_right">Lange veeg naar rechts</string>
   <string name="fling_long_swipe_left">Lange veeg naar links</string>
+  <string name="fling_right_up_swipe">Rechts omhoog vegen</string>
+  <string name="fling_left_up_swipe">Links omhoog vegen</string>
   <string name="fling_single_tap">Enkele tik rechts</string>
   <string name="fling_double_tap">Dubbel tikken rechts</string>
   <string name="fling_long_press">Lang duwen rechts</string>
   <string name="fling_single_left_tap">Enkele tik links</string>
   <string name="fling_double_left_tap">Dubbel tikken links</string>
+  <string name="fling_long_left_press">Lange druk links</string>
   <string name="long_swipe_portrait_title">Staand</string>
   <string name="long_swipe_landscape_title">Liggend</string>
   <string name="portrait_right_swipe_title">Staand rechts vegen</string>
@@ -1468,6 +1505,7 @@
   <string name="down_swipe_title">Omlaag vegen</string>
   <string name="long_swipe_reset">Terug naar standaard</string>
   <string name="fling_advanced">Geavanceerd</string>
+  <string name="fling_long_swipe_title">Lang vegen drempel</string>
   <string name="fling_long_swipe_summary">Afstemmen van lang vegen drempels gebaseerd op percentage van Fling interface breedte of hoogte</string>
   <string name="fling_trails_enable_title">Gebaar sporen inschakelen</string>
   <string name="fling_trails_enable_summary">Toon een spoor bij gebaren</string>
@@ -1476,7 +1514,7 @@
   <string name="fling_appearance">Uiterlijk</string>
   <string name="fling_show_logo_title">Toon Fling pictogram</string>
   <string name="fling_animate_logo_title">Pictogram animeren</string>
-  <string name="fling_animate_logo_summary">Logo animatie bij drukken</string>
+  <string name="fling_animate_logo_summary">Pictogram animatie bij drukken</string>
   <string name="fling_logo_color">Pictogram kleur</string>
   <string name="fling_logo_custom_logo_pick_title">Aangepast pictogram</string>
   <string name="fling_logo_custom_logo_image_pick_title">Aangepast pictogram</string>
@@ -1503,6 +1541,7 @@
   <string name="eos_fling_lavalamp_summary">Pulse animeert als een vloeiende lavalamp kleurenmix</string>
   <string name="pulse_advanced_category">Geavanceerd</string>
   <string name="pulse_legacy_mode_advanced_category">Vervagende blokken modus instellingen</string>
+  <string name="pulse_custom_fudge_factor">Gekkigheids niveau</string>
   <string name="lavamp_solid_speed_title">Lavalamp snelheid</string>
   <string name="pulse_solid_units_count">Aantal ononderbroken lijnen</string>
   <string name="pulse_solid_units_opacity">Ononderbroken lijn transparantie</string>
@@ -1526,7 +1565,7 @@
   <string name="smartbar_category">Smartbar</string>
   <string name="smartbar_settings_title">Smartbar instellingen</string>
   <string name="smartbar_editor_title">(De-)activeren knoppenbewerker</string>
-  <string name="smartbar_editor_summary">Medium duwen en slepen om positie te wijzigen. Lang duwen om bewerkmenu te tonen. Positie knop kan wijzigen terwijl menu weergegeven wordt.</string>
+  <string name="smartbar_editor_summary">Middellang duwen en slepen om positie te wijzigen. Lang duwen om bewerkmenu te tonen. Positie knop kan gewijzigd worden wanneer menu weergegeven wordt.</string>
   <string name="smartbar_context_menu_position_title">Context knoppen weergavepositie</string>
   <string name="smartbar_context_menu_position_summary">Stel positie van contextuele knoppen in zoals menu en invoer selectie</string>
   <string name="smartbar_right">Rechts</string>
@@ -1563,11 +1602,11 @@
   <string name="custom_logo_style">Kies een pictogram</string>
   <string name="custom_logos">Maak een keuze</string>
   <string name="show_custom_logo_title">Kies eigen pictogram</string>
-  <string name="show_custom_logo_summary">Toon een pictogram in de statusbar uit een brede selectie van pictogrammen in het systeem</string>
+  <string name="show_custom_logo_summary">Toon een pictogram in de statusbalk met keus uit een brede selectie van pictogrammen in het systeem</string>
   <string name="custom_logo_color">Kleur</string>
   <string name="custom_logo_position">Positie</string>
   <string name="logo0">Resurrection pure</string>
-  <string name="logo1">Resurrection Lollipop</string>
+  <string name="logo1">Resurrection lollipop</string>
   <string name="logo2">Tuner </string>
   <string name="logo3">Bugdroid </string>
   <string name="logo4">Drupal</string>
@@ -1576,17 +1615,17 @@
   <string name="logo7">Bliksem</string>
   <string name="logo8">Windows</string>
   <string name="logo9">Xbox</string>
-  <string name="logo10">Emoji</string>
+  <string name="logo10">Emoticon</string>
   <string name="logo11">Blije lach</string>
   <string name="logo12">Vingerafdruk</string>
-  <string name="logo13">Pugmark</string>
+  <string name="logo13">Pootafdruk</string>
   <string name="logo14">Uil</string>
   <string name="logo15">Weer uit </string>
   <string name="logo16">Blender</string>
-  <string name="logo17">Cake</string>
+  <string name="logo17">Taart</string>
   <string name="logo18">Elektrische gitaar</string>
   <string name="logo19">Smiley</string>
-  <string name="logo20">Ren</string>
+  <string name="logo20">Rennen</string>
   <string name="logo21">Giftig</string>
   <string name="logo22">Pro gebruiker</string>
   <string name="logo23">Poke ball</string>
@@ -1597,9 +1636,10 @@
   <string name="logo28">Bug droid</string>
   <string name="logo29">Motor</string>
   <string name="logo30">Zuurstok</string>
-  <string name="logo31">Poep</string>
+  <string name="logo31">Drolletje</string>
+  <string name="logo32">Bubbels</string>
   <string name="logo33">Google</string>
-  <string name="logo34">Vissen</string>
+  <string name="logo34">Vis</string>
   <string name="logo35">Geslacht: mannelijk</string>
   <string name="logo36">Geslacht: vrouwelijk</string>
   <string name="logo37">Pitch black</string>
@@ -1607,7 +1647,7 @@
   <string name="logo39">Resurrection helft</string>
   <string name="logo40">Resurrection geen-ring</string>
   <string name="logo41">Spinnetje 1</string>
-  <string name="logo42">Spinnetje 2</string>
+  <string name="logo42">Spiderman</string>
   <string name="logo43">Orioles</string>
   <!-- Carrier label -->
   <string name="carrier_title">Providernaam</string>
@@ -1717,6 +1757,8 @@
   <string name="heads_up_time_out_6sec">6 seconden</string>
   <string name="heads_up_time_out_8sec">8 seconden</string>
   <string name="heads_up_time_out_10sec">10 seconden</string>
+  <string name="always_headsup_dialer_title">Forceer melding voor de telefoon app</string>
+  <string name="always_headsup_dialer_summary">Toon evengoed een melding boven in het scherm wanneer alle meldingen zijn uitgeschakeld, om te voorkomen dat de telefoon app op volledig scherm naar voren komt bij een inkomende oproep</string>
   <!-- Heads up snooze -->
   <string name="heads_up_snooze_title">Sluimer timer</string>
   <string name="heads_up_snooze_summary_one_minute">Omhoog vegen van zwevende meldingen zal deze meldingen voor 1 minuut pauzeren</string>
@@ -1757,6 +1799,7 @@
   <string name="expanded_hide_status">Verberg statusbalk</string>
   <string name="expanded_hide_navigation">Navigatiebalk verbergen</string>
   <string name="expanded_hide_both">Beide verbergen</string>
+  <string name="expanded_desktop_state">Uitgeklapte stand</string>
   <string name="expanded_enabled_for_all">Voor allen ingeschakeld</string>
   <string name="expanded_user_configurable">Gebruiker configureerbaar</string>
   <string name="expanded_desktop_style">Uitgebreid bureaublad stijl</string>
@@ -1787,6 +1830,7 @@
   <string name="custom_summary_explain">Voer een korte tekst in. Laat leeg om terug te keren naar de originele tekst.</string>
   <!-- Custom summaries -->
   <string name="custom_summary_randomize_title">Willekeurige samenvatting</string>
+  <string name="custom_summary_randomize_explain">Vooraf geschreven titels zullen willekeurig geselecteerd worden en zullen anders zijn elke keer als je de Instellingen opent.\nDit overschrijft een eigen tekst.</string>
   <string name="sum1">Heb je alle leuke instellingen al bekeken?</string>
   <string name="sum2">Belangrijk bericht: Donald Trump verandert zijn kapsel!</string>
   <string name="sum3">Je hebt 100K keer getikt.</string>
@@ -1804,6 +1848,8 @@
   <string name="sum15">Alleen voor pro-gebruikers.</string>
   <string name="sum16">Verveel je je? OK klik me nu!</string>
   <string name="sum17">Goed gedaan! Je hebt een bonus feature verdiend</string>
+  <string name="sum18">Stop met het spammen op G+</string>
+  <string name="sum19">Volg de G+ regels!</string>
   <string name="sum20">Noobs kunnen niet naar binnen</string>
   <string name="sum21">#gotresurrected</string>
   <string name="sum22">Breaking News: Apple verwijdert flitser uit de volgende iPhones.</string>
@@ -1855,11 +1901,13 @@
   <string name="lock_screen_weather_wind_color">Weer Wind</string>
   <string name="yes">JA</string>
   <string name="battery_tile_style_title">Accu tegel stijl</string>
+  <string name="status_bar_battery_style_tile_summary">Inschakelen om hetzelfde pictogram type te gebruiken als de accu in de statusbalk</string>
   <!-- Scrolling Animation Controls -->
   <string name="animation_fling_velocity_title">Fling snelheid</string>
   <string name="animation_duration_summary">Stel tijdsduur in</string>
   <string name="animation_no_scroll_summary_on">Ingeschakeld</string>
   <string name="animation_no_scroll_summary_off">Uitgeschakeld</string>
+  <string name="scroll_disclaimer_summary">Opmerking: de meeste apps moeten opnieuw gestart worden voordat aangepaste waarden van kracht worden</string>
   <string name="animation_settings_reset_message">Alle animatie instellingen herstellen naar standaard?</string>
   <string name="qs_tile_title_visibility_title">SI tegel titels</string>
   <string name="qs_tile_title_visibility_summary_on">SI tegel titels worden getoond</string>
@@ -1956,6 +2004,8 @@
   <string name="custom_header_browse_summary">Lang drukken op afbeelding om te gebruiken in statische modus</string>
   <!-- Header Weather -->
   <string name="header_weather_enabled_title">Weer</string>
+  <string name="header_weather_enabled_summary">Toon weer in uitgeklapte topbalk</string>
+  <string name="header_weather_image_enabled_title">Weerbeeld</string>
   <!-- Task Manager -->
   <string name="enable_task_manager_title">Taakbeheer</string>
   <string name="enable_task_manager_summary">Taakbeheer knop in uitgebreide statusbar in- of uitschakelen</string>
@@ -2012,6 +2062,8 @@
   <!-- Dashboard options -->
   <string name="dashboard_category">Dashboard opties</string>
   <string name="dashboard_suggestions_title">Suggesties</string>
+  <string name="summary_dashboard_suggestions_enabled">Suggesties zijn ingeschakeld</string>
+  <string name="summary_dashboard_suggestions_disabled">Suggesties zijn uitgeschakeld</string>
   <string name="remove_tile_summaries_title">Samenvattingen</string>
   <string name="dashboard_conditions_title">Condities</string>
   <string name="dashboard_columns_portrait_title">Kolommen (staand)</string>
@@ -2023,6 +2075,9 @@
   <string name="dashboard_columns_default">Een (twee liggend)</string>
   <string name="dashboard_columns_two">Twee (drie liggend)</string>
   <string name="dashboard_columns_three">Drie (vier liggend)</string>
+  <string name="dashboard_summary_double_lines_title">Titel regels</string>
+  <string name="dashboard_summary_double_lines_summary_on">Tegel titels op meerdere regels weergeven</string>
+  <string name="dashboard_summary_double_lines_summary_off">Tegel titels op 1 regel weergeven</string>
   <!-- Themes settings -->
   <string name="themes_title">Thema\'s</string>
   <string name="themes_summary">Schermlaag beheer service</string>
@@ -2036,11 +2091,14 @@
   <string name="show_running_tasks_title">Toon alleen de actieve apps</string>
   <string name="recents_max_apps_title">Max toegelaten apps</string>
   <string name="recent_panel_scale_title">Formaat</string>
+  <string name="recent_panel_expanded_mode_title">Uitgeklapte modus</string>
   <string name="recent_panel_expanded_mode_auto">Automatisch (standaard)</string>
   <string name="recent_panel_expanded_mode_always">Altijd</string>
   <string name="recent_panel_expanded_mode_never">Nooit</string>
   <string name="recent_panel_show_topmost_title">Bovenste taak weergeven</string>
   <string name="recent_panel_bg_color_title">Achtergrondkleur paneel</string>
+  <string name="recent_card_bg_color_title">Kaart achtergrondkleur</string>
+  <string name="recent_card_text_color_title">Kaart tekstkleur</string>
   <string name="slim_icon_pack_title">Pictogrammenpakket</string>
   <string name="slim_icon_pack_summary">Aangepast pictogrammenpakket gebruiken</string>
   <string name="no_iconpacks_summary">Geen pictogrampakketten geïnstalleerd</string>
@@ -2065,11 +2123,13 @@
   <string name="recent_app_sidebar_content_title">App zijbalk inhoud</string>
   <string name="recent_app_sidebar_content_summary">Configureren van inhoud van de zijbalk app</string>
   <string name="recent_app_sidebar_style_title">Zijbalk stijl</string>
+  <string name="recent_app_sidebar_style_summary">Recente apps zijbalk stijl</string>
   <string name="recent_app_sidebar_hide_labels_title">Verberg pictogram titels</string>
   <string name="recent_app_sidebar_label_color_title">Titel kleur</string>
   <string name="recent_app_sidebar_bg_color_title">Achtergrond kleur</string>
   <string name="recent_app_sidebar_scale_title">Formaat</string>
   <string name="recent_app_sidebar_open_simultaneously_title">Open gelijktijdig met recenten</string>
+  <string name="recent_app_sidebar_open_simultaneously_summary">Verminder vertraging bij het openen door dit uit te schakelen</string>
   <!-- Battery stats reset -->
   <string name="battery_stats_reset">Statistieken weggooien</string>
   <string name="battery_stats_message">Accugeschiedenis zal worden gereset</string>
@@ -2087,10 +2147,12 @@
   <string name="weather_icon_pack_title">Pictogram verzameling</string>
   <!-- Force authorize substratum packages -->
   <string name="force_authorize_substratum_packages_title">Installatie van thema\'s uit onbekende bronnen toestaan</string>
+  <string name="force_authorize_substratum_packages_summary">Geforceerd toestaan van elke thema applicatie</string>
   <string name="magisk_title">Magisk manager</string>
   <string name="magisk_summary">Root beheer</string>
   <string name="notif_text_color">Tekstkleur</string>
   <string name="status_bar_expanded_empty_shade_view_settings_title">Geen meldingen weergave</string>
+  <string name="status_bar_expanded_empty_shade_view_settings_summary">Aanpassen van het \'geen meldingen\' overzicht</string>
   <!-- Statusbar expanded empty shade view settings -->
   <string name="empty_shade_view_show_carrier_name_title">Toon provider naam</string>
   <string name="empty_shade_view_show_carrier_name_summary">Inschakelen om de providernaam te tonen</string>
@@ -2103,6 +2165,8 @@
   <string name="data_disabled_icon_title">Toon mobiele gegevens uitgeschakeld pictogram</string>
   <string name="data_disabled_icon_summary">Toon het kruisje naast de signaalsterkte wanneer mobiele gegevens niet beschikbaar zijn</string>
   <!-- Data/Wifi activity arrows -->
+  <string name="data_wifi_activity_arrows_title">Gegevens/wifi activiteit</string>
+  <string name="data_wifi_activity_arrows_summary">Toon gegevens/wifi activiteit pijlen</string>
   <!-- Screen state service -->
   <string name="screen_state_toggles_summary">\@null</string>
   <string name="screen_state_toggles_title">Onderbreek activiteiten</string>
@@ -2128,6 +2192,7 @@
   <!-- Advanced night mode brightness -->
   <string name="night_brightness_category">Helderheid</string>
   <string name="night_brightness_value_title">Nacht licht helderheid</string>
+  <string name="night_brightness_text">Als nachtlampje is ingeschakeld, automatisch de gewenste helderheid instellen.</string>
   <string name="night_bright_disabled">Inactief</string>
   <string name="night_bright_min">Minimale helderheid</string>
   <string name="night_bright_low">Lage helderheid</string>
