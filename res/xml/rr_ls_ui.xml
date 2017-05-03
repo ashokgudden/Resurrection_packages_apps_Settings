@@ -79,6 +79,15 @@
                 android:defaultValue="false" />
 
     	<com.android.settings.rr.SeekBarPreference
+                android:key="lockscreen_trans_level"
+                android:title="@string/lockscreen_trans_level_title"
+                settings:maximum="100"
+                settings:minimum="0"
+                settings:units="%"
+                android:persistent="false"
+                android:defaultValue="25" />
+
+    	<com.android.settings.rr.SeekBarPreference
                 android:key="lockclock_font_size"
                 android:title="@string/lockclock_font_size_title"
                 settings:maximum="108"

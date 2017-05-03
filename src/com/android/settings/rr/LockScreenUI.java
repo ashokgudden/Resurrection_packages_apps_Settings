@@ -33,9 +33,11 @@ import com.android.settings.Utils;
 public class LockScreenUI extends SettingsPreferenceFragment implements
         Preference.OnPreferenceChangeListener {
     private static final String TAG = "LockScreenUI";
+    private static final String LOCKSCREEN_TRANS_LEVEL = "lockscreen_trans_level";
     private static final String CLOCK_FONT_SIZE  = "lockclock_font_size";
     private static final String DATE_FONT_SIZE  = "lockdate_font_size";
 
+    private SeekBarPreference mLockScreenTransLevel;
     private SeekBarPreference mClockFontSize;
     private SeekBarPreference mDateFontSize;
 
@@ -52,6 +54,11 @@ public class LockScreenUI extends SettingsPreferenceFragment implements
 
         ContentResolver resolver = getActivity().getContentResolver();
 
+        mLockScreenTransLevel = (SeekBarPreference) findPreference(LOCKSCREEN_TRANS_LEVEL);
+        mLockScreenTransLevel.setValue(Settings.System.getInt(getContentResolver(),
+                Settings.System.LOCKSCREEN_TRANS_LEVEL, 25));
+        mLockScreenTransLevel.setOnPreferenceChangeListener(this);
+
         mClockFontSize = (SeekBarPreference) findPreference(CLOCK_FONT_SIZE);
         mClockFontSize.setValue(Settings.System.getInt(getContentResolver(),
                 Settings.System.LOCKCLOCK_FONT_SIZE, 78));
@@ -65,7 +72,12 @@ public class LockScreenUI extends SettingsPreferenceFragment implements
 
     public boolean onPreferenceChange(Preference preference, Object objValue) 		{
 	ContentResolver resolver = getActivity().getContentResolver();
-         if (preference == mClockFontSize) {
+         if (preference == mLockScreenTransLevel) {
+            int top = (Integer) objValue;
+            Settings.System.putInt(getContentResolver(),
+                    Settings.System.LOCKSCREEN_TRANS_LEVEL, top*1);
+            return true;
+        } else if (preference == mClockFontSize) {
             int top = (Integer) objValue;
             Settings.System.putInt(getContentResolver(),
                     Settings.System.LOCKCLOCK_FONT_SIZE, top*1);

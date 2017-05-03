@@ -2533,4 +2533,7 @@
     <string name="usersettings_change_android_id_text">
         Enter your desired Android ID here or leave the field blank to generate a new one.
     </string>
+
+    <!-- Lockscreen: Direct unlock see through transparency level -->
+    <string name="lockscreen_trans_level_title">See through transparency</string>
 </resources>
