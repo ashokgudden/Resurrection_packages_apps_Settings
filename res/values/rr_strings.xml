@@ -1908,7 +1908,7 @@
  
     <!-- Heads up switch -->
     <string name="heads_up_switch_title">Heads up</string>
-    <string name="heads_up_switch_summary">Toogle Heads up globally, not per app.</string>
+    <string name="heads_up_switch_summary">Toggle Heads up globally, not per app.</string>
     <string name="heads_up_settings">Heads up</string>
     <!-- Heads up timeout -->
     <string name="heads_up_time_out_title">Time out</string>
