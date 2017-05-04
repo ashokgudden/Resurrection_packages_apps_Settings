@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+     Copyright (C) 2016 The CyanogenMod Project
+                   2017 The LineageOS Project
+     Licensed under the Apache License, Version 2.0 (the "License");
+     you may not use this file except in compliance with the License.
+     You may obtain a copy of the License at
+          http://www.apache.org/licenses/LICENSE-2.0
+     Unless required by applicable law or agreed to in writing, software
+     distributed under the License is distributed on an "AS IS" BASIS,
+     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+     See the License for the specific language governing permissions and
+     limitations under the License.
+-->
+
+<!--
+     The parts catalog is used to locate items (usually a PreferenceScreen) inside
+     of CMParts. This can be used by CMPartsPreference to create a simple, two-line
+     entry point from Settings or another application. All entries should specify
+     a fragment, which is a SettingsPreferenceFragment subclass inside CMParts.
+     Metadata for the search index provider should be provided for all parts. This
+     can be supplied an XML resource in the "cm:xmlRes" attribute or by implementing
+     the Searchable interface.
+-->
+<parts-catalog xmlns:android="http://schemas.android.com/apk/res/android"
+               xmlns:cm="http://schemas.android.com/apk/res/cyanogenmod.platform">
+
+    <part android:key="rr_nav_bar"
+          android:title="@string/rr_navbar_title"
+          android:fragment="com.android.settings.rr.navbar.NavbarSettings"
+          cm:xmlRes="@xml/rr_button_settings" />
+
+    <part android:key="rr_ls_ui"
+          android:title="@string/rr_ls_ui"
+          android:summary="@string/rr_ls_ui_summary"
+          android:fragment="com.android.settings.rr.LockScreenUI"
+          cm:xmlRes="@xml/rr_lockscreen" />
+</parts-catalog>
