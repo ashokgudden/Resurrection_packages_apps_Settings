@@ -131,13 +131,12 @@
   <string name="rr_misc_title">Diğerleri</string>
   <string name="rr_ui_title">Arayüz</string>
   <string name="rr_dash_board_title">Ayarlar menüsü</string>
-  <string name="system_animations">Sistem animasyonları</string>
+  <string name="rr_notif_settings_title">Bildirimler</string>
   <string name="toast">Bildirim</string>
   <string name="listview">Liste Görünümü</string>
   <string name="icons">Simgeler</string>
   <string name="general">Genel</string>
   <string name="ka_title">Performans</string>
-  <string name="rr_notif_settings_title">Bildirimler</string>
   <!--RR Configurations Summaries-->
   <string name="clock_custom_summary">Durum çubuğu saat ve tarihinin çeşitli öğelerini özelleştirin</string>
   <string name="status_bar_logo_summary">Durum çubuğunda Resurrection logosunu etkinleştirin veya devre dışı bırakın. Renk ve konumunu özelleştirin</string>
@@ -1305,7 +1304,6 @@
   <string name="animation14">Yukarı Dışarı Kaydır </string>
   <string name="animation15">Hızlı Döndür</string>
   <!-- OmniSwitch -->
-  <string name="omniswitch_category">Omni switch</string>
   <string name="recents_use_omniswitch_title">Son kullanılanlar için kullan</string>
   <string name="recents_use_omniswitch_summary">Varsayılan Son kullanılanları görüntüleme yerine OmniSwitch kullanın</string>
   <string name="omniswitch_start_settings_title">Ayarlar</string>
@@ -2183,6 +2181,7 @@ Piksel yoğunluğu <xliff:g name="count" example="520">%d</xliff:g></string>
   <string name="ok_string">Tamam</string>
   <!-- Hide Statusbar on Lockscreen -->
   <string name="lockscreen_hide_status_bar_title">Durum çubuğunu gizle</string>
+  <string name="lockscreen_hide_status_bar_summary">Kilit ekranında durum çubuğu görünürlüğünü değiştirin. Durum çubuğunu göstermek için üzerine dokunun</string>
   <string name="confirm_shutdown_switch_title">Kapatma onayı iletişim kutusu</string>
   <string name="confirm_shutdown_switch_desc">Güç menüsünde kapatma seçeneğine dokunulduğunda, kapatmayı onaylamak için bir diyalog ekle</string>
   <!-- Notification guts kill app button -->
