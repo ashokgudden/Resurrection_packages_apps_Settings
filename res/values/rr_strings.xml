@@ -2544,5 +2544,5 @@
     </string>
 
     <!-- Lockscreen: Direct unlock see through transparency level -->
-    <string name="lockscreen_trans_level_title">See through transparency</string>
+    <string name="lockscreen_trans_level_title">Lock screen Brightness Level</string>
 </resources>
