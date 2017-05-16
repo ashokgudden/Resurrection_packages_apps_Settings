@@ -2248,4 +2248,14 @@
   <string name="night_bright_min">Luminosità minima</string>
   <string name="night_bright_low">Bassa luminosità</string>
   <string name="night_bright_medium">Luminosità media</string>
+  <!-- QS footer warnings -->
+  <string name="qs_footer_warnings_title">Avvisi QS footer</string>
+  <string name="qs_footer_warnings_summary">Visualizzare un avviso nella parte inferiore del pannello QS quando la rete viene controllata da applicazioni esterne o vpn</string>
+  <!-- Incall vibrate options -->
+  <string name="rr_incall">Chiama</string>
+  <string name="rr_incall_summary">Personalizza le varie opzioni di vibrazioni durante le chiamate vocali</string>
+  <string name="incall_vibration_category">Opzioni di vibrazione per le chiamate</string>
+  <string name="incall_vibrate_connect_title">Vibra alla connessione</string>
+  <string name="incall_vibrate_call_wait_title">Vibra per chiamata in attesa</string>
+  <string name="incall_vibrate_disconnect_title">Vibra alla disconnessione</string>
 </resources>

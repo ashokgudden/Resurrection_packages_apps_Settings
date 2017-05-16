@@ -53,6 +53,9 @@
 	<string name="device_CP8676_I02">Coolpad Note 3</string>
 	<string name="device_CP8676_I02_summary">CP8676_I02\nMaintainer - Mohan Cm (mohancm100)</string>
 	
+	<string name="device_CP8298_I00">Coolpad Note 3 Lite</string>
+	<string name="device_CP8298_I00_summary">CP8298_I00\nMaintainer - Sayan Biwas (SamGrande)</string>
+	
 	<string name="device_A6020">Vibe K5</string>
 	<string name="device_A6020_summary">A6020\nMaintainer -</string>
 	
@@ -463,6 +466,12 @@
 
 	<string name="device_natrium">Xiaomi MI 5s Plus</string>
 	<string name="device_natrium_summary">Natrium\nMaintainer - Ali İhsan Hatun (Asderdd)</string>
+	
+	<string name="device_scorpio">Xiaomi MI Note 2</string>
+	<string name="device_scorpio_summary">Scorpio\nMaintainer - Cenkay KESER</string>
+	
+	<string name="device_lithium">Xiaomi MI Mix</string>
+	<string name="device_lithium_summary">Lithium\nMaintainer - Cenkay KESER</string>
 
 	<string name="device_dior">Xiaomi Redmi Note 4G</string>
 	<string name="device_dior_summary">dior\nMaintainer - Ashish Kotnala</string>
@@ -610,5 +619,8 @@
 	
 	<string name="device_Zuk_Z2">Zuk_Z2</string>
 	<string name="device_Zuk_Z2_summary"> Zuk_Z2\nMaintainer - MR.HACKER </string>
+	
+	<string name="device_ville">HTC One S</string>
+	<string name="device_ville_summary">Ville \nMaintainer - Moozon</string>
 
 </resources>

@@ -25,7 +25,7 @@
   <string name="dlg_reset_android">Mặc định</string>
   <string name="default_string">Mặc định</string>
   <string name="add">Thêm</string>
-  <string name="enabled">Đã bật</string>
+  <string name="enabled">Đã kích hoạt</string>
   <string name="choose_app">Chọn ứng dụng</string>
   <string name="help">Trợ giúp</string>
   <string name="reset_message">Thiết lập lại tất cả các mục về mặc định?</string>
@@ -2248,4 +2248,14 @@
   <string name="night_bright_min">Độ sáng tối thiểu</string>
   <string name="night_bright_low">Độ sáng thấp</string>
   <string name="night_bright_medium">Độ sáng trung bình</string>
+  <!-- QS footer warnings -->
+  <string name="qs_footer_warnings_title">Cảnh báo cuối trang QS</string>
+  <string name="qs_footer_warnings_summary">Hiển thị cảnh báo ở cuối bảng điều khiển QS khi mạng được theo dõi bởi các ứng dụng ngoài hoặc VPN</string>
+  <!-- Incall vibrate options -->
+  <string name="rr_incall">Gọi</string>
+  <string name="rr_incall_summary">Tùy chỉnh các tùy chọn độ rung khác nhau trong suốt cuộc gọi thoại</string>
+  <string name="incall_vibration_category">Các tùy chọn rung trong cuộc gọi</string>
+  <string name="incall_vibrate_connect_title">Rung khi kết nối</string>
+  <string name="incall_vibrate_call_wait_title">Rung khi chờ cuộc gọi</string>
+  <string name="incall_vibrate_disconnect_title">Rung khi ngắt kết nối</string>
 </resources>
