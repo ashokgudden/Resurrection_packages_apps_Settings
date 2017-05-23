@@ -55,7 +55,7 @@ public class PowerMenuActions extends SettingsPreferenceFragment  implements OnP
     private CheckBoxPreference mUsersPref;
     private CheckBoxPreference mSettingsPref;
     private CheckBoxPreference mLockdownPref;
-    private CheckBoxPreference mBugReportPref;
+//    private CheckBoxPreference mBugReportPref;
     private CheckBoxPreference mSilentPref;
     private CheckBoxPreference mVoiceAssistPref;
     private CheckBoxPreference mAssistPref;
@@ -99,8 +99,8 @@ public class PowerMenuActions extends SettingsPreferenceFragment  implements OnP
                 mSettingsPref = (CheckBoxPreference) findPreference(GLOBAL_ACTION_KEY_SETTINGS);
             } else if (action.equals(GLOBAL_ACTION_KEY_LOCKDOWN)) {
                 mLockdownPref = (CheckBoxPreference) findPreference(GLOBAL_ACTION_KEY_LOCKDOWN);
-            } else if (action.equals(GLOBAL_ACTION_KEY_BUGREPORT)) {
-                mBugReportPref = (CheckBoxPreference) findPreference(GLOBAL_ACTION_KEY_BUGREPORT);
+//            } else if (action.equals(GLOBAL_ACTION_KEY_BUGREPORT)) {
+//                mBugReportPref = (CheckBoxPreference) findPreference(GLOBAL_ACTION_KEY_BUGREPORT);
             } else if (action.equals(GLOBAL_ACTION_KEY_SILENT)) {
                 mSilentPref = (CheckBoxPreference) findPreference(GLOBAL_ACTION_KEY_SILENT);
             } else if (action.equals(GLOBAL_ACTION_KEY_VOICEASSIST)) {
@@ -165,9 +165,9 @@ public class PowerMenuActions extends SettingsPreferenceFragment  implements OnP
             mLockdownPref.setChecked(settingsArrayContains(GLOBAL_ACTION_KEY_LOCKDOWN));
         }
 
-        if (mBugReportPref != null) {
-            mBugReportPref.setChecked(settingsArrayContains(GLOBAL_ACTION_KEY_BUGREPORT));
-        }
+//        if (mBugReportPref != null) {
+//            mBugReportPref.setChecked(settingsArrayContains(GLOBAL_ACTION_KEY_BUGREPORT));
+//        }
 
         if (mSilentPref != null) {
             mSilentPref.setChecked(settingsArrayContains(GLOBAL_ACTION_KEY_SILENT));
@@ -189,13 +189,13 @@ public class PowerMenuActions extends SettingsPreferenceFragment  implements OnP
             mEmergencyPref.setChecked(settingsArrayContains(GLOBAL_ACTION_KEY_EMERGENCY));
         }
 
-        updatePreferences();
+//        updatePreferences();
     }
 
     @Override
     public void onResume() {
         super.onResume();
-        updatePreferences();
+//        updatePreferences();
     }
 
 
@@ -238,9 +238,9 @@ public class PowerMenuActions extends SettingsPreferenceFragment  implements OnP
             value = mLockdownPref.isChecked();
             updateUserConfig(value, GLOBAL_ACTION_KEY_LOCKDOWN);
 
-        } else if (preference == mBugReportPref) {
-            value = mBugReportPref.isChecked();
-            updateUserConfig(value, GLOBAL_ACTION_KEY_BUGREPORT);
+//        } else if (preference == mBugReportPref) {
+//            value = mBugReportPref.isChecked();
+//            updateUserConfig(value, GLOBAL_ACTION_KEY_BUGREPORT);
 
         } else if (preference == mSilentPref) {
             value = mSilentPref.isChecked();
@@ -297,9 +297,8 @@ public class PowerMenuActions extends SettingsPreferenceFragment  implements OnP
     }
 
     private void updatePreferences() {
-        boolean bugreport = Settings.Secure.getInt(getContentResolver(),
+/*        boolean bugreport = Settings.Secure.getInt(getContentResolver(),
                 Settings.Secure.BUGREPORT_IN_POWER_MENU, 0) != 0;
-
         if (mBugReportPref != null) {
             mBugReportPref.setEnabled(bugreport);
             if (bugreport) {
@@ -307,7 +306,7 @@ public class PowerMenuActions extends SettingsPreferenceFragment  implements OnP
             } else {
                 mBugReportPref.setSummary(R.string.power_menu_bug_report_disabled);
             }
-        }
+        } */
     }
 
     private void getUserConfig() {
