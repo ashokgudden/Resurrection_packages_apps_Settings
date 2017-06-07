@@ -55,9 +55,6 @@ public class ConditionManager {
 
     private final ArrayList<ConditionListener> mListeners = new ArrayList<>();
 
-    // Alert slider
-    private boolean mHasAlertSlider;
-
     private ConditionManager(Context context, boolean loadConditionsNow) {
         mContext = context;
         mConditions = new ArrayList<>();
@@ -67,8 +64,6 @@ public class ConditionManager {
         } else {
             new ConditionLoader().execute();
         }
-        mHasAlertSlider = mContext.getResources().getBoolean(
-                com.android.internal.R.bool.config_hasAlertSlider);
     }
 
     public void refreshAll() {
@@ -145,9 +140,7 @@ public class ConditionManager {
     private void addMissingConditions(ArrayList<Condition> conditions) {
         addIfMissing(AirplaneModeCondition.class, conditions);
         addIfMissing(HotspotCondition.class, conditions);
-        if (!mHasAlertSlider) {
-            addIfMissing(DndCondition.class, conditions);
-        }
+        addIfMissing(DndCondition.class, conditions);
         addIfMissing(BatterySaverCondition.class, conditions);
         addIfMissing(CellularDataCondition.class, conditions);
         addIfMissing(BackgroundDataCondition.class, conditions);
@@ -170,7 +163,7 @@ public class ConditionManager {
             return new AirplaneModeCondition(this);
         } else if (HotspotCondition.class == clz) {
             return new HotspotCondition(this);
-        } else if (DndCondition.class == clz && !mHasAlertSlider) {
+        } else if (DndCondition.class == clz) {
             return new DndCondition(this);
         } else if (BatterySaverCondition.class == clz) {
             return new BatterySaverCondition(this);
