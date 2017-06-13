@@ -2155,6 +2155,7 @@
   <string name="no_iconpacks_summary">Nincs ikoncsomag telepitve</string>
   <string name="dialog_pick_iconpack_title">Ikoncsomag választása</string>
   <string name="default_iconpack_title">Alapértelmezett ikonok</string>
+  <string name="slim_recents_corner_radius_title">Használjon lekerekített sarkokat a kártyáknál</string>
   <!-- ATTENTION: RTL languages need to replace left with right -->
   <string name="recent_panel_lefty_mode_title">Bal oldalon jelenítse meg</string>
   <string name="recent_panel_lefty_mode_summary">Az előzmények panelt a bal oldalon jelenítse meg</string>
@@ -2276,5 +2277,5 @@
   <string name="quick_pulldown_fp_title">Gyors legördítés ujjlenyomattal</string>
   <string name="quick_pulldown_fp_summary">A gyorsbeállítások panel kibontása az ujjlenyomat-érzékelő egyetlen érintésével</string>
   <string name="recents_lock_icon_title">Zárolás ikon</string>
-  <string name="recents_lock_icon_summary">Zárolás ikon megjelenítése a előzményablakok fejlécein</string>
+  <string name="recents_lock_icon_summary">Zárolás ikon megjelenítése az előzményablakok fejlécein</string>
 </resources>

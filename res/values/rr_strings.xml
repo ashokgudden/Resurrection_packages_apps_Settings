@@ -1604,6 +1604,8 @@
     <string name="navbar_button_color">Navigation bar buttons</string>
     <string name="navbar_button_custom_icon_switch_title">Add color filter to application buttons</string>
     <string name="icon_pack_picker_dialog_title">Icon packs</string>
+    <string name="navigation_bar_left_title">Left-handed mode</string>
+    <string name="navigation_bar_left_summary">Show navigation bar on the left hand side in landscape mode</string>
     <string name="invalid_icon_from_uri">Unable to load image from content provider</string>
     <string name="picker_activities">Activities</string>
     <string name="select_custom_app_title">Select custom app</string>
@@ -2362,6 +2364,7 @@
     <string name="no_iconpacks_summary">No icon packs installed</string>
     <string name="dialog_pick_iconpack_title">Pick icon pack</string>
     <string name="default_iconpack_title">Default icons</string>
+    <string name="slim_recents_corner_radius_title">Use round corners for cards</string>
 
     <!-- ATTENTION: RTL languages need to replace left with right -->
     <string name="recent_panel_lefty_mode_title">Show on the left edge</string>
@@ -2582,5 +2585,9 @@
     <string name="recents_lock_icon_title">Lock icon</string>
     <string name="recents_lock_icon_summary">Show recents lock to task icon in header</string>
 
-	<string name="status_bar_battery_style_aoscp">Cio</string> 
+	<string name="status_bar_battery_style_aoscp">Cio</string>
+
+    <string name="nav_button_sounds_title">Touch sounds</string>
+    <string name="nav_button_sounds_summary">Play click sound when tapping smartbar.Ringer/loud mode only</string>
+
 </resources>
