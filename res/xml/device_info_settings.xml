@@ -225,4 +225,15 @@
                 settings:allowDividerAbove="true"
                 settings:allowDividerBelow="true"/>
 
+        <!-- Verified boot status information -->
+        <com.android.settings.DividerPreference
+                android:key="verified_boot_status"
+                android:enabled="false"
+                android:shouldDisableView="false"
+                android:selectable="false"
+                android:title="@string/verified_boot_status"
+                android:summary="@string/verified_boot_status_disabled"
+                settings:allowDividerAbove="true"
+                settings:allowDividerBelow="true"/>
+
 </PreferenceScreen>
