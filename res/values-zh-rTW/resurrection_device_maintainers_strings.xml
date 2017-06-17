@@ -78,6 +78,8 @@
   <string name="device_condor_summary">Condor \n維護者 - Dashaanan</string>
   <string name="device_thea">Moto G 2014 LTE</string>
   <string name="device_thea_summary">Thea \n維護者 - j144df</string>
+  <string name="device_potter">Moto G5 Plus</string>
+  <string name="device_potter_summary">Potter \n維護者 - Garv Maggu</string>
   <string name="device_otus">Moto E 2015 3G</string>
   <string name="device_otus_summary">Otus \n維護者 - Hamza Badar</string>
   <string name="device_surnia">Moto E 2015 4G</string>
@@ -108,6 +110,8 @@
   <string name="device_o4x_summary">Int \n維護者 -  </string>
   <string name="device_l9">Optimus L9</string>
   <string name="device_l9_summary">P760-P765-P768 \n維護者 - </string>
+  <string name="device_sltexx">Samsung Galaxy Alpha</string>
+  <string name="device_sltexx_summary">SM-G850F \n維護者 - Jan-Luca Neumann (sunsettrack4)</string>
   <string name="device_serrano3gxx">Galaxy S4 Mini</string>
   <string name="device_serrano3gxx_summary">GT-I9190 \n維護者 - PRAViN PRAJAPATI (Harvey_Spectar)</string>
   <string name="device_serranodsdd">Galaxy S4 Mini</string>
@@ -364,8 +368,6 @@
   <string name="device_x720_summary">x720\n維護者 - Santiago Villar (VillarLeg)</string>
   <string name="device_x727">LeEco LePro 3</string>
   <string name="device_x727_summary">x727\n維護者 - Santiago Villar (VillarLeg)</string>
-  <string name="device_alpha">Samsung Galaxy Alpha</string>
-  <string name="device_alpha_summary">G850F\n維護者 - </string>
   <string name="device_t0ltexx">Samsung Galaxy Note II LTE</string>
   <string name="device_t0ltexx_summary">T0ltexx\n維護者 - </string>
   <string name="device_u9500">Huawei Ascend D1</string>
