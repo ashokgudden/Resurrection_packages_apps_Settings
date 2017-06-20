@@ -60,6 +60,7 @@ import java.io.File;
 import java.io.IOException;
 import java.io.DataOutputStream;
 
+import com.android.internal.util.rr.PackageUtils;
 import com.android.internal.logging.MetricsProto.MetricsEvent;
 
 public class MiscSettings extends SettingsPreferenceFragment  implements OnPreferenceChangeListener{
@@ -68,12 +69,21 @@ public class MiscSettings extends SettingsPreferenceFragment  implements OnPrefe
     private static final String SELINUX = "selinux";
     private static final String RR_OTA = "rr_ota_fab";
     private static final String RR_INCALL = "rr_incall";
+    private static final String RR_OTA_APP = "update_settings";
+    private static final String RR_DELTA = "delta_updates";
+    private static final String WEATHER_SETTINGS = "weather_settings_pref";
+	private static final String WEATHER_PACKAGE = "com.cyanogenmod.lockclock";
+	private static final String OTA_PACKAGE = "com.resurrection.ota";
+	private static final String DELTA_PACKAGE = "eu.chainfire.opendelta";
 
     private SwitchPreference mConfig;
     private SwitchPreference mSelinux;
     private FingerprintManager mFingerprintManager;
     private PreferenceScreen mFingerprint;
     private PreferenceScreen mIncall;
+    private PreferenceScreen mWeatherPref;
+    private PreferenceScreen mDelta;
+    private PreferenceScreen mOta;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -110,6 +120,20 @@ public class MiscSettings extends SettingsPreferenceFragment  implements OnPrefe
             getPreferenceScreen().removePreference(mIncall);
         }
 
+        PreferenceScreen mDelta = (PreferenceScreen) findPreference(RR_DELTA);
+        if (!PackageUtils.isAvailableApp(DELTA_PACKAGE, getActivity())) {
+            getPreferenceScreen().removePreference(mDelta);
+        }
+
+        PreferenceScreen mOta = (PreferenceScreen) findPreference(RR_OTA_APP);
+        if (!PackageUtils.isAvailableApp(OTA_PACKAGE, getActivity())) {
+            getPreferenceScreen().removePreference(mOta);
+        }
+
+        PreferenceScreen mWeatherPref = (PreferenceScreen) findPreference(WEATHER_SETTINGS);
+        if (!PackageUtils.isAvailableApp(WEATHER_PACKAGE, getActivity())) {
+            getPreferenceScreen().removePreference(mWeatherPref);
+        }
     }
 
     @Override

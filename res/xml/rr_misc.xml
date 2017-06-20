@@ -58,8 +58,9 @@
             android:defaultValue="true" />
 
         <!-- Weather Settings -->
-        <Preference
+        <PreferenceScreen
             android:id="@+id/weather_settings"
+            android:key="weather_settings_pref"
             android:title="@string/weather_settings_title_cclock"
             android:summary="@string/misc_weather_settings_summary"
             android:icon="@drawable/rr_cclock_icon">
@@ -67,7 +68,7 @@
                  android:action="android.intent.action.MAIN"
                  android:targetPackage="com.cyanogenmod.lockclock"
                  android:targetClass="com.cyanogenmod.lockclock.preference.Preferences" />
-        </Preference>
+        </PreferenceScreen>
 
         <!-- Updater -->
         <PreferenceScreen
