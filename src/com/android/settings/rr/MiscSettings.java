@@ -72,7 +72,7 @@ public class MiscSettings extends SettingsPreferenceFragment  implements OnPrefe
     private SwitchPreference mConfig;
     private SwitchPreference mSelinux;
     private FingerprintManager mFingerprintManager;
-    private SwitchPreference mFingerprintVib;
+    private PreferenceScreen mFingerprint;
     private PreferenceScreen mIncall;
 
     @Override
@@ -100,9 +100,9 @@ public class MiscSettings extends SettingsPreferenceFragment  implements OnPrefe
         mConfig.setOnPreferenceChangeListener(this);
 
         mFingerprintManager = (FingerprintManager) getActivity().getSystemService(Context.FINGERPRINT_SERVICE);        
-        mFingerprintVib = (SwitchPreference) findPreference("fingerprint_success_vib");
+        mFingerprint = (PreferenceScreen) findPreference("rr_fp");
         if (!mFingerprintManager.isHardwareDetected()){
-            getPreferenceScreen().removePreference(mFingerprintVib);
+             getPreferenceScreen().removePreference(mFingerprint);
         }
 
         PreferenceScreen mIncall = (PreferenceScreen) findPreference(RR_INCALL);
