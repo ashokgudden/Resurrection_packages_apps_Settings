@@ -1199,6 +1199,13 @@
         android:summary="@string/device_ham_summary"
         android:selectable="false"
         android:title="@string/device_ham" />
+
+    <Preference
+        android:id="@+id/device_Zuk_Z2"
+        android:icon="@drawable/phone_tint"
+        android:summary="@string/device_Zuk_Z2_summary"
+        android:selectable="false"
+        android:title="@string/device_Zuk_Z2" />
   </PreferenceCategory>
 
 <PreferenceCategory
@@ -1211,6 +1218,13 @@
         android:summary="@string/device_nubia_nx531j_summary"
         android:selectable="false"
         android:title="@string/device_nubia_nx531j" />
+        
+     <Preference
+        android:id="@+id/device_nubia_nx512j"
+        android:icon="@drawable/phone_tint"
+        android:summary="@string/device_nubia_nx512j_summary"
+        android:selectable="false"
+        android:title="@string/device_nubia_nx512j" />        
      </PreferenceCategory>
 
 <PreferenceCategory
@@ -1236,12 +1250,6 @@
         android:selectable="false"
         android:title="@string/device_vega_A890" />
 
-  <Preference
-        android:id="@+id/device_Zuk_Z2"
-        android:icon="@drawable/phone_tint"
-        android:summary="@string/device_Zuk_Z2_summary"
-        android:selectable="false"
-        android:title="@string/device_Zuk_Z2" />
        </PreferenceCategory>
 
 <PreferenceCategory
