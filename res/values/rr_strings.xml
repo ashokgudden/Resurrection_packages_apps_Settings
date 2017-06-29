@@ -2620,4 +2620,7 @@
     <!-- Development Settings summary-->
     <string name="adb_enabled">ADB Enabled</string>
     <string name="adb_disabled">ADB Disabled</string>
+
+    <string name="torch_long_press_power_timeout_title">Automatically turn torch off</string>
+    <string name="auto_power_save_never">Never</string>
 </resources>
