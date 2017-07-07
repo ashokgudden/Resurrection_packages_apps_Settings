@@ -2633,4 +2633,8 @@
     <string name="torch_long_press_power_timeout_title">Automatically turn torch off</string>
     <string name="auto_power_save_never">Never</string>
 
+    <!-- qqs scroller -->
+    <string name="qqs_scroll_title">Scroll small QS tiles</string>
+    <string name="qqs_scroll_summary">Allow scrolling through the small QS tiles</string>
+
 </resources>
