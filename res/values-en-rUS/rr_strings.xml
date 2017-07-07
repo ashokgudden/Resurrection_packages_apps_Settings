@@ -1112,7 +1112,7 @@
   <!-- Data disabled icon -->
   <!-- Data/Wifi activity arrows -->
   <!-- Screen state service -->
-  <string name="screen_state_toggles_summary">\@null</string>
+  <string name="screen_state_toggles_summary">Choose a set of actions when you turn your screen off.</string>
   <string name="screen_state_toggles_enable_title">Enable</string>
   <string name="screen_state_toggles_twog">Switch to 2G</string>
   <!-- In-call DND -->
