@@ -1759,6 +1759,11 @@
     <string name="smartbar_config_backup_error_toast">Error saving Smartbar profile</string>
     <string name="smartbar_config_restore_error_toast">Error restoring Smartbar profile</string>
     <string name="navbar_buttons_alpha_title">Button transparency</string>
+    <string name="smartbar_longpress_delay_title">Button longpress delay</string>
+    <string name="smartbar_longpress_delay_summary">Set how long the system will wait before triggering a longpress action</string>
+    <string name="smartbar_longpress_delay_default">Default delay (fast)</string>
+    <string name="smartbar_longpress_delay_normal">Normal delay</string>
+    <string name="smartbar_longpress_delay_long">Long delay</string>
     <string name="rr_navbar_settings">Navbar</string>
 
     <!--Custom logos-->
@@ -2379,7 +2384,7 @@
 
     <!-- Fingerprint unlock keystore -->
     <string name="fp_unlock_keystore_title">FP unlock</string>
-    <string name="fp_unlock_keystore_summary">Unlock device with fingerprint after reboot without PIN/Password/Pattern\nNote: at your own risk!</string>
+    <string name="fp_unlock_keystore_summary">Unlock device with fingerprint after reboot without PIN/Password/Pattern\nNote: Use Caution!</string>
 
     <!-- Wired headset ringtone audio focus -->
     <string name="rr_sound_title">Headset</string>
@@ -2601,6 +2606,10 @@
     <string name="nav_button_sounds_title">Touch sounds</string>
     <string name="nav_button_sounds_summary">Play click sound when tapping smartbar.Ringer/loud mode only</string>
 
+    <string name="status_bar_pulse_charging_battery_title">Pulse battery icon when charging</string>
+    <string name="status_bar_pulse_charging_battery_summary_off">Charging animation disabled. Wait for battery level to change to see effect.</string>
+    <string name="status_bar_pulse_charging_battery_summary_on">All battery styles will show pulsing animation.Wait for battery level to change to see effect.</string>
+
     <!-- Category title for Charging sounds -->
     <string name="power_notifications_category_title">Charging sounds</string>
     <!-- Sound settings, Charging sounds enable/disable, setting check box label -->
@@ -2623,4 +2632,5 @@
 
     <string name="torch_long_press_power_timeout_title">Automatically turn torch off</string>
     <string name="auto_power_save_never">Never</string>
+
 </resources>
