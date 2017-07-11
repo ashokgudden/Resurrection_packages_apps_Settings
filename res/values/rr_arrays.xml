@@ -2098,18 +2098,6 @@
         <item>2</item>
     </string-array>
 
-    <string-array name="smartbar_longpress_delay_entries">
-        <item>@string/smartbar_longpress_delay_default</item>
-        <item>@string/smartbar_longpress_delay_normal</item>
-        <item>@string/smartbar_longpress_delay_long</item>
-    </string-array>
-
-    <string-array name="smartbar_longpress_delay_values" translatable="false">
-        <item>0</item>
-        <item>1</item>
-        <item>2</item>
-    </string-array>
-
     <!-- Charging notification condition -->
     <string-array name="power_notification_entries" translatable="false">
         <item>@string/power_notifications_conditions_none</item>
