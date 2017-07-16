@@ -223,4 +223,10 @@
                 settings:allowDividerAbove="true"
                 settings:allowDividerBelow="true"/>
 
+        <!-- SDClang used -->
+        <Preference android:key="build_compiler_sdclang"
+            style="?android:preferenceInformationStyle"
+            android:title="@string/build_compiler_sdclang"
+            android:summary="@string/build_compiler_default" />
+
 </PreferenceScreen>
