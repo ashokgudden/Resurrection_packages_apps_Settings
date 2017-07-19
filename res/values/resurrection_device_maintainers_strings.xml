@@ -28,7 +28,7 @@
   <string name="device_category_motorola_title">MOTOROLA</string>
   <string name="device_category_google_title">GOOGLE</string>
   <string name="device_category_oneplus_title">ONEPLUS</string>
-  <string name="device_category_yureka_title">YU</string>
+  <string name="device_category_yu_title">YU</string>
   <string name="device_category_xiaomi_title">XIAOMI</string>
   <string name="device_category_huawei_title">HUAWEİ</string>
   <string name="device_category_asus_title">ASUS</string>
@@ -135,6 +135,9 @@
 
   <string name="device_klte">Galaxy S5</string>
   <string name="device_klte_summary">All klte variants \nMaintainer - ScrawnyB</string>
+  
+  <string name="device_k3gxx">Galaxy S5</string>
+  <string name="device_k3gxx_summary">K3gxx \nMaintainer - HunnyMadaan</string>
 
   <string name="device_n9">Nexus 9</string>
   <string name="device_n9_summary">Flounder \nMaintainer - sixohtew</string>
@@ -456,6 +459,9 @@
 
   <string name="device_maguro">Galaxy Nexus</string>
   <string name="device_maguro_summary">Maguro\nMaintainer - </string>
+
+  <string name="device_garlic">Yu Yureka Black</string>
+  <string name="device_garlic_summary">Garlic\nMaintainer- Vjs Pranav</string>
 
   <string name="device_tomato">Yu Yureka</string>
   <string name="device_tomato_summary">Tomato\nMaintainer - Men_in_black007 (Sanyam Jain)</string>

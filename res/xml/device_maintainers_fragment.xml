@@ -489,6 +489,12 @@
         android:selectable="false"
         android:title="@string/device_klte" />
     <Preference
+        android:id="@+id/device_k3gxx"
+        android:icon="@drawable/phone_tint"
+        android:summary="@string/device_k3gxx_summary"
+        android:selectable="false"
+        android:title="@string/device_k3gxx" />
+    <Preference
         android:id="@+id/device_i9100"
         android:icon="@drawable/phone_tint"
         android:summary="@string/device_i9100_summary"
@@ -870,8 +876,14 @@
   </PreferenceCategory>
        
   <PreferenceCategory
-        android:id="@+id/device_category_yureka"
-        android:title="@string/device_category_yureka_title" >
+        android:id="@+id/device_category_yu"
+        android:title="@string/device_category_yu_title" >
+    <Preference
+        android:id="@+id/device_garlic"
+        android:icon="@drawable/phone_tint"
+        android:summary="@string/device_garlic_summary"
+        android:selectable="false"
+        android:title="@string/device_garlic" />
     <Preference
         android:id="@+id/device_tomato"
         android:icon="@drawable/phone_tint"

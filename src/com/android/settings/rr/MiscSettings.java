@@ -54,6 +54,8 @@ import com.android.internal.logging.MetricsProto.MetricsEvent;
 public class MiscSettings extends SettingsPreferenceFragment  implements OnPreferenceChangeListener{
 
     private static final String SELINUX = "selinux";
+    private static final String SELINX_PREF ="selinux_switch";
+    private static final String APP_REMOVER = "system_app_remover";
     private static final String RR_OTA_APP = "update_settings";
     private static final String RR_DELTA = "delta_updates";
     private static final String WEATHER_SETTINGS = "weather_settings_pref";
@@ -65,6 +67,8 @@ public class MiscSettings extends SettingsPreferenceFragment  implements OnPrefe
     private PreferenceScreen mDelta;
     private PreferenceScreen mOta;
     private SwitchPreference mSelinux;
+    private Preference mSelinuxPref;
+    private PreferenceScreen mAppRemover;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -75,14 +79,37 @@ public class MiscSettings extends SettingsPreferenceFragment  implements OnPrefe
 
 	    //SELinux
         mSelinux = (SwitchPreference) findPreference(SELINUX);
-        mSelinux.setOnPreferenceChangeListener(this);
+        mAppRemover = (PreferenceScreen) findPreference(APP_REMOVER);
+        mSelinuxPref = (Preference) findPreference(SELINX_PREF);
 
-        if (CMDProcessor.runShellCommand("getenforce").getStdout().contains("Enforcing")) {
-            mSelinux.setChecked(true);
-            mSelinux.setSummary(R.string.selinux_enforcing_title);
+        // Magisk Manager
+        boolean magiskSupported = false;
+        // SuperSU
+        boolean suSupported = false;
+        try {
+            magiskSupported = (getPackageManager().getPackageInfo("com.topjohnwu.magisk", 0).versionCode > 0);
+        } catch (PackageManager.NameNotFoundException e) {
+        }
+        try {
+            suSupported = (getPackageManager().getPackageInfo("eu.chainfire.supersu", 0).versionCode >= 185);
+        } catch (PackageManager.NameNotFoundException e) {
+        }
+        if (magiskSupported || suSupported) {
+            mSelinux.setOnPreferenceChangeListener(this);
+            if (CMDProcessor.runShellCommand("getenforce").getStdout().contains("Enforcing")) {
+                mSelinux.setChecked(true);
+                mSelinux.setSummary(R.string.selinux_enforcing_title);
+            } else {
+                mSelinux.setChecked(false);
+                mSelinux.setSummary(R.string.selinux_permissive_title);
+            }
         } else {
-            mSelinux.setChecked(false);
-            mSelinux.setSummary(R.string.selinux_permissive_title);
+            if (mSelinux != null) 
+                getPreferenceScreen().removePreference(mSelinux);
+            if (mAppRemover != null)
+                getPreferenceScreen().removePreference(mAppRemover);
+            if (mSelinuxPref != null) 
+                getPreferenceScreen().removePreference(mSelinuxPref);
         }
 
         PreferenceScreen mDelta = (PreferenceScreen) findPreference(RR_DELTA);
