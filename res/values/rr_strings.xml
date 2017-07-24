@@ -2618,4 +2618,7 @@
 
     <string name="logcat_app_title">MatLog</string>
     <string name="logcat_app_summary">Start app to collect logs</string>
+
+    <string name="adb_over_network_disable_on_disconnect_title">Disable ADB over network on disconnect</string>
+    <string name="adb_over_network_disable_on_disconnect_summary">ADB over network will be disabled when disconnecting from Wi-Fi</string>
 </resources>
