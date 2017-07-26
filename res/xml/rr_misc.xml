@@ -86,6 +86,17 @@
             android:icon="@drawable/rr_suspend_icon"
             android:fragment="com.android.settings.rr.ScreenStateToggles" />
 
+        <PreferenceScreen
+            android:key="logcat_app"
+            android:icon="@drawable/rr_selinux_icon"
+            android:title="@string/logcat_app_title"
+            android:summary="@string/logcat_app_summary"
+            android:persistent="false" >
+            <intent android:action="android.intent.action.MAIN"
+                 android:targetPackage="org.omnirom.logcat"
+                 android:targetClass="com.pluscubed.logcat.ui.LogcatActivity" />
+        </PreferenceScreen>
+
        <!-- System APP Remover -->
        <PreferenceScreen
             android:id="@+id/system_app_remover"

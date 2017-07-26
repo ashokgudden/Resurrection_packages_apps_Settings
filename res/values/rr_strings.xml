@@ -2616,4 +2616,6 @@
     <string name="single_tap_tile_add_title">Easy tile add</string>
     <string name="single_tap_tile_add_summary">Add quick tiles easily from qs customizer by simply tapping on them instead of dragging them</string>
 
+    <string name="logcat_app_title">MatLog</string>
+    <string name="logcat_app_summary">Start app to collect logs</string>
 </resources>
