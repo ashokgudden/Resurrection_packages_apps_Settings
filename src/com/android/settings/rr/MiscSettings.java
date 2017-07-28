@@ -60,11 +60,13 @@ public class MiscSettings extends SettingsPreferenceFragment {
 	private static final String WEATHER_PACKAGE = "com.cyanogenmod.lockclock";
 	private static final String OTA_PACKAGE = "com.resurrection.ota";
 	private static final String DELTA_PACKAGE = "eu.chainfire.opendelta";
+	private static final String LOGCAT_PACKAGE = "org.omnirom.logcat";
 
     private PreferenceScreen mWeatherPref;
     private PreferenceScreen mDelta;
     private PreferenceScreen mOta;
     private PreferenceScreen mAppRemover;
+    private PreferenceScreen mLogCat;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -108,6 +110,12 @@ public class MiscSettings extends SettingsPreferenceFragment {
         if (!PackageUtils.isAvailableApp(WEATHER_PACKAGE, getActivity())) {
             getPreferenceScreen().removePreference(mWeatherPref);
         }
+
+        PreferenceScreen mLogCat = (PreferenceScreen) findPreference("logcat_app");
+        if (!PackageUtils.isAvailableApp(LOGCAT_PACKAGE, getActivity())) {
+            getPreferenceScreen().removePreference(mLogCat);
+        }
+
     }
 
     public static boolean isRootForAppsEnabled() {
