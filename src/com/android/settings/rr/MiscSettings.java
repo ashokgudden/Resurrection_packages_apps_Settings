@@ -56,6 +56,7 @@ public class MiscSettings extends SettingsPreferenceFragment  implements OnPrefe
     private static final String SELINUX = "selinux";
     private static final String SELINX_PREF ="selinux_switch";
     private static final String APP_REMOVER = "system_app_remover";
+    private static final String ROOT_ACCESS_PROPERTY = "persist.sys.root_access";
     private static final String RR_OTA_APP = "update_settings";
     private static final String RR_DELTA = "delta_updates";
     private static final String WEATHER_SETTINGS = "weather_settings_pref";
@@ -94,7 +95,7 @@ public class MiscSettings extends SettingsPreferenceFragment  implements OnPrefe
             suSupported = (getPackageManager().getPackageInfo("eu.chainfire.supersu", 0).versionCode >= 185);
         } catch (PackageManager.NameNotFoundException e) {
         }
-        if (magiskSupported || suSupported) {
+        if (magiskSupported || suSupported || isRootForAppsEnabled()) {
             mSelinux.setOnPreferenceChangeListener(this);
             if (CMDProcessor.runShellCommand("getenforce").getStdout().contains("Enforcing")) {
                 mSelinux.setChecked(true);
@@ -126,6 +127,13 @@ public class MiscSettings extends SettingsPreferenceFragment  implements OnPrefe
         if (!PackageUtils.isAvailableApp(WEATHER_PACKAGE, getActivity())) {
             getPreferenceScreen().removePreference(mWeatherPref);
         }
+    }
+
+    public static boolean isRootForAppsEnabled() {
+        int value = SystemProperties.getInt(ROOT_ACCESS_PROPERTY, 0);
+        boolean daemonState =
+                SystemProperties.get("init.svc.su_daemon", "absent").equals("running");
+        return daemonState && (value == 1 || value == 3);
     }
 
     @Override
