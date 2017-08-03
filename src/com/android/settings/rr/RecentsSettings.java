@@ -32,7 +32,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-
+import com.android.internal.util.rr.PackageUtils;
 import com.android.settings.R;
 import com.android.settings.util.Helpers;
 import com.android.settings.SettingsPreferenceFragment;
@@ -72,6 +72,13 @@ public class RecentsSettings extends SettingsPreferenceFragment implements
         int type = Settings.System.getIntForUser(getActivity().getContentResolver(),
                             Settings.System.NAVIGATION_BAR_RECENTS, 0,
                             UserHandle.USER_CURRENT);
+
+        if (!PackageUtils.isAvailableApp(OMNISWITCH_PACKAGE_NAME, getActivity())) {
+            getPreferenceScreen().removePreference(mOmniSwitch);
+            mRecentsType.setEntries(getResources().getStringArray(R.array.recents_type_title_entries_2));
+            mRecentsType.setEntryValues(getResources().getStringArray(R.array.recents_type_title_values_2));
+	}
+	    
         mRecentsType.setValue(String.valueOf(type));
         mRecentsType.setSummary(mRecentsType.getEntry());
         mRecentsType.setOnPreferenceChangeListener(this);
@@ -111,6 +118,7 @@ public class RecentsSettings extends SettingsPreferenceFragment implements
     }
 
     public void updatePreference(int type) {
+     if (PackageUtils.isAvailableApp(OMNISWITCH_PACKAGE_NAME, getActivity())) {
         if(type == 0 || type == 2) {
            mSlimRecents.setEnabled(false);
            mOmniSwitch.setEnabled(false);
@@ -121,7 +129,12 @@ public class RecentsSettings extends SettingsPreferenceFragment implements
            mSlimRecents.setEnabled(false);
            mOmniSwitch.setEnabled(true);
         }
+     } else {
+        if(type == 0 || type == 2) {
+           mSlimRecents.setEnabled(false);
+        } else if (type == 3) {
+           mSlimRecents.setEnabled(true);
+        }
+     }
     }
-
-
 }
