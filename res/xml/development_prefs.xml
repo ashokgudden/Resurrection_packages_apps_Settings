@@ -397,6 +397,12 @@
             android:title="@string/debug_applications_category">
 
         <EditTextPreference
+            android:key="change_sms_limit"
+            android:title="@string/usersettings_change_sms_limit"
+	    android:inputType="number|none"
+	    android:digits="0123456789" />
+
+        <EditTextPreference
             android:key="change_android_id"
             android:title="@string/usersettings_change_android_id" />
 
