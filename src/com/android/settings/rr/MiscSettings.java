@@ -157,7 +157,7 @@ public class MiscSettings extends SettingsPreferenceFragment  implements OnPrefe
 
         if (preference == mSelinux) {
             if (value.toString().equals("true")) {
-                CMDProcessor.runSuCommand("setenforce 1");
+                CMDProcessor.runShellCommand("setenforce 1");
                 setSelinuxEnabled("true");
                 mSelinux.setSummary(R.string.selinux_enforcing_title);
             } else if (value.toString().equals("false")) {
