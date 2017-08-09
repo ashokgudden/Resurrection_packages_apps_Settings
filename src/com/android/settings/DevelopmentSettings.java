@@ -61,7 +61,6 @@ import android.os.UserManager;
 import android.os.storage.IMountService;
 import android.provider.SearchIndexableResource;
 import android.provider.Settings;
-import android.provider.Settings.SettingNotFoundException;
 import android.service.persistentdata.PersistentDataBlockManager;
 import android.support.v14.preference.SwitchPreference;
 import android.support.v7.preference.EditTextPreference;
@@ -234,8 +233,6 @@ public class DevelopmentSettings extends RestrictedSettingsFragment
 
     private static final String KEY_CHANGE_ANDROID_ID = "change_android_id";
 
-    private static final String KEY_CHANGE_SMS_LIMIT = "change_sms_limit";
-
     private static final String KEY_CONVERT_FBE = "convert_to_file_encryption";
 
     private static final String OTA_DISABLE_AUTOMATIC_UPDATE_KEY = "ota_disable_automatic_update";
@@ -350,7 +347,6 @@ public class DevelopmentSettings extends RestrictedSettingsFragment
     private ListPreference mMsob; 
     private PreferenceScreen mDevelopmentTools;
     private EditTextPreference mChangeAndroidIdPreference;
-    private EditTextPreference mChangeSmsLimit;
 
     private final ArrayList<Preference> mAllPrefs = new ArrayList<Preference>();
 
@@ -605,17 +601,6 @@ public class DevelopmentSettings extends RestrictedSettingsFragment
         mChangeAndroidIdPreference.setText(
             Settings.Secure.getString(getContentResolver(),
                 Settings.Secure.ANDROID_ID));
-
-        mChangeSmsLimit = (EditTextPreference)
-                    findPreference(KEY_CHANGE_SMS_LIMIT);
-//        mChangeSmsLimit.setTransformationMethod(null);
-	try {
-	int CurrentValue = (Settings.Global.getInt(resolver, Settings.Global.SMS_OUTGOING_CHECK_MAX_COUNT));
-	String valueinText = String.valueOf(CurrentValue);
-        mChangeSmsLimit.setText(valueinText);
-	} catch (SettingNotFoundException e) {}
-
-        mChangeSmsLimit.setOnPreferenceChangeListener(this);
 
         // make sure we dont leave an unremovable bugreport in power menu
         final ContentResolver cr = getActivity().getContentResolver();
@@ -2432,13 +2417,6 @@ public class DevelopmentSettings extends RestrictedSettingsFragment
             mMsob.setValue(String.valueOf(newValue));
             mMsob.setSummary(mMsob.getEntry());
             return true;   
-        } else if (preference == mChangeSmsLimit) {
-            String text = mChangeSmsLimit.getText();
-	    try {
-	            int finalValue = Integer.parseInt(text);
-        	    Settings.Global.putInt(getActivity().getContentResolver(), Settings.Global.SMS_OUTGOING_CHECK_MAX_COUNT, finalValue);
-	    } catch (NumberFormatException e) {
-	    }
         } else if (preference == mChangeAndroidIdPreference) {
             String aId = mChangeAndroidIdPreference.getText();
             if(aId == null || aId.isEmpty() || aId.length() < 16)

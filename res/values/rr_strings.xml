@@ -2600,12 +2600,6 @@
     <string name="lockscreen_alpha">Lockscreen alpha</string>
     <string name="lockscreen_security_alpha">Lockscreen bouncer alpha</string>
 
-    <!--Change SMSM Sending Limit --> 
-    <string name="usersettings_change_sms_limit">Change SMS sending maximum limit</string> 
-    <string name="usersettings_change_sms_limit_text">
-        Enter the maximum no. of messages you want to send in a minute so that limit can be set.
-    </string>
-
     <!-- ANBI -->
     <string name="anbi_title">Accidental touch</string>
     <string name="anbi_summary">Prevent interaction with navigation buttons while the screen is being touched</string>
