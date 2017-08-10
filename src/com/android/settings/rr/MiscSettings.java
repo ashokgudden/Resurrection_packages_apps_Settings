@@ -40,6 +40,7 @@ import com.android.settings.R;
 import com.android.settings.SettingsPreferenceFragment;
 
 import java.util.List;
+import java.lang.Runtime;
 import com.android.settings.Utils;
 
 import java.io.File;
@@ -87,7 +88,7 @@ public class MiscSettings extends SettingsPreferenceFragment {
         } catch (PackageManager.NameNotFoundException e) {
         }
 
-        if (magiskSupported || suSupported || isRootForAppsEnabled()) {
+        if (magiskSupported || isSURooted() || isRootForAppsEnabled()) {
         } else {
             if (mAppRemover != null)
                 getPreferenceScreen().removePreference(mAppRemover);
@@ -114,6 +115,24 @@ public class MiscSettings extends SettingsPreferenceFragment {
         boolean daemonState =
                 SystemProperties.get("init.svc.su_daemon", "absent").equals("running");
         return daemonState && (value == 1 || value == 3);
+    }
+
+    public static boolean isSURooted() {
+        // try executing commands
+        return canExecuteCommand("/system/xbin/which su")
+                || canExecuteCommand("/system/bin/which su") || canExecuteCommand("which su");
+    }
+
+    // executes a command on the system
+    private static boolean canExecuteCommand(String command) {
+        boolean executedSuccesfully;
+        try {
+          Runtime.getRuntime().exec(command);
+          executedSuccesfully = true;
+        } catch (Exception e) {
+          executedSuccesfully = false;
+        }
+        return executedSuccesfully;
     }
 
     @Override
