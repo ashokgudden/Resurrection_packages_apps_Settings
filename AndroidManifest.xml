@@ -2858,7 +2858,7 @@
 
         <activity android:name="Settings$KActivity"
                 android:label="@string/ka_title"
-                android:icon="@drawable/rr_performance_icon"
+                android:icon="@drawable/ic_settings_ka"
                 android:taskAffinity="" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

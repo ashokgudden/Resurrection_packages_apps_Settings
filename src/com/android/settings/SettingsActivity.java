@@ -158,6 +158,7 @@ import java.net.URISyntaxException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
+import com.android.internal.util.rr.PackageUtils;
 
 public class SettingsActivity extends SettingsDrawerActivity
         implements PreferenceManager.OnPreferenceTreeClickListener,
@@ -1098,7 +1099,12 @@ public class SettingsActivity extends SettingsDrawerActivity
         }
   		 if (KA_FRAGMENT.equals(fragmentName)) {
             Intent kaIntent = new Intent();
-            kaIntent.setClassName("com.grarak.kerneladiutor", "com.grarak.kerneladiutor.activities.MainActivity");
+            if (PackageUtils.isAvailableApp("com.grarak.kerneladiutor", getApplicationContext())) {
+                kaIntent.setClassName("com.grarak.kerneladiutor", "com.grarak.kerneladiutor.activities.MainActivity");
+            }
+            if (PackageUtils.isAvailableApp("com.kerneladiutor.mod", getApplicationContext())) {
+                kaIntent.setClassName("com.kerneladiutor.mod", "com.grarak.kerneladiutor.MainActivity");
+            }        
             startActivity(kaIntent);
             finish();
             return null;
@@ -1219,15 +1225,21 @@ public class SettingsActivity extends SettingsDrawerActivity
                         Settings.DevelopmentSettingsActivity.class.getName()),
                 showDev, isAdmin, pm);
 
+        // Kernel Adiutor
         boolean kapresent = false;
         try {
             kapresent = (getPackageManager().getPackageInfo("com.grarak.kerneladiutor", 0).versionCode > 0);
+        } catch (PackageManager.NameNotFoundException e) {
+        }
+        try {
+            kapresent = (getPackageManager().getPackageInfo("com.kerneladiutor.mod", 0).versionCode > 0);
         } catch (PackageManager.NameNotFoundException e) {
         }
         setTileEnabled(new ComponentName(packageName,
                         Settings.KActivity.class.getName()),
                 kapresent, isAdmin, pm);
 
+        // Substratum
         boolean themesSupported = false;
         try {
             themesSupported = (getPackageManager().getPackageInfo("projekt.substratum", 0).versionCode > 0);
