@@ -280,15 +280,8 @@
         android:summary="@string/device_taido_row_summary"
         android:selectable="false"
         android:title="@string/device_taido_row" />	    
-
-     <Preference
-	android:id="@+id/device_land"
-        android:icon="@drawable/phone_tint"
-        android:summary="@string/device_land_summary"
-        android:selectable="false"
-        android:title="@string/device_land" />
-  
-</PreferenceCategory>
+	    
+ </PreferenceCategory>
 
   <PreferenceCategory
         android:id="@+id/device_category_zte"
@@ -508,11 +501,11 @@
         android:selectable="false"
         android:title="@string/device_jf" />
     <Preference
-        android:id="@+id/device_i9500"
+        android:id="@+id/device_ja3gxx"
         android:icon="@drawable/phone_tint"
-        android:summary="@string/device_i9500_summary"
+        android:summary="@string/device_ja3gxx_summary"
         android:selectable="false"
-        android:title="@string/device_i9500" />
+        android:title="@string/device_ja3gxx" />
     <Preference
         android:id="@+id/device_klte"
         android:icon="@drawable/phone_tint"
@@ -1010,6 +1003,12 @@
        android:summary="@string/device_hydrogen_summary"
        android:selectable="false"
        android:title="@string/device_hydrogen" />
+<Preference
+       android:id="@+id/device_helium"
+       android:icon="@drawable/phone_tint"
+       android:summary="@string/device_helium_summary"
+       android:selectable="false"
+       android:title="@string/device_helium" />	  
    <Preference
        android:id="@+id/device_kenzo"
        android:icon="@drawable/phone_tint"
@@ -1040,6 +1039,14 @@
        android:summary="@string/device_redmi3_summary"
        android:selectable="false"
        android:title="@string/device_redmi3" />
+
+    <Preference
+        android:id="@+id/device_land"
+        android:icon="@drawable/phone_tint"
+        android:summary="@string/device_land_summary"
+        android:selectable="false"
+        android:title="@string/device_land" />
+
     <Preference
        android:id="@+id/device_santoni"
        android:icon="@drawable/phone_tint"
