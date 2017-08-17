@@ -22,6 +22,7 @@ import android.support.v7.preference.Preference;
 import android.support.v7.preference.Preference.OnPreferenceChangeListener;
 import android.support.v7.preference.PreferenceScreen;
 
+import com.android.settings.util.Helpers;
 import com.android.internal.logging.MetricsProto.MetricsEvent;
 
 import com.android.settings.rr.SeekBarPreference;
@@ -37,11 +38,13 @@ public class LockScreenUI extends SettingsPreferenceFragment implements
     private static final String DATE_FONT_SIZE  = "lockdate_font_size";
     private static final String LOCKSCREEN_SECURITY_ALPHA = "lockscreen_security_alpha";
     private static final String LOCKSCREEN_ALPHA = "lockscreen_alpha";
+    private static final String SHOW_AMPM = "show_ampm";
 
     private SeekBarPreference mClockFontSize;
     private SeekBarPreference mDateFontSize;
     private SeekBarPreference mLsAlpha;
     private SeekBarPreference mLsSecurityAlpha;
+    private Preference mShowAmPm;
 
     @Override
     protected int getMetricsCategory() {
@@ -55,6 +58,9 @@ public class LockScreenUI extends SettingsPreferenceFragment implements
         addPreferencesFromResource(R.xml.rr_ls_ui);
 
         ContentResolver resolver = getActivity().getContentResolver();
+
+        mShowAmPm = (Preference) findPreference(SHOW_AMPM);
+        mShowAmPm.setOnPreferenceChangeListener(this);
 
         mClockFontSize = (SeekBarPreference) findPreference(CLOCK_FONT_SIZE);
         mClockFontSize.setValue(Settings.System.getInt(getContentResolver(),
@@ -85,6 +91,9 @@ public class LockScreenUI extends SettingsPreferenceFragment implements
             int top = (Integer) objValue;
             Settings.System.putInt(getContentResolver(),
                     Settings.System.LOCKCLOCK_FONT_SIZE, top*1);
+            return true;
+        } else if (preference == mShowAmPm) {
+            Helpers.showSystemUIrestartDialog(getActivity());
             return true;
         } else if (preference == mDateFontSize) {
             int top = (Integer) objValue;

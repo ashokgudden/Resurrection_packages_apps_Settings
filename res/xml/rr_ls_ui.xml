@@ -29,6 +29,12 @@
                 android:defaultValue="true" />
 
     	<com.android.settings.rr.Preferences.SystemSettingSwitchPreference
+                android:key="show_ampm"
+                android:title="@string/show_ampm_title"
+                android:dependency="hide_lockscreen_clock"
+                android:defaultValue="true" />
+
+    	<com.android.settings.rr.Preferences.SystemSettingSwitchPreference
                 android:key="lockscreen_pin_ripple"
                 android:title="@string/lockscreen_pin_ripple_title"
                 android:summary="@string/lockscreen_pin_ripple_summary"
