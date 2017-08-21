@@ -167,6 +167,7 @@ public class Settings extends SettingsActivity {
 
     // Categories.
     public static class WirelessSettings extends SettingsActivity { /* empty */ }
+    public static class CustomSettings extends SettingsActivity { /* empty */ }
 	public static class MainSettings extends SettingsActivity { /* empty */ }
 	public static class MainSettingsLayout extends SettingsActivity { /* empty */ }
     public static class DeviceSettings extends SettingsActivity { /* empty */ }

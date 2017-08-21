@@ -2620,4 +2620,8 @@
     <string name="adb_over_network_disable_on_disconnect_summary">ADB over network will be disabled when disconnecting from Wi-Fi</string>
 
     <string name="show_ampm_title">Show AM/PM indicator with lockscreen clock</string>
+
+    <!-- Custom Settings -->    
+    <!-- Dashboard -->
+    <string name="header_category_custom">ROM Control</string>
 </resources>
