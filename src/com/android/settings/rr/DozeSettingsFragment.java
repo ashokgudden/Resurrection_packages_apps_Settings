@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2013 Slimroms
+ * Copyright (C) 2013-2017 SlimRoms Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -54,6 +54,7 @@ public class DozeSettingsFragment extends SettingsPreferenceFragment implements
     private static final String KEY_DOZE_FADE_OUT = "doze_fade_out";
     private static final String KEY_DOZE_WAKEUP_DOUBLETAP = "doze_wakeup_doubletap";
     private static final String KEY_DOZE_TRIGGER_PICKUP = "doze_trigger_pickup";
+    private static final String KEY_DOZE_TRIGGER_TILT = "doze_trigger_tilt";
     private static final String KEY_DOZE_TRIGGER_SIGMOTION = "doze_trigger_sigmotion";
     private static final String KEY_DOZE_TRIGGER_NOTIFICATION = "doze_trigger_notification";
     private static final String KEY_DOZE_TRIGGER_DOUBLETAP = "doze_trigger_doubletap";
@@ -67,6 +68,7 @@ public class DozeSettingsFragment extends SettingsPreferenceFragment implements
     private CustomSeekBarPreference mDozeFadeOut;
     private SwitchPreference mDozeWakeupDoubleTap;
     private SwitchPreference mDozeTriggerPickup;
+    private SwitchPreference mDozeTriggerTilt;
     private SwitchPreference mDozeTriggerSigmotion;
     private SwitchPreference mDozeTriggerNotification;
     private SwitchPreference mDozeTriggerDoubleTap;
@@ -125,6 +127,12 @@ public class DozeSettingsFragment extends SettingsPreferenceFragment implements
             mDozeTriggerPickup.setOnPreferenceChangeListener(this);
         } else {
             removePreference(KEY_DOZE_TRIGGER_PICKUP);
+        }
+        if (isTiltSensorUsedByDefault(mConfig)) {
+            mDozeTriggerTilt = (SwitchPreference) findPreference(KEY_DOZE_TRIGGER_TILT);
+            mDozeTriggerTilt.setOnPreferenceChangeListener(this);
+        } else {
+            removePreference(KEY_DOZE_TRIGGER_TILT);
         }
         if (isSigmotionSensorUsedByDefault(activity)) {
             mDozeTriggerSigmotion = (SwitchPreference) findPreference(KEY_DOZE_TRIGGER_SIGMOTION);
@@ -186,6 +194,11 @@ public class DozeSettingsFragment extends SettingsPreferenceFragment implements
             boolean value = (Boolean) newValue;
             Settings.System.putInt(getContentResolver(),
                     Settings.System.DOZE_TRIGGER_PICKUP, value ? 1 : 0);
+        }
+        if (preference == mDozeTriggerTilt) {
+            boolean value = (Boolean) newValue;
+            Settings.System.putInt(getContentResolver(),
+                    Settings.System.DOZE_TRIGGER_TILT, value ? 1 : 0);
         }
         if (preference == mDozeTriggerSigmotion) {
             boolean value = (Boolean) newValue;
@@ -250,6 +263,11 @@ public class DozeSettingsFragment extends SettingsPreferenceFragment implements
                     Settings.System.DOZE_TRIGGER_PICKUP, 1);
             mDozeTriggerPickup.setChecked(value != 0);
         }
+        if (mDozeTriggerTilt != null) {
+            int value = Settings.System.getInt(getContentResolver(),
+                    Settings.System.DOZE_TRIGGER_TILT, 1);
+            mDozeTriggerTilt.setChecked(value != 0);
+        }
         if (mDozeTriggerSigmotion != null) {
             int value = Settings.System.getInt(getContentResolver(),
                     Settings.System.DOZE_TRIGGER_SIGMOTION, 1);
@@ -283,6 +301,10 @@ public class DozeSettingsFragment extends SettingsPreferenceFragment implements
 
     private static boolean isPickupSensorUsedByDefault(AmbientDisplayConfiguration config) {
         return config.pulseOnPickupAvailable();
+    }
+
+    private static boolean isTiltSensorUsedByDefault(AmbientDisplayConfiguration config) {
+        return config.pulseOnTiltAvailable();
     }
 
     private static boolean isSigmotionSensorUsedByDefault(Context context) {
