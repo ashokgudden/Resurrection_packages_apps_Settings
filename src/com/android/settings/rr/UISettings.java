@@ -18,9 +18,7 @@ import android.content.Context;
 import android.content.ContentResolver;
 import android.content.res.Resources;
 import android.hardware.fingerprint.FingerprintManager;
-import android.os.Build;
 import android.os.Bundle;
-import android.os.SystemProperties;
 import android.os.UserHandle;
 import android.support.v7.preference.ListPreference;
 import android.support.v14.preference.SwitchPreference;
@@ -43,11 +41,9 @@ import com.android.settings.rr.SeekBarPreference;
 public class UISettings extends SettingsPreferenceFragment {
     private static final String TAG = "UI";
     private static final String KEY_FONT_SIZE = "font_size";
-    private static final String KEY_DOZE_FRAGMENT = "doze_fragment";
     private static final String RR_INCALL = "rr_incall";
 
     private Preference mFontSizePref;
-    private PreferenceScreen mDozeFragement;
     private FingerprintManager mFingerprintManager;
     private PreferenceScreen mFingerprint;
     private PreferenceScreen mIncall;
@@ -65,12 +61,6 @@ public class UISettings extends SettingsPreferenceFragment {
 
         addPreferencesFromResource(R.xml.rr_ui_settings);
  		mFontSizePref = findPreference(KEY_FONT_SIZE);
-
-        mDozeFragement = (PreferenceScreen) findPreference(KEY_DOZE_FRAGMENT);
-        if (!isDozeAvailable(activity)) {
-            getPreferenceScreen().removePreference(mDozeFragement);
-            mDozeFragement = null;
-        }
 
         mFingerprintManager = (FingerprintManager) getActivity().getSystemService(Context.FINGERPRINT_SERVICE);        
         mFingerprint = (PreferenceScreen) findPreference("rr_fp");
@@ -95,15 +85,6 @@ public class UISettings extends SettingsPreferenceFragment {
                 strEntryValues);
         mFontSizePref.setSummary(entries[index]);
     }
-
-    private static boolean isDozeAvailable(Context context) {
-        String name = Build.IS_DEBUGGABLE ? SystemProperties.get("debug.doze.component") : null;
-        if (TextUtils.isEmpty(name)) {
-            name = context.getResources().getString(
-                    com.android.internal.R.string.config_dozeComponent);
-        }
-        return !TextUtils.isEmpty(name);
-     }
 
     @Override
     public void onResume() {

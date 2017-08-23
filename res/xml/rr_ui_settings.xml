@@ -77,13 +77,6 @@
             android:fragment="com.android.settings.rr.InCallSettings" />
 
         <PreferenceScreen
-            android:key="doze_fragment"
-            android:title="@string/doze_title"
-            android:icon="@drawable/rr_ambient_display_icon"
-            android:summary="@string/rr_doze_summary"
-            android:fragment="com.android.settings.rr.ambientdisplay.AmbientSettings" />
-
-        <PreferenceScreen
             android:key="dashboard"
             android:title="@string/rr_dash_board_title"
             android:icon="@drawable/rr_dashboard_icon"

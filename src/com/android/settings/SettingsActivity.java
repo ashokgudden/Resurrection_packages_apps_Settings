@@ -150,7 +150,7 @@ import com.android.settings.rr.navbar.PulseSettings;
 import com.android.settings.rr.AppCircleBar;
 import com.android.settings.rr.pie.PieSettings;
 import com.android.settings.rr.gestureanywhere.GestureAnywhereSettings;
-import com.android.settings.rr.ambientdisplay.AmbientSettings;
+import com.android.settings.rr.DozeSettingsFragment;
 import com.android.settings.rr.Headsup;
 import com.android.settings.rr.input.HWSettings;
 
@@ -397,7 +397,7 @@ public class SettingsActivity extends SettingsDrawerActivity
             WifiAPITest.class.getName(),
             WifiInfo.class.getName(),
             MainSettingsLayout.class.getName(),
-            AmbientSettings.class.getName(),
+            DozeSettingsFragment.class.getName(),
             About.class.getName(),
             NavbarSettings.class.getName(),
             FlingSettings.class.getName(),
