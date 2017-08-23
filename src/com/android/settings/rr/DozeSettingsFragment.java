@@ -58,6 +58,8 @@ public class DozeSettingsFragment extends SettingsPreferenceFragment implements
     private static final String KEY_DOZE_TRIGGER_SIGMOTION = "doze_trigger_sigmotion";
     private static final String KEY_DOZE_TRIGGER_NOTIFICATION = "doze_trigger_notification";
     private static final String KEY_DOZE_TRIGGER_DOUBLETAP = "doze_trigger_doubletap";
+    private static final String KEY_DOZE_TRIGGER_HAND_WAVE = "doze_trigger_hand_wave";
+    private static final String KEY_DOZE_TRIGGER_POCKET = "doze_trigger_pocket";
     private static final String KEY_DOZE_BRIGHTNESS = "doze_brightness";
 
     private static final String SYSTEMUI_METADATA_NAME = "com.android.systemui";
@@ -72,6 +74,8 @@ public class DozeSettingsFragment extends SettingsPreferenceFragment implements
     private SwitchPreference mDozeTriggerSigmotion;
     private SwitchPreference mDozeTriggerNotification;
     private SwitchPreference mDozeTriggerDoubleTap;
+    private SwitchPreference mDozeTriggerHandWave;
+    private SwitchPreference mDozeTriggerPocket;
     private CustomSeekBarPreference mDozeBrightness;
 
     private AmbientDisplayConfiguration mConfig;
@@ -149,6 +153,16 @@ public class DozeSettingsFragment extends SettingsPreferenceFragment implements
         } else {
             removePreference(KEY_DOZE_TRIGGER_DOUBLETAP);
         }
+        if (isProximitySensorUsedByDefault(mConfig)) {
+            mDozeTriggerHandWave = (SwitchPreference) findPreference(KEY_DOZE_TRIGGER_HAND_WAVE);
+            mDozeTriggerHandWave.setOnPreferenceChangeListener(this);
+            mDozeTriggerPocket = (SwitchPreference) findPreference(KEY_DOZE_TRIGGER_POCKET);
+            mDozeTriggerPocket.setOnPreferenceChangeListener(this);
+        } else {
+            removePreference(KEY_DOZE_TRIGGER_HAND_WAVE);
+            removePreference(KEY_DOZE_TRIGGER_POCKET);
+        }
+
         mDozeTriggerNotification = (SwitchPreference) findPreference(KEY_DOZE_TRIGGER_NOTIFICATION);
         mDozeTriggerNotification.setOnPreferenceChangeListener(this);
 
@@ -209,6 +223,15 @@ public class DozeSettingsFragment extends SettingsPreferenceFragment implements
             boolean value = (Boolean) newValue;
             Settings.System.putInt(getContentResolver(),
                     Settings.System.DOZE_TRIGGER_DOUBLETAP, value ? 1 : 0);
+        }
+        if (preference == mDozeTriggerHandWave) {
+            boolean value = (Boolean) newValue;
+            Settings.System.putInt(getContentResolver(),
+                    Settings.System.DOZE_TRIGGER_HAND_WAVE, value ? 1 : 0);
+        } else if (preference == mDozeTriggerPocket) {
+            boolean value = (Boolean) newValue;
+            Settings.System.putInt(getContentResolver(),
+                    Settings.System.DOZE_TRIGGER_POCKET, value ? 1 : 0);
         }
         if (preference == mDozeTriggerNotification) {
             boolean value = (Boolean) newValue;
@@ -278,6 +301,16 @@ public class DozeSettingsFragment extends SettingsPreferenceFragment implements
                     Settings.System.DOZE_TRIGGER_DOUBLETAP, 0);
             mDozeTriggerDoubleTap.setChecked(value != 0);
         }
+        if (mDozeTriggerHandWave != null) {
+            int value = Settings.System.getInt(getContentResolver(),
+                    Settings.System.DOZE_TRIGGER_HAND_WAVE, 1);
+            mDozeTriggerHandWave.setChecked(value != 0);
+        }
+        if (mDozeTriggerPocket != null) {
+            int value = Settings.System.getInt(getContentResolver(),
+                    Settings.System.DOZE_TRIGGER_POCKET, 1);
+            mDozeTriggerPocket.setChecked(value != 0);
+        }
         if (mDozeTriggerNotification != null) {
             int value = Settings.System.getInt(getContentResolver(),
                     Settings.System.DOZE_TRIGGER_NOTIFICATION, 1);
@@ -305,6 +338,10 @@ public class DozeSettingsFragment extends SettingsPreferenceFragment implements
 
     private static boolean isTiltSensorUsedByDefault(AmbientDisplayConfiguration config) {
         return config.pulseOnTiltAvailable();
+    }
+
+    private static boolean isProximitySensorUsedByDefault(AmbientDisplayConfiguration config) {
+        return config.pulseOnProximityAvailable();
     }
 
     private static boolean isSigmotionSensorUsedByDefault(Context context) {
