@@ -1227,27 +1227,35 @@ public class SettingsActivity extends SettingsDrawerActivity
 
         // Kernel Adiutor
         boolean kapresent = false;
+        boolean kaEnabled = false;
         try {
             kapresent = (getPackageManager().getPackageInfo("com.grarak.kerneladiutor", 0).versionCode > 0);
+            ApplicationInfo kA = getPackageManager().getApplicationInfo("com.grarak.kerneladiutor",0);
+            kaEnabled = kA.enabled;
         } catch (PackageManager.NameNotFoundException e) {
         }
         try {
             kapresent = (getPackageManager().getPackageInfo("com.kerneladiutor.mod", 0).versionCode > 0);
+            ApplicationInfo kA = getPackageManager().getApplicationInfo("com.kerneladiutor.mod",0);
+            kaEnabled = kA.enabled;
         } catch (PackageManager.NameNotFoundException e) {
         }
         setTileEnabled(new ComponentName(packageName,
                         Settings.KActivity.class.getName()),
-                kapresent, isAdmin, pm);
+                kapresent & kaEnabled, isAdmin, pm);
 
         // Substratum
         boolean themesSupported = false;
+        boolean themeEnabled = false;
         try {
             themesSupported = (getPackageManager().getPackageInfo("projekt.substratum", 0).versionCode > 0);
+            ApplicationInfo suB = getPackageManager().getApplicationInfo("projekt.substratum",0);
+            themeEnabled = suB.enabled;
         } catch (PackageManager.NameNotFoundException e) {
         }
         setTileEnabled(new ComponentName(packageName,
                         Settings.ThemesActivity.class.getName()),
-                themesSupported, isAdmin, pm);
+                themesSupported & themeEnabled, isAdmin, pm);
 
         // SuperSU
         boolean suSupported = false;

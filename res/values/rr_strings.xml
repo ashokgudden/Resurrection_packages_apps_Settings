@@ -160,7 +160,7 @@
     <string name="listview">ListView</string>
     <string name="icons">Icons</string>
     <string name="general">General</string>
-    <string name="ka_title">Performance</string>
+    <string name="ka_title">Kernel Adiutor</string>
 
     <!--RR Configurations Summaries-->
     <string name="clock_custom_summary">Customize various elements of the statusbar clock and date</string>
