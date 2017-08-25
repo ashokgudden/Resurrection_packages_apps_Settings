@@ -2666,4 +2666,8 @@
     <!-- MTP Dirty Hack -->
     <string name="enable_mtp_dirtyhack_title">MTP instead Charging</string>
     <string name="enable_mtp_dirtyhack_summary">Enable MTP instead Charging after connect to PC</string>
+    
+    <!-- Vibration mode entered indicated by vibrating switch -->
+    <string name="vibration_mode_indication_title">Indicate vibration mode</string>
+    <string name="vibration_mode_indication_summary">Indicate vibration mode by vibrating</string>
 </resources>
