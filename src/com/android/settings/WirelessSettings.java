@@ -75,8 +75,6 @@ public class WirelessSettings extends SettingsPreferenceFragment implements Inde
     private static final String KEY_MOBILE_NETWORK_SETTINGS = "mobile_network_settings";
     private static final String KEY_MANAGE_MOBILE_PLAN = "manage_mobile_plan";
     private static final String KEY_WFC_SETTINGS = "wifi_calling_settings";
-
-    private static final String KEY_NETWORK_RESET = "network_reset";
     private static final String KEY_NFC_CATEGORY_SETTINGS = "nfc_category_settings";
     private static final String KEY_NFC_PAYMENT_SETTINGS = "nfc_payment_settings";
     private static final String KEY_CELL_BROADCAST_SETTINGS = "cell_broadcast_settings";
@@ -369,12 +367,6 @@ public class WirelessSettings extends SettingsPreferenceFragment implements Inde
                     .isProvisioningNeededButUnavailable(getActivity()));
         }
 
-        // Remove network reset if not allowed
-        if (RestrictedLockUtils.hasBaseUserRestriction(activity,
-                UserManager.DISALLOW_NETWORK_RESET, UserHandle.myUserId())) {
-            removePreference(KEY_NETWORK_RESET);
-        }
-
         // Enable link to CMAS app settings depending on the value in config.xml.
         boolean isCellBroadcastAppLinkEnabled = this.getResources().getBoolean(
                 com.android.internal.R.bool.config_cellBroadcastAppLinks);
@@ -541,11 +533,6 @@ public class WirelessSettings extends SettingsPreferenceFragment implements Inde
                 if (!ImsManager.isWfcEnabledByPlatform(context) ||
                         !ImsManager.isWfcProvisionedOnDevice(context)) {
                     result.add(KEY_WFC_SETTINGS);
-                }
-
-                if (RestrictedLockUtils.hasBaseUserRestriction(context,
-                        UserManager.DISALLOW_NETWORK_RESET, UserHandle.myUserId())) {
-                    result.add(KEY_NETWORK_RESET);
                 }
 
                 // Enable link to CMAS app settings depending on the value in config.xml.
