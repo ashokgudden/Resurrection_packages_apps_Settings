@@ -25,7 +25,8 @@ LOCAL_STATIC_JAVA_LIBRARIES := \
 	android-support-design \
     jsr305 \
     settings-logtags \
-    org.cyanogenmod.platform.internal
+    org.cyanogenmod.platform.internal \
+    roottools
 
 LOCAL_MODULE_TAGS := optional
 
@@ -63,6 +64,13 @@ include frameworks/opt/setupwizard/library/common-full-support.mk
 include frameworks/base/packages/SettingsLib/common.mk
 
 include $(BUILD_PACKAGE)
+
+include $(CLEAR_VARS)
+
+LOCAL_PREBUILT_STATIC_JAVA_LIBRARIES := \
+    roottools:libs/RootTools.jar
+
+include $(BUILD_MULTI_PREBUILT)
 
 # Use the following include to make our test apk.
 ifeq (,$(ONE_SHOT_MAKEFILE))
