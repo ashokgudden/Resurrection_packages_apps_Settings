@@ -148,7 +148,7 @@
             android:key="vol_up_disable_overlays"
             android:title="@string/vol_up_disable_overlays_title"
             android:summary="@string/vol_up_disable_overlays_summary"
-            android:defaultValue="false" />
+            android:defaultValue="true" />
 
         <SwitchPreference
             android:key="swap_volume_buttons"
