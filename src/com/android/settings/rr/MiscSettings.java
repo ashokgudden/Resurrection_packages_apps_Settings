@@ -25,6 +25,7 @@ import android.os.Bundle;
 import android.os.Build;
 import android.os.SystemProperties;
 import android.os.UserHandle;
+import android.provider.SearchIndexableResource;
 import android.provider.Settings;
 import android.provider.Settings.Global;
 import android.support.v7.preference.ListPreference;
@@ -36,7 +37,11 @@ import android.support.v7.preference.PreferenceScreen;
 
 import dalvik.system.VMRuntime;
 
+import com.android.internal.util.rr.PackageUtils;
+import com.android.internal.logging.MetricsProto.MetricsEvent;
 import com.android.settings.R;
+import com.android.settings.search.BaseSearchIndexProvider;
+import com.android.settings.search.Indexable;
 import com.android.settings.SettingsPreferenceFragment;
 import com.android.settings.util.CMDProcessor;
 import com.android.settings.Utils;
@@ -45,12 +50,13 @@ import java.io.File;
 import java.io.IOException;
 import java.io.DataOutputStream;
 import java.lang.*;
+import java.util.ArrayList;
 import java.util.List;
 
 import com.android.internal.util.rr.PackageUtils;
 import com.android.internal.logging.MetricsProto.MetricsEvent;
 
-public class MiscSettings extends SettingsPreferenceFragment implements OnPreferenceClickListener, OnPreferenceChangeListener {
+public class MiscSettings extends SettingsPreferenceFragment implements OnPreferenceClickListener, OnPreferenceChangeListener, Indexable {
 
     private static final int DEFAULT_SMS_MAX_COUNT = 30;
     private static final String APP_REMOVER = "system_app_remover";
@@ -151,7 +157,7 @@ public class MiscSettings extends SettingsPreferenceFragment implements OnPrefer
         }
     }
 
-    private boolean canSU() {
+    private static boolean canSU() {
         Process process = null;
         int exitValue = -1;
         try {
@@ -219,4 +225,56 @@ public class MiscSettings extends SettingsPreferenceFragment implements OnPrefer
         }
         return false;
     }
+
+    public static final SearchIndexProvider SEARCH_INDEX_DATA_PROVIDER =
+        new BaseSearchIndexProvider() {
+            @Override
+            public List<SearchIndexableResource> getXmlResourcesToIndex(Context context,
+                     boolean enabled) {
+                ArrayList<SearchIndexableResource> result =
+                        new ArrayList<SearchIndexableResource>();
+
+                SearchIndexableResource sir = new SearchIndexableResource(context);
+                sir.xmlResId = R.xml.rr_misc;
+                result.add(sir);
+
+                return result;
+            }
+
+            @Override
+            public List<String> getNonIndexableKeys(Context context) {
+                PackageManager pm = context.getPackageManager();
+                boolean isTelephony = pm.hasSystemFeature(PackageManager.FEATURE_TELEPHONY);
+ 
+                ArrayList<String> result = new ArrayList<String>();
+
+                if (!PackageUtils.isAvailableApp(DELTA_PACKAGE, context)) {
+                    result.add(RR_DELTA);
+                }
+
+                if (!PackageUtils.isAvailableApp(OTA_PACKAGE, context)) {
+                    result.add(RR_OTA_APP);
+                }
+
+                if (!PackageUtils.isAvailableApp(WEATHER_PACKAGE, context)) {
+                    result.add(WEATHER_SETTINGS);
+                }
+
+                if (!PackageUtils.isAvailableApp(LOGCAT_PACKAGE, context)) {
+                    result.add(LOGCAT_PACKAGE);
+                }
+
+                if (!isTelephony) {
+                    result.add(KEY_SMS_SECURITY_CHECK_PREF);
+                }
+
+                if (!canSU()) {
+                    result.add(SELINUX);
+                    result.add(APP_REMOVER);
+                    result.add(SELINX_PREF);
+                }
+ 
+                return result;
+            }
+    };
 }

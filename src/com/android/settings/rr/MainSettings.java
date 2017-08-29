@@ -13,7 +13,9 @@
 */
 package com.android.settings.rr;
 
+import android.content.Context;
 import android.os.Bundle;
+import android.provider.SearchIndexableResource;
 import android.support.v7.preference.ListPreference;
 import android.support.v14.preference.SwitchPreference;
 import android.support.v7.preference.Preference;
@@ -21,13 +23,17 @@ import android.support.v7.preference.Preference.OnPreferenceChangeListener;
 import android.support.v7.preference.PreferenceScreen;
 
 import com.android.internal.logging.MetricsProto.MetricsEvent;
-
 import com.android.settings.R;
+import com.android.settings.search.BaseSearchIndexProvider;
+import com.android.settings.search.Indexable;
 import com.android.settings.SettingsPreferenceFragment;
 import com.android.settings.Utils;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class MainSettings extends SettingsPreferenceFragment implements
-        Preference.OnPreferenceChangeListener {
+        Preference.OnPreferenceChangeListener, Indexable {
     private static final String TAG = "MainSettings";
 
     @Override
@@ -45,4 +51,21 @@ public class MainSettings extends SettingsPreferenceFragment implements
     public boolean onPreferenceChange(Preference preference, Object objValue) 		{
         return true;
     }
+
+
+    public static final SearchIndexProvider SEARCH_INDEX_DATA_PROVIDER =
+        new BaseSearchIndexProvider() {
+            @Override
+            public List<SearchIndexableResource> getXmlResourcesToIndex(Context context,
+                     boolean enabled) {
+                ArrayList<SearchIndexableResource> result =
+                        new ArrayList<SearchIndexableResource>();
+
+                SearchIndexableResource sir = new SearchIndexableResource(context);
+                sir.xmlResId = R.xml.rr_main_settings;
+                result.add(sir);
+
+                return result;
+            }
+    };
 }
