@@ -106,6 +106,8 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashSet;
 import java.util.List;
+import java.io.DataOutputStream;
+import java.lang.*;
 
 import org.xdevs23.crypto.hashing.HashUtils;
 
@@ -644,16 +646,18 @@ public class DevelopmentSettings extends RestrictedSettingsFragment
 
     private boolean removeRootOptionsIfRequired() {
 
-        // Magisk Manager
+        // Check for Magisk Manager and SuperSU existance.
         boolean magiskSupported = false;
+        boolean suSupported = false;
         try {
             magiskSupported = (getPackageManager().getPackageInfo("com.topjohnwu.magisk", 0).versionCode > 0);
+            suSupported = (getPackageManager().getPackageInfo("eu.chainfire.supersu", 0).versionCode > 0);
         } catch (PackageManager.NameNotFoundException e) {
         }
 
-        // if magisk is supported, management is done in MagiskManager.
+        // if magisk or SuperSU is supported, management is done in MagiskManager or SuperSU.
         // remove the root access and appops preferences
-        if (magiskSupported) {
+        if ((magiskSupported && canSU()) || (suSupported && canSU())) {
             if (mRootAccess != null) {
                 getPreferenceScreen().removePreference(mRootAccess);
             }
@@ -661,33 +665,6 @@ public class DevelopmentSettings extends RestrictedSettingsFragment
                 getPreferenceScreen().removePreference(mRootAppops);
             }
             return true;
-        }
-
-        // SuperSu
-
-        boolean superSUSupported = false;
-        try {
-            superSUSupported = (getPackageManager().getPackageInfo("eu.chainfire.supersu", 0).versionCode > 0);
-        } catch (PackageManager.NameNotFoundException e) {
-        }
-
-        // if superSU is supported, management is done in SuperSu app.
-        // remove the root access and appops preferences
-        if (superSUSupported) {
-            if (mRootAccess != null) {
-                getPreferenceScreen().removePreference(mRootAccess);
-            }
-            if (mRootAppops != null) {
-                getPreferenceScreen().removePreference(mRootAppops);
-            }
-            return true;
-        }
-        // user builds don't get root, and eng always gets root
-        if (!(Build.IS_DEBUGGABLE || "eng".equals(Build.TYPE))) {
-            if (mRootAccess != null) {
-                getPreferenceScreen().removePreference(mRootAccess);
-                return true;
-            }
         }
 
         return false;
@@ -996,6 +973,22 @@ public class DevelopmentSettings extends RestrictedSettingsFragment
         if (mRootAppops != null) {
             mRootAppops.setEnabled(isRootForAppsEnabled());
         }
+    }
+
+    private boolean canSU() {
+        Process process = null;
+        int exitValue = -1;
+        try {
+            process = Runtime.getRuntime().exec("su");
+            DataOutputStream toProcess = new DataOutputStream(process.getOutputStream());
+            toProcess.writeBytes("exec id\n");
+            toProcess.flush();
+            exitValue = process.waitFor();
+        } catch (Exception e) {
+            exitValue = -1;
+            e.printStackTrace();
+        }
+        return exitValue == 0;
     }
 
     public static boolean isRootForAppsEnabled() {
