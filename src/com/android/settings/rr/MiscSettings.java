@@ -26,10 +26,12 @@ import android.os.Build;
 import android.os.SystemProperties;
 import android.os.UserHandle;
 import android.provider.Settings;
+import android.provider.Settings.Global;
 import android.support.v7.preference.ListPreference;
 import android.support.v14.preference.SwitchPreference;
 import android.support.v7.preference.Preference;
 import android.support.v7.preference.Preference.OnPreferenceChangeListener;
+import android.support.v7.preference.Preference.OnPreferenceClickListener;
 import android.support.v7.preference.PreferenceScreen;
 
 import dalvik.system.VMRuntime;
@@ -48,8 +50,9 @@ import java.util.List;
 import com.android.internal.util.rr.PackageUtils;
 import com.android.internal.logging.MetricsProto.MetricsEvent;
 
-public class MiscSettings extends SettingsPreferenceFragment implements OnPreferenceChangeListener {
+public class MiscSettings extends SettingsPreferenceFragment implements OnPreferenceClickListener, OnPreferenceChangeListener {
 
+    private static final int DEFAULT_SMS_MAX_COUNT = 30;
     private static final String APP_REMOVER = "system_app_remover";
     private static final String ROOT_ACCESS_PROPERTY = "persist.sys.root_access";
     private static final String RR_OTA_APP = "update_settings";
@@ -61,6 +64,7 @@ public class MiscSettings extends SettingsPreferenceFragment implements OnPrefer
 	private static final String LOGCAT_PACKAGE = "org.omnirom.logcat";
     private static final String SELINUX = "selinux";
     private static final String SELINX_PREF ="selinux_switch";
+    private static final String KEY_SMS_SECURITY_CHECK_PREF = "sms_security_check_limit";
 
     private PreferenceScreen mWeatherPref;
     private PreferenceScreen mDelta;
@@ -69,6 +73,7 @@ public class MiscSettings extends SettingsPreferenceFragment implements OnPrefer
     private PreferenceScreen mLogCat;
     private SwitchPreference mSelinux;
     private Preference mSelinuxPref;
+    private ListPreference mSmsSecurityCheck;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -81,6 +86,21 @@ public class MiscSettings extends SettingsPreferenceFragment implements OnPrefer
         mSelinux = (SwitchPreference) findPreference(SELINUX);
         mAppRemover = (PreferenceScreen) findPreference(APP_REMOVER);
         mSelinuxPref = (Preference) findPreference(SELINX_PREF);
+
+        mSmsSecurityCheck = (ListPreference) findPreference(KEY_SMS_SECURITY_CHECK_PREF);
+
+       // Add package manager to check if features are available
+        PackageManager pm = getActivity().getPackageManager();
+        boolean isTelephony = pm.hasSystemFeature(PackageManager.FEATURE_TELEPHONY);
+
+        if (!isTelephony) {
+            getPreferenceScreen().removePreference(mSmsSecurityCheck);
+        } else {
+            mSmsSecurityCheck.setOnPreferenceClickListener(this);
+            mSmsSecurityCheck.setOnPreferenceChangeListener(this);
+            int smsSecurityCheck = Settings.Global.getInt(resolver, Settings.Global.SMS_OUTGOING_CHECK_MAX_COUNT, DEFAULT_SMS_MAX_COUNT);
+            updateSmsSecuritySummary(smsSecurityCheck);
+        }
 
         if (canSU()) {
             mSelinux.setOnPreferenceChangeListener(this);
@@ -121,6 +141,16 @@ public class MiscSettings extends SettingsPreferenceFragment implements OnPrefer
         }
     }
 
+    private void updateSmsSecuritySummary(int i) {
+        if (i == 0) {
+            String message = "Display an alert dialog to prevent applications from sending SMS messages too frequently. Current limit: Unlimited messages in 1 minute";
+            mSmsSecurityCheck.setSummary(message);
+        } else {        
+            String message = getString(R.string.sms_security_check_limit_summary, i);
+            mSmsSecurityCheck.setSummary(message);
+        }
+    }
+
     private boolean canSU() {
         Process process = null;
         int exitValue = -1;
@@ -154,6 +184,21 @@ public class MiscSettings extends SettingsPreferenceFragment implements OnPrefer
     }
 
     @Override
+    public boolean onPreferenceClick(Preference preference) {
+        // Always returns true to prevent invoking an intent without catching exceptions.
+        // See {@link Preference#performClick(PreferenceScreen)}/
+        if (preference == mSmsSecurityCheck) {
+            int smsSecurityCheck = Settings.Global.getInt(getActivity().getContentResolver(), Settings.Global.SMS_OUTGOING_CHECK_MAX_COUNT, DEFAULT_SMS_MAX_COUNT);
+            String cConvert = String.valueOf(smsSecurityCheck);
+            int index = mSmsSecurityCheck.findIndexOfValue((String) cConvert);
+            mSmsSecurityCheck.setValueIndex(index);
+            updateSmsSecuritySummary(smsSecurityCheck);
+            return true;
+        }
+        return true;
+    }
+
+    @Override
     public boolean onPreferenceChange(Preference preference, Object value) {
         ContentResolver resolver = getActivity().getContentResolver();
         if (preference == mSelinux) {
@@ -167,6 +212,10 @@ public class MiscSettings extends SettingsPreferenceFragment implements OnPrefer
                 mSelinux.setSummary(R.string.selinux_permissive_title);
             }
             return true;
+        } else if (preference == mSmsSecurityCheck) {
+            int smsSecurityCheck = Integer.valueOf((String) value);
+            Settings.Global.putInt(resolver, Settings.Global.SMS_OUTGOING_CHECK_MAX_COUNT, smsSecurityCheck);
+            updateSmsSecuritySummary(smsSecurityCheck);
         }
         return false;
     }

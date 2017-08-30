@@ -2677,4 +2677,11 @@
     <string name="reset_settings_title">Feature preferences</string>
     <string name="reset_settings_summary">Reset Paranoid Android feature preferences</string>
     <string name="keywords_settings_reset">reset</string>
+
+    <!--- Sms security limit -->
+    <string name="app_security_title">Advanced</string>
+    <string name="sms_security_check_limit_title">SMS message limit</string>
+    <string name="sms_security_check_limit_summary">Display an alert dialog to prevent applications from sending SMS messages too frequently. Current limit: %d messages in 1 minute</string>
+    <string name="sms_security_check_limit_default">30 (Default)</string>
+    <string name="sms_security_check_limit_unlimited">0 (Unlimited)</string>
 </resources>
