@@ -543,6 +543,12 @@
         android:selectable="false"
         android:title="@string/device_n7100" />
     <Preference
+        android:id="@+id/device_hlte"
+        android:icon="@drawable/phone_tint"
+        android:summary="@string/device_hlte_summary"
+        android:selectable="false"
+        android:title="@string/device_hlte" />
+    <Preference
         android:id="@+id/device_ha3g"
         android:icon="@drawable/phone_tint"
         android:summary="@string/device_ha3g_summary"
@@ -1048,6 +1054,12 @@
         android:title="@string/device_land" />
 
     <Preference
+       android:id="@+id/device_piccolo"
+       android:icon="@drawable/phone_tint"
+       android:summary="@string/device_piccolo_summary"
+       android:selectable="false"
+       android:title="@string/device_piccolo" />
+    <Preference
        android:id="@+id/device_santoni"
        android:icon="@drawable/phone_tint"
        android:summary="@string/device_santoni_summary"
@@ -1177,6 +1189,13 @@
         android:summary="@string/device_nexus7_summary"
         android:selectable="false"
         android:title="@string/device_nexus7" />
+		
+	<Preference
+        android:id="@+id/device_z012d"
+        android:icon="@drawable/phone_tint"
+        android:summary="@string/device_z012d_summary"
+        android:selectable="false"
+        android:title="@string/device_z012d" />
 
     <Preference
         android:id="@+id/device_z00a"

@@ -182,7 +182,7 @@
   <string name="device_n7100_summary">N7100 \nMaintainer - Hibin Maheendran </string>
 
   <string name="device_hlte">Galaxy Note III Qcom</string>
-  <string name="device_hlte_summary">hlte \nMaintainer - Mattia Ruggeri</string>
+  <string name="device_hlte_summary">hlte \nMaintainer - Jason Vidal (vidwhal)</string>
 
   <string name="device_ha3g">Galaxy Note 3 Exynos</string>
   <string name="device_ha3g_summary">SM-N900 \nMaintainer - Mountaser Halak</string>
@@ -377,7 +377,7 @@
   <string name="device_g2_vs980_summary">vs980 \nMaintainer - sixohtew</string>
 
   <string name="device_g3_tmo">LG G3 T-Mobile</string>
-  <string name="device_g3_tmo_summary">D851 \nMaintainer - Aclegg2011 </string>
+  <string name="device_g3_tmo_summary">D851 \nMaintainer - Mountaser Halak </string>
 
   <string name="device_g3">LG G3 Int</string>
   <string name="device_g3_summary">D855 \nMaintainer - Rafael Marchetto (Marchetto96) </string>
@@ -564,6 +564,9 @@
 
   <string name="device_huashan">Sony Xperia SP</string>
   <string name="device_huashan_summary">Huashan\nMaintainer - CodeZero, Adrian DC</string>
+  
+  <string name="device_z012d">Asus Zenfone 3</string>
+  <string name="device_z012d_summary">Z012D\nMaintainer - Ezio (TurkDevs)</string>
 
   <string name="device_z00a">Asus Zenfone 2</string>
   <string name="device_z00a_summary">Z00A\nMaintainer - sayeed99</string>
@@ -636,6 +639,9 @@
 
   <string name="device_paella">BQ Aquaris X5</string>
   <string name="device_paella_summary">Paella\nMaintainer - Darkmet98</string>
+
+  <string name="device_piccolo">BQ Aquaris M5</string>
+  <string name="device_piccolo_summary">Piccolo\nMaintainer - Juanan557</string>
 
   <string name="device_onyx">OnePlus X</string>
   <string name="device_onyx_summary">Onyx \nMaintainer - Sanjay Varun</string>
