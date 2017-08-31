@@ -23,34 +23,32 @@ import android.content.pm.PackageManager;
 import android.content.pm.ResolveInfo;
 import android.os.Bundle;
 import android.os.Build;
-import com.android.settings.util.AbstractAsyncSuCMDProcessor;
-import com.android.settings.util.CMDProcessor;
-import com.android.settings.util.Helpers;
 import android.os.SystemProperties;
 import android.os.UserHandle;
+import android.provider.Settings;
 import android.support.v7.preference.ListPreference;
 import android.support.v14.preference.SwitchPreference;
 import android.support.v7.preference.Preference;
+import android.support.v7.preference.Preference.OnPreferenceChangeListener;
 import android.support.v7.preference.PreferenceScreen;
-import android.provider.Settings;
-import com.android.settings.util.Helpers;
+
 import dalvik.system.VMRuntime;
 
 import com.android.settings.R;
 import com.android.settings.SettingsPreferenceFragment;
-
-import java.util.List;
-import java.lang.Runtime;
+import com.android.settings.util.CMDProcessor;
 import com.android.settings.Utils;
 
 import java.io.File;
 import java.io.IOException;
 import java.io.DataOutputStream;
+import java.lang.*;
+import java.util.List;
 
 import com.android.internal.util.rr.PackageUtils;
 import com.android.internal.logging.MetricsProto.MetricsEvent;
 
-public class MiscSettings extends SettingsPreferenceFragment {
+public class MiscSettings extends SettingsPreferenceFragment implements OnPreferenceChangeListener {
 
     private static final String APP_REMOVER = "system_app_remover";
     private static final String ROOT_ACCESS_PROPERTY = "persist.sys.root_access";
@@ -61,12 +59,16 @@ public class MiscSettings extends SettingsPreferenceFragment {
 	private static final String OTA_PACKAGE = "com.resurrection.ota";
 	private static final String DELTA_PACKAGE = "eu.chainfire.opendelta";
 	private static final String LOGCAT_PACKAGE = "org.omnirom.logcat";
+    private static final String SELINUX = "selinux";
+    private static final String SELINX_PREF ="selinux_switch";
 
     private PreferenceScreen mWeatherPref;
     private PreferenceScreen mDelta;
     private PreferenceScreen mOta;
     private PreferenceScreen mAppRemover;
     private PreferenceScreen mLogCat;
+    private SwitchPreference mSelinux;
+    private Preference mSelinuxPref;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -75,25 +77,27 @@ public class MiscSettings extends SettingsPreferenceFragment {
         addPreferencesFromResource(R.xml.rr_misc);
   	    final ContentResolver resolver = getActivity().getContentResolver();
 
+        //SELinux
+        mSelinux = (SwitchPreference) findPreference(SELINUX);
         mAppRemover = (PreferenceScreen) findPreference(APP_REMOVER);
+        mSelinuxPref = (Preference) findPreference(SELINX_PREF);
 
-        // Magisk Manager
-        boolean magiskSupported = false;
-        // SuperSU
-        boolean suSupported = false;
-        try {
-            magiskSupported = (getPackageManager().getPackageInfo("com.topjohnwu.magisk", 0).versionCode > 0);
-        } catch (PackageManager.NameNotFoundException e) {
-        }
-        try {
-            suSupported = (getPackageManager().getPackageInfo("eu.chainfire.supersu", 0).versionCode >= 185);
-        } catch (PackageManager.NameNotFoundException e) {
-        }
-
-        if (magiskSupported || isSURooted() || isRootForAppsEnabled()) {
+        if (canSU()) {
+            mSelinux.setOnPreferenceChangeListener(this);
+            if (CMDProcessor.runShellCommand("getenforce").getStdout().contains("Enforcing")) {
+                mSelinux.setChecked(true);
+                mSelinux.setSummary(R.string.selinux_enforcing_title);
+            } else {
+                mSelinux.setChecked(false);
+                mSelinux.setSummary(R.string.selinux_permissive_title);
+            }
         } else {
-            if (mAppRemover != null)
-                getPreferenceScreen().removePreference(mAppRemover);
+            if (mSelinux != null) 
+                getPreferenceScreen().removePreference(mSelinux);
+             if (mAppRemover != null)
+                 getPreferenceScreen().removePreference(mAppRemover);
+            if (mSelinuxPref != null) 
+                getPreferenceScreen().removePreference(mSelinuxPref);
         }
 
         PreferenceScreen mDelta = (PreferenceScreen) findPreference(RR_DELTA);
@@ -115,32 +119,22 @@ public class MiscSettings extends SettingsPreferenceFragment {
         if (!PackageUtils.isAvailableApp(LOGCAT_PACKAGE, getActivity())) {
             getPreferenceScreen().removePreference(mLogCat);
         }
-
     }
 
-    public static boolean isRootForAppsEnabled() {
-        int value = SystemProperties.getInt(ROOT_ACCESS_PROPERTY, 0);
-        boolean daemonState =
-                SystemProperties.get("init.svc.su_daemon", "absent").equals("running");
-        return daemonState && (value == 1 || value == 3);
-    }
-
-    public static boolean isSURooted() {
-        // try executing commands
-        return canExecuteCommand("/system/xbin/which su")
-                || canExecuteCommand("/system/bin/which su") || canExecuteCommand("which su");
-    }
-
-    // executes a command on the system
-    private static boolean canExecuteCommand(String command) {
-        boolean executedSuccesfully;
+    private boolean canSU() {
+        Process process = null;
+        int exitValue = -1;
         try {
-          Runtime.getRuntime().exec(command);
-          executedSuccesfully = true;
+            process = Runtime.getRuntime().exec("su");
+            DataOutputStream toProcess = new DataOutputStream(process.getOutputStream());
+            toProcess.writeBytes("exec id\n");
+            toProcess.flush();
+            exitValue = process.waitFor();
         } catch (Exception e) {
-          executedSuccesfully = false;
+            exitValue = -1;
+            e.printStackTrace();
         }
-        return executedSuccesfully;
+        return exitValue == 0;
     }
 
     @Override
@@ -152,5 +146,28 @@ public class MiscSettings extends SettingsPreferenceFragment {
     public void onResume() {
         super.onResume();
     }
-}
 
+    private void setSelinuxEnabled(String status) {
+        SharedPreferences.Editor editor = getContext().getSharedPreferences("selinux_pref", Context.MODE_PRIVATE).edit();
+        editor.putString("selinux", status);
+        editor.apply();
+    }
+
+    @Override
+    public boolean onPreferenceChange(Preference preference, Object value) {
+        ContentResolver resolver = getActivity().getContentResolver();
+        if (preference == mSelinux) {
+            if (value.toString().equals("true")) {
+                CMDProcessor.runSuCommand("setenforce 1");
+                setSelinuxEnabled("true");
+                mSelinux.setSummary(R.string.selinux_enforcing_title);
+            } else if (value.toString().equals("false")) {
+                CMDProcessor.runSuCommand("setenforce 0");
+                setSelinuxEnabled("false");
+                mSelinux.setSummary(R.string.selinux_permissive_title);
+            }
+            return true;
+        }
+        return false;
+    }
+}

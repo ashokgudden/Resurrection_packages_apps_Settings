@@ -1,0 +1,87 @@
+package com.android.settings.rr.utils;
+
+import android.app.ActivityManager;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.content.SharedPreferences;
+import android.os.SystemProperties;
+import android.util.Log;
+import android.widget.Toast;
+
+import com.android.settings.R;
+
+import java.io.DataOutputStream;
+import java.lang.*;
+import java.util.List;
+
+import com.android.settings.util.CMDProcessor;
+
+public class OnBoot extends BroadcastReceiver {
+
+    private static final String TAG = "RR_onboot";
+    private static final String ROOT_ACCESS_PROPERTY = "persist.sys.root_access";
+    private boolean mSetupRunning = false;
+    private Context mContext;
+
+    @Override
+    public void onReceive(Context context, Intent intent) {
+        mContext = context;
+        ActivityManager activityManager = (ActivityManager) context.getSystemService(Context.ACTIVITY_SERVICE);
+        List<ActivityManager.RunningAppProcessInfo> procInfos = activityManager.getRunningAppProcesses();
+        for(int i = 0; i < procInfos.size(); i++) {
+            if(procInfos.get(i).processName.equals("com.google.android.setupwizard")) {
+                mSetupRunning = true;
+            }
+        }
+
+        if (canSU()) {
+            if(!mSetupRunning) {
+               SharedPreferences sharedpreferences = context.getSharedPreferences("selinux_pref", Context.MODE_PRIVATE);
+               String isSelinuxEnforcing = sharedpreferences.getString("selinux", null);
+               if (isSelinuxEnforcing != null) {
+                   if (isSelinuxEnforcing.equals("true")) {
+                       CMDProcessor.runSuCommand("setenforce 1");
+                   } else if (isSelinuxEnforcing.equals("false")) {
+                       CMDProcessor.runSuCommand("setenforce 0");
+                       showToast(context.getString(R.string.selinux_permissive_toast_title), context);
+                   }
+               } else {
+                  if (CMDProcessor.runShellCommand("getenforce").getStdout().contains("Enforcing")) {
+                      setSelinuxEnabled("true");
+                  } else {
+                      setSelinuxEnabled("false");
+                  }
+              }
+          }
+       }     
+    }
+
+    private boolean canSU() {
+        Process process = null;
+        int exitValue = -1;
+        try {
+            process = Runtime.getRuntime().exec("su");
+            DataOutputStream toProcess = new DataOutputStream(process.getOutputStream());
+            toProcess.writeBytes("exec id\n");
+            toProcess.flush();
+            exitValue = process.waitFor();
+        } catch (Exception e) {
+            exitValue = -1;
+            e.printStackTrace();
+        }
+        return exitValue == 0;
+    }
+
+    private void setSelinuxEnabled(String status) {
+        SharedPreferences.Editor editor = mContext.getSharedPreferences("selinux_pref", Context.MODE_PRIVATE).edit();
+        editor.putString("selinux", status);
+        editor.apply();
+    }
+
+    private void showToast(String toastString, Context context) {
+        Toast.makeText(context, toastString, Toast.LENGTH_SHORT)
+                .show();
+    }
+}
