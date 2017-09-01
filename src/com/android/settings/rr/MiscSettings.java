@@ -18,9 +18,11 @@ package com.android.settings.rr;
 
 import android.content.Context;
 import android.content.ContentResolver;
+import android.content.res.Resources;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.content.pm.ResolveInfo;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.os.Build;
 import com.android.settings.util.AbstractAsyncSuCMDProcessor;
@@ -28,6 +30,7 @@ import com.android.settings.util.CMDProcessor;
 import com.android.settings.util.Helpers;
 import android.os.SystemProperties;
 import android.os.UserHandle;
+import android.provider.SearchIndexableResource;
 import android.support.v7.preference.ListPreference;
 import android.support.v14.preference.SwitchPreference;
 import android.support.v7.preference.Preference;
@@ -37,8 +40,11 @@ import com.android.settings.util.Helpers;
 import dalvik.system.VMRuntime;
 
 import com.android.settings.R;
+import com.android.settings.search.BaseSearchIndexProvider;
+import com.android.settings.search.Indexable;
 import com.android.settings.SettingsPreferenceFragment;
 
+import java.util.ArrayList;
 import java.util.List;
 import com.android.settings.Utils;
 
@@ -48,7 +54,7 @@ import java.io.DataOutputStream;
 
 import com.android.internal.logging.MetricsProto.MetricsEvent;
 
-public class MiscSettings extends SettingsPreferenceFragment {
+public class MiscSettings extends SettingsPreferenceFragment  implements Indexable {
 
     private static final String APP_REMOVER = "system_app_remover";
     private static final String ROOT_ACCESS_PROPERTY = "persist.sys.root_access";
@@ -64,19 +70,7 @@ public class MiscSettings extends SettingsPreferenceFragment {
 
         mAppRemover = (PreferenceScreen) findPreference(APP_REMOVER);
 
-        // Magisk Manager
-        boolean magiskSupported = false;
-        // SuperSU
-        boolean suSupported = false;
-        try {
-            magiskSupported = (getPackageManager().getPackageInfo("com.topjohnwu.magisk", 0).versionCode > 0);
-        } catch (PackageManager.NameNotFoundException e) {
-        }
-        try {
-            suSupported = (getPackageManager().getPackageInfo("eu.chainfire.supersu", 0).versionCode >= 185);
-        } catch (PackageManager.NameNotFoundException e) {
-        }
-        if (magiskSupported || suSupported || isRootForAppsEnabled()) {
+        if (isMagiskSupported() || isSUSupported() || isRootForAppsEnabled()) {
         } else {
             if (mAppRemover != null)
                 getPreferenceScreen().removePreference(mAppRemover);
@@ -91,6 +85,24 @@ public class MiscSettings extends SettingsPreferenceFragment {
         return daemonState && (value == 1 || value == 3);
     }
 
+    public static boolean isMagiskSupported(Context context) {
+        boolean magiskSupported = false;
+        try {
+            magiskSupported = (context.getPackageManager().getPackageInfo("com.topjohnwu.magisk", 0).versionCode > 0);
+        } catch (PackageManager.NameNotFoundException e) {
+        }
+        return magiskSupported;
+    }
+
+    public static boolean isSUSupported(Context context) {
+        boolean suSupported = false;
+        try {
+            suSupported = (context.getPackageManager().getPackageInfo("eu.chainfire.supersu", 0).versionCode >= 185);
+        } catch (PackageManager.NameNotFoundException e) {
+        }
+        return suSupported;
+    }
+
     @Override
     protected int getMetricsCategory() {
         return MetricsEvent.RESURRECTED;
@@ -100,5 +112,29 @@ public class MiscSettings extends SettingsPreferenceFragment {
     public void onResume() {
         super.onResume();
     }
+
+    public static final SearchIndexProvider SEARCH_INDEX_DATA_PROVIDER =
+        new BaseSearchIndexProvider() {
+            @Override
+            public List<SearchIndexableResource> getXmlResourcesToIndex(Context context,
+                     boolean enabled) {
+                ArrayList<SearchIndexableResource> result =
+                        new ArrayList<SearchIndexableResource>();
+
+                SearchIndexableResource sir = new SearchIndexableResource(context);
+                sir.xmlResId = R.xml.rr_misc;
+                result.add(sir);
+                return result;
+            }
+
+            @Override
+            public List<String> getNonIndexableKeys(Context context) {
+                ArrayList<String> result = new ArrayList<String>();
+                if (!isMagiskSupported(context) && !isSUSupported(context) && !isRootForAppsEnabled()) {
+                    result.add(APP_REMOVER);
+                }
+                return result;
+            }
+    };
 }
 
