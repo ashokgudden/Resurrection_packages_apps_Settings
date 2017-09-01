@@ -153,6 +153,7 @@ import com.android.settings.rr.gestureanywhere.GestureAnywhereSettings;
 import com.android.settings.rr.DozeSettingsFragment;
 import com.android.settings.rr.Headsup;
 import com.android.settings.rr.input.HWSettings;
+import com.android.settings.rr.MiscSettings;
 
 import java.net.URISyntaxException;
 import java.util.ArrayList;
@@ -300,6 +301,7 @@ public class SettingsActivity extends SettingsDrawerActivity
             Settings.PaymentSettingsActivity.class.getName(),
             Settings.TimerSwitchSettingsActivity.class.getName(),
             Settings.DevRunningServicesActivity.class.getName(),
+            Settings.MiscSettingsActivity.class.getName(),
     };
 
     private static final String[] ENTRY_FRAGMENTS = {
@@ -406,6 +408,7 @@ public class SettingsActivity extends SettingsDrawerActivity
             AppCircleBar.class.getName(),
             GestureAnywhereSettings.class.getName(),
             HWSettings.class.getName(),
+            MiscSettings.class.getName(),
             PieSettings.class.getName(),
             Headsup.class.getName(),
             MasterClear.class.getName(),

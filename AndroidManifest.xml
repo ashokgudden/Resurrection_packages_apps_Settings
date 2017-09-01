@@ -2742,7 +2742,23 @@
                  android:value="com.android.settings.rr.input.HWSettings" />
          </activity>
  
-
+         <!-- Misc Settings activity. -->
+         <activity android:name="Settings$MiscSettingsActivity"
+                android:label="@string/rr_misc_title"
+                android:icon="@drawable/rr_misc_icon"
+                android:taskAffinity="com.android.settings"
+                android:parentActivityName="Settings">
+             <intent-filter>
+                 <action android:name="android.intent.action.MISC_SETTINGS" />
+                 <action android:name="android.settings.MISC_SETTINGS" />
+                 <category android:name="android.intent.category.DEFAULT" />
+             </intent-filter>
+             <meta-data android:name="com.android.settings.FRAGMENT_CLASS"
+                 android:value="com.android.settings.rr.MiscSettings" />
+             <meta-data android:name="com.android.settings.PRIMARY_PROFILE_CONTROLLED"
+                 android:value="true" />
+         </activity>
+ 
         <!-- Ambient Display -->
         <activity android:name="Settings$AmbientDisplaySettingsActivity"
                 android:label="@string/doze_title"
