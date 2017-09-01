@@ -57,7 +57,7 @@ import com.android.settings.wifi.SavedAccessPointsWifiSettings;
 import com.android.settings.wifi.WifiSettings;
 import com.android.settings.rr.MainSettings;
 import com.android.settings.rr.MiscSettings;
-
+import com.android.settings.rr.StatusBarSettings;
 import java.util.Collection;
 import java.util.HashMap;
 
@@ -344,6 +344,14 @@ public final class SearchIndexableResources {
                         NO_DATA_RES_ID,
                         MiscSettings.class.getName(),
                         R.drawable.rr_misc_interface_icon));
+
+        sResMap.put(StatusBarSettings.class.getName(),
+                new SearchIndexableResource(
+                        Ranking.getRankForClassName(
+                                StatusBarSettings.class.getName()),
+                        R.xml.rr_statusbar,
+                        StatusBarSettings.class.getName(),
+                        R.drawable.rr_statusbar_icon));
     }
 
     private SearchIndexableResources() {

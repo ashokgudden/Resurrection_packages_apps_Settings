@@ -57,7 +57,7 @@ import com.android.settings.wifi.SavedAccessPointsWifiSettings;
 import com.android.settings.wifi.WifiSettings;
 import com.android.settings.rr.MainSettings;
 import com.android.settings.rr.MiscSettings;
-
+import com.android.settings.rr.StatusBarSettings;
 import java.util.HashMap;
 
 /**
@@ -191,6 +191,7 @@ public final class Ranking {
         // RR settings
         sRankMap.put(MainSettings.class.getName(), RANK_MAIN);
         sRankMap.put(MiscSettings.class.getName(), RANK_MAIN);
+        sRankMap.put(StatusBarSettings.class.getName(), RANK_MAIN);
 
         sBaseRankMap.put("com.android.settings", 0);
     }

@@ -14,12 +14,13 @@
 package com.android.settings.rr;
 
 import android.app.Activity;
+import android.content.Context;
 import android.os.Bundle;
 import android.app.Fragment;
 import android.content.ContentResolver;
 import android.content.res.Configuration;
-import android.content.res.Resources;
 import android.os.Bundle;
+import android.provider.SearchIndexableResource;
 import android.os.RemoteException;
 import android.support.v7.preference.ListPreference;
 import android.support.v7.preference.Preference;
@@ -33,8 +34,9 @@ import android.view.ViewGroup;
 
 import android.provider.Settings;
 
-
 import com.android.settings.R;
+import com.android.settings.search.BaseSearchIndexProvider;
+import com.android.settings.search.Indexable;
 import com.android.settings.SettingsPreferenceFragment;
 import com.android.settings.Utils;
 
@@ -42,8 +44,11 @@ import cyanogenmod.providers.CMSettings;
 
 import com.android.internal.logging.MetricsProto.MetricsEvent;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class StatusBarSettings extends SettingsPreferenceFragment implements
-        Preference.OnPreferenceChangeListener {
+        Preference.OnPreferenceChangeListener, Indexable {
 
 
     @Override
@@ -56,17 +61,29 @@ public class StatusBarSettings extends SettingsPreferenceFragment implements
 
     }
 
-
     public boolean onPreferenceChange(Preference preference, Object newValue) {
 	ContentResolver resolver = getActivity().getContentResolver();
 	return false;
     }
-
-
 
     @Override
     protected int getMetricsCategory() {
         return MetricsEvent.RESURRECTED;
     }
 
+    public static final SearchIndexProvider SEARCH_INDEX_DATA_PROVIDER =
+        new BaseSearchIndexProvider() {
+            @Override
+            public List<SearchIndexableResource> getXmlResourcesToIndex(Context context,
+                     boolean enabled) {
+               ArrayList<SearchIndexableResource> result =
+                        new ArrayList<SearchIndexableResource>();
+
+                SearchIndexableResource sir = new SearchIndexableResource(context);
+                sir.xmlResId = R.xml.rr_statusbar;
+                result.add(sir);
+
+                return result;
+            }
+    };
 }
