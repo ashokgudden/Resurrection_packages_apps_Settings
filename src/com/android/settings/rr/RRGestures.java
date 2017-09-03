@@ -16,22 +16,26 @@
 
 package com.android.settings.rr;
 
+import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.content.pm.ResolveInfo;
 import android.os.Bundle;
+import android.provider.SearchIndexableResource;
 import android.preference.Preference;
 import android.preference.PreferenceScreen;
 
 import com.android.settings.R;
+import com.android.settings.search.BaseSearchIndexProvider;
+import com.android.settings.search.Indexable;
 import com.android.settings.SettingsPreferenceFragment;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import com.android.internal.logging.MetricsProto.MetricsEvent;
 
-public class RRGestures extends SettingsPreferenceFragment {
-
+public class RRGestures extends SettingsPreferenceFragment implements Indexable {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -43,4 +47,20 @@ public class RRGestures extends SettingsPreferenceFragment {
     protected int getMetricsCategory() {
         return MetricsEvent.RESURRECTED;
     }
+
+    public static final SearchIndexProvider SEARCH_INDEX_DATA_PROVIDER =
+        new BaseSearchIndexProvider() {
+            @Override
+            public List<SearchIndexableResource> getXmlResourcesToIndex(Context context,
+                     boolean enabled) {
+               ArrayList<SearchIndexableResource> result =
+                        new ArrayList<SearchIndexableResource>();
+
+                SearchIndexableResource sir = new SearchIndexableResource(context);
+                sir.xmlResId = R.xml.rr_gestures;
+                result.add(sir);
+
+                return result;
+            }
+    };
 }

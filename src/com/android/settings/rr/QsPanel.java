@@ -21,6 +21,7 @@ import android.os.Bundle;
 import android.os.SystemProperties;
 import android.os.UserHandle;
 import android.app.Fragment;
+import android.provider.SearchIndexableResource;
 import android.support.v7.preference.PreferenceScreen;
 import android.support.v7.preference.ListPreference;
 import android.support.v14.preference.SwitchPreference;
@@ -34,13 +35,18 @@ import android.view.ViewGroup;
 import android.widget.Toast;
 
 import com.android.settings.R;
+import com.android.settings.search.BaseSearchIndexProvider;
+import com.android.settings.search.Indexable;
 import com.android.settings.SettingsPreferenceFragment;
 import com.android.settings.Utils;
 
 import cyanogenmod.providers.CMSettings;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class QsPanel extends SettingsPreferenceFragment implements
-        Preference.OnPreferenceChangeListener {
+        Preference.OnPreferenceChangeListener, Indexable {
     private static final String TAG = "QsPanel";
 
     @Override
@@ -59,5 +65,19 @@ public class QsPanel extends SettingsPreferenceFragment implements
 		return false;
     }
 
+    public static final SearchIndexProvider SEARCH_INDEX_DATA_PROVIDER =
+        new BaseSearchIndexProvider() {
+            @Override
+            public List<SearchIndexableResource> getXmlResourcesToIndex(Context context,
+                     boolean enabled) {
+               ArrayList<SearchIndexableResource> result =
+                        new ArrayList<SearchIndexableResource>();
 
+                SearchIndexableResource sir = new SearchIndexableResource(context);
+                sir.xmlResId = R.xml.rr_qs_panel;
+                result.add(sir);
+
+                return result;
+            }
+    };
 }

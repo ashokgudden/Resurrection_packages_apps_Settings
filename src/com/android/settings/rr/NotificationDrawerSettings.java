@@ -14,7 +14,10 @@
 package com.android.settings.rr;
 
 import android.app.Activity;
+import android.content.Context;
+import android.content.res.Resources;
 import android.os.Bundle;
+import android.provider.SearchIndexableResource;
 import android.app.Fragment;
 import android.preference.PreferenceFragment;
 
@@ -28,14 +31,18 @@ import android.view.ViewGroup;
 
 import android.provider.Settings;
 
-
 import com.android.settings.R;
+import com.android.settings.search.BaseSearchIndexProvider;
+import com.android.settings.search.Indexable;
 import com.android.settings.SettingsPreferenceFragment;
 import com.android.settings.Utils;
 
 import com.android.internal.logging.MetricsProto.MetricsEvent;
 
-public class NotificationDrawerSettings extends SettingsPreferenceFragment {
+import java.util.ArrayList;
+import java.util.List;
+
+public class NotificationDrawerSettings extends SettingsPreferenceFragment implements Indexable {
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -49,4 +56,19 @@ public class NotificationDrawerSettings extends SettingsPreferenceFragment {
         return MetricsEvent.RESURRECTED;
     }
 
+    public static final SearchIndexProvider SEARCH_INDEX_DATA_PROVIDER =
+        new BaseSearchIndexProvider() {
+            @Override
+            public List<SearchIndexableResource> getXmlResourcesToIndex(Context context,
+                     boolean enabled) {
+               ArrayList<SearchIndexableResource> result =
+                        new ArrayList<SearchIndexableResource>();
+
+                SearchIndexableResource sir = new SearchIndexableResource(context);
+                sir.xmlResId = R.xml.rr_notification_drawer;
+                result.add(sir);
+
+                return result;
+            }
+    };
 }

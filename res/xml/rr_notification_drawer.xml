@@ -20,7 +20,6 @@
     xmlns:settings="http://schemas.android.com/apk/res/com.android.settings"
     android:title="@string/notification_drawer_title">
 
-
       <PreferenceScreen
         android:key="rr_trans"
         android:fragment="com.android.settings.rr.TransparencySettings"

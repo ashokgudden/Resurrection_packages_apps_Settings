@@ -41,6 +41,7 @@ import android.os.Bundle;
 import android.os.RemoteException;
 import android.os.ServiceManager;
 import android.os.SystemProperties;
+import android.provider.SearchIndexableResource;
 import android.support.v7.preference.CheckBoxPreference;
 import android.support.v7.preference.PreferenceCategory;
 import android.support.v7.preference.ListPreference;
@@ -67,11 +68,16 @@ import java.util.Collections;
 
 import com.android.settings.SettingsPreferenceFragment;
 import com.android.settings.R;
+import com.android.settings.search.BaseSearchIndexProvider;
+import com.android.settings.search.Indexable;
 import com.android.settings.Utils;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import com.android.internal.logging.MetricsProto.MetricsEvent;  
 public class About extends SettingsPreferenceFragment implements
-        Preference.OnPreferenceChangeListener {
+        Preference.OnPreferenceChangeListener , Indexable {
 			
 public static final String TAG = "About";
     
@@ -153,4 +159,20 @@ private static final String RR_ROM_SHARE = "share";
     protected int getMetricsCategory() {
         return MetricsEvent.RESURRECTED;
      }
+
+    public static final SearchIndexProvider SEARCH_INDEX_DATA_PROVIDER =
+        new BaseSearchIndexProvider() {
+            @Override
+            public List<SearchIndexableResource> getXmlResourcesToIndex(Context context,
+                     boolean enabled) {
+               ArrayList<SearchIndexableResource> result =
+                        new ArrayList<SearchIndexableResource>();
+
+                SearchIndexableResource sir = new SearchIndexableResource(context);
+                sir.xmlResId = R.xml.about_rom;
+                result.add(sir);
+
+                return result;
+            }
+    };
 }

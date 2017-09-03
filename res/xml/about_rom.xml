@@ -19,7 +19,7 @@
             xmlns:resurrection="http://schemas.android.com/apk/res/com.android.settings"
             xmlns:settings="http://schemas.android.com/apk/res/com.android.settings"
             android:title="@string/about_rr_settings">
-                
+
         <PreferenceCategory
             android:key="links"
             android:title="@string/rr"> 

@@ -13,7 +13,6 @@
 */
 package com.android.settings.rr.input;
 
-import android.content.ContentResolver;
 import android.content.ComponentName;
 import android.content.ContentResolver;
 import android.content.Context;
@@ -27,6 +26,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.UserHandle;
 import android.os.RemoteException;
+import android.provider.SearchIndexableResource;
 import android.provider.Settings;
 import android.support.v7.preference.PreferenceScreen;
 import android.support.v7.preference.PreferenceManager;
@@ -49,9 +49,12 @@ import android.view.WindowManagerGlobal;
 
 import com.android.settings.SettingsPreferenceFragment;
 import com.android.settings.R;
+import com.android.settings.search.BaseSearchIndexProvider;
+import com.android.settings.search.Indexable;
 import com.android.settings.rr.utils.DeviceUtils;
 import com.android.settings.rr.utils.TelephonyUtils;
 import org.cyanogenmod.internal.util.ScreenType;
+import java.util.ArrayList;
 import java.util.List;
 
 import cyanogenmod.hardware.CMHardwareManager;
@@ -64,7 +67,7 @@ import static android.provider.Settings.Secure.CAMERA_DOUBLE_TAP_POWER_GESTURE_D
 
 
 public class ButtonSettings extends SettingsPreferenceFragment implements
-        Preference.OnPreferenceChangeListener {
+        Preference.OnPreferenceChangeListener, Indexable {
     private static final String TAG = "ButtonSettings";
 ;
 	private static final String LONG_PRESS_KILL_DELAY = "long_press_kill_delay";
@@ -390,4 +393,20 @@ public class ButtonSettings extends SettingsPreferenceFragment implements
     protected int getMetricsCategory() {
         return MetricsEvent.RESURRECTED;
 	}
+
+    public static final SearchIndexProvider SEARCH_INDEX_DATA_PROVIDER =
+        new BaseSearchIndexProvider() {
+            @Override
+            public List<SearchIndexableResource> getXmlResourcesToIndex(Context context,
+                     boolean enabled) {
+               ArrayList<SearchIndexableResource> result =
+                        new ArrayList<SearchIndexableResource>();
+
+                SearchIndexableResource sir = new SearchIndexableResource(context);
+                sir.xmlResId = R.xml.rr_button_settings;
+                result.add(sir);
+
+                return result;
+            }
+    };
 }

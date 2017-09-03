@@ -58,6 +58,17 @@ import com.android.settings.wifi.WifiSettings;
 import com.android.settings.rr.MainSettings;
 import com.android.settings.rr.MiscSettings;
 import com.android.settings.rr.StatusBarSettings;
+import com.android.settings.rr.NotificationDrawerSettings;
+import com.android.settings.rr.RecentsSettings;
+import com.android.settings.rr.animation.AnimationSettings;
+import com.android.settings.rr.MiscInterfaceSettings;
+import com.android.settings.rr.input.ButtonSettings;
+import com.android.settings.rr.QsPanel;
+import com.android.settings.rr.RRGestures;
+import com.android.settings.rr.LockScreenSettings;
+import com.android.settings.rr.LockScreenGesture;
+import com.android.settings.rr.About;
+
 import java.util.Collection;
 import java.util.HashMap;
 
@@ -343,15 +354,96 @@ public final class SearchIndexableResources {
                                 MiscSettings.class.getName()),
                         NO_DATA_RES_ID,
                         MiscSettings.class.getName(),
-                        R.drawable.rr_misc_interface_icon));
+                        R.drawable.rr_misc_icon));
 
         sResMap.put(StatusBarSettings.class.getName(),
                 new SearchIndexableResource(
                         Ranking.getRankForClassName(
                                 StatusBarSettings.class.getName()),
-                        R.xml.rr_statusbar,
+                        NO_DATA_RES_ID,
                         StatusBarSettings.class.getName(),
                         R.drawable.rr_statusbar_icon));
+
+        sResMap.put(NotificationDrawerSettings.class.getName(),
+                new SearchIndexableResource(
+                        Ranking.getRankForClassName(
+                                NotificationDrawerSettings.class.getName()),
+                        NO_DATA_RES_ID,
+                        NotificationDrawerSettings.class.getName(),
+                        R.drawable.rr_notification_drawer_icon));
+
+        sResMap.put(RecentsSettings.class.getName(),
+                new SearchIndexableResource(
+                        Ranking.getRankForClassName(
+                                RecentsSettings.class.getName()),
+                        NO_DATA_RES_ID,
+                        RecentsSettings.class.getName(),
+                        R.drawable.rr_recents_icon));
+
+        sResMap.put(AnimationSettings.class.getName(),
+                new SearchIndexableResource(
+                        Ranking.getRankForClassName(
+                                AnimationSettings.class.getName()),
+                        NO_DATA_RES_ID,
+                        AnimationSettings.class.getName(),
+                        R.drawable.rr_animations_icon));
+
+        sResMap.put(MiscInterfaceSettings.class.getName(),
+                new SearchIndexableResource(
+                        Ranking.getRankForClassName(
+                                MiscInterfaceSettings.class.getName()),
+                        NO_DATA_RES_ID,
+                        MiscInterfaceSettings.class.getName(),
+                        R.drawable.rr_misc_interface_icon));
+
+        sResMap.put(ButtonSettings.class.getName(),
+                new SearchIndexableResource(
+                        Ranking.getRankForClassName(
+                                ButtonSettings.class.getName()),
+                        NO_DATA_RES_ID,
+                        ButtonSettings.class.getName(),
+                        R.drawable.rr_buttons_icon));
+
+        sResMap.put(QsPanel.class.getName(),
+                new SearchIndexableResource(
+                        Ranking.getRankForClassName(
+                                QsPanel.class.getName()),
+                        NO_DATA_RES_ID,
+                        QsPanel.class.getName(),
+                        R.drawable.rr_quick_settings_icon));
+
+        sResMap.put(RRGestures.class.getName(),
+                new SearchIndexableResource(
+                        Ranking.getRankForClassName(
+                                RRGestures.class.getName()),
+                        NO_DATA_RES_ID,
+                        RRGestures.class.getName(),
+                        R.drawable.rr_gestures_icon));
+
+        sResMap.put(LockScreenSettings.class.getName(),
+                new SearchIndexableResource(
+                        Ranking.getRankForClassName(
+                                LockScreenSettings.class.getName()),
+                        NO_DATA_RES_ID,
+                        LockScreenSettings.class.getName(),
+                        R.drawable.rr_lock_icon));
+
+        sResMap.put(LockScreenGesture.class.getName(),
+                new SearchIndexableResource(
+                        Ranking.getRankForClassName(
+                                LockScreenGesture.class.getName()),
+                        NO_DATA_RES_ID,
+                        LockScreenGesture.class.getName(),
+                        R.drawable.rr_ls_gestures_icon));
+
+        sResMap.put(About.class.getName(),
+                new SearchIndexableResource(
+                        Ranking.getRankForClassName(
+                                About.class.getName()),
+                        NO_DATA_RES_ID,
+                        About.class.getName(),
+                        R.drawable.rr_about_icon));
+
     }
 
     private SearchIndexableResources() {

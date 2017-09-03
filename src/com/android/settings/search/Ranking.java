@@ -58,6 +58,17 @@ import com.android.settings.wifi.WifiSettings;
 import com.android.settings.rr.MainSettings;
 import com.android.settings.rr.MiscSettings;
 import com.android.settings.rr.StatusBarSettings;
+import com.android.settings.rr.NotificationDrawerSettings;
+import com.android.settings.rr.RecentsSettings;
+import com.android.settings.rr.animation.AnimationSettings;
+import com.android.settings.rr.MiscInterfaceSettings;
+import com.android.settings.rr.input.ButtonSettings;
+import com.android.settings.rr.QsPanel;
+import com.android.settings.rr.RRGestures;
+import com.android.settings.rr.LockScreenSettings;
+import com.android.settings.rr.LockScreenGesture;
+import com.android.settings.rr.About;
+
 import java.util.HashMap;
 
 /**
@@ -192,6 +203,16 @@ public final class Ranking {
         sRankMap.put(MainSettings.class.getName(), RANK_MAIN);
         sRankMap.put(MiscSettings.class.getName(), RANK_MAIN);
         sRankMap.put(StatusBarSettings.class.getName(), RANK_MAIN);
+        sRankMap.put(NotificationDrawerSettings.class.getName(), RANK_MAIN);
+        sRankMap.put(RecentsSettings.class.getName(), RANK_MAIN);
+        sRankMap.put(AnimationSettings.class.getName(), RANK_MAIN);
+        sRankMap.put(MiscInterfaceSettings.class.getName(), RANK_MAIN);
+        sRankMap.put(ButtonSettings.class.getName(), RANK_MAIN);
+        sRankMap.put(QsPanel.class.getName(), RANK_MAIN);
+        sRankMap.put(RRGestures.class.getName(), RANK_MAIN);
+        sRankMap.put(LockScreenSettings.class.getName(), RANK_MAIN);
+        sRankMap.put(LockScreenGesture.class.getName(), RANK_MAIN);
+        sRankMap.put(About.class.getName(), RANK_MAIN);
 
         sBaseRankMap.put("com.android.settings", 0);
     }
