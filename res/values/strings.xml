@@ -7970,4 +7970,9 @@
     <!-- background clipboard access -->
     <string name="background_clipboard_title">Allow background clipboard access</string>
     <string name="background_clipboard_summary">Enable access to the clipboard by applications in the background.</string>
+
+    <!-- Touchscreen gesture settings -->
+    <string name="touchscreen_gesture_settings_title">Touchscreen gestures</string>
+    <string name="touchscreen_gesture_settings_summary">Perform various touchscreen gestures for quick actions</string>
+
 </resources>
