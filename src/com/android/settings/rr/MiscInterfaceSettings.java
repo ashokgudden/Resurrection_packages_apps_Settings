@@ -32,6 +32,7 @@ import com.android.settings.search.BaseSearchIndexProvider;
 import com.android.settings.search.Indexable;
 import com.android.settings.SettingsPreferenceFragment;
 import com.android.settings.Utils;
+import com.android.settings.rr.MainSettingsLayout;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -40,8 +41,10 @@ public class MiscInterfaceSettings extends SettingsPreferenceFragment implements
         Preference.OnPreferenceChangeListener, Indexable {
     private static final String TAG = "MiscInterfaceSettings";
     private static final String RR_OTA = "rr_ota_fab";
+    private static final String RR_OTA_SIZE = "rr_ota_fab_size";
 
-    private SwitchPreference mConfig;
+    private SwitchPreference mFabShow, mFabSize;
+    private MainSettingsLayout Main;
 
     @Override
     protected int getMetricsCategory() {
@@ -51,27 +54,46 @@ public class MiscInterfaceSettings extends SettingsPreferenceFragment implements
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Main = new MainSettingsLayout();
 
         addPreferencesFromResource(R.xml.rr_interface_other_settings);
-        mConfig = (SwitchPreference) findPreference(RR_OTA);
-        mConfig.setChecked((Settings.System.getInt(getContentResolver(),
+
+        mFabShow = (SwitchPreference) findPreference(RR_OTA);
+        mFabShow.setChecked((Settings.System.getInt(getContentResolver(),
                             Settings.System.RR_OTA_FAB, 0) == 1));
-        mConfig.setOnPreferenceChangeListener(this);
+        mFabShow.setOnPreferenceChangeListener(this);
+
+        mFabSize = (SwitchPreference) findPreference(RR_OTA_SIZE);
+        mFabSize.setChecked((Settings.System.getInt(getContentResolver(),
+                            Settings.System.RR_OTA_SIZE, 0) == 1));
+        mFabSize.setOnPreferenceChangeListener(this);
     }
 
     @Override
     public boolean onPreferenceChange(Preference preference, Object objValue) {
-        if (preference == mConfig) {
+        if (preference == mFabShow) {
             boolean newvalue = (Boolean) objValue;
             Settings.System.putInt(getActivity().getContentResolver(),
                     Settings.System.RR_OTA_FAB, newvalue ? 1 : 0);
-            finish();
-            Intent fabIntent = new Intent();
-            fabIntent.setClassName("com.android.settings", "com.android.settings.Settings$MainSettingsLayoutActivity");
-            startActivity(fabIntent);
+            RestartMain();
+            return true;
+        }
+
+        if (preference == mFabSize) {
+            boolean newvalue = (Boolean) objValue;
+            Settings.System.putInt(getActivity().getContentResolver(),
+                    Settings.System.RR_OTA_SIZE, newvalue ? 1 : 0);
+            RestartMain();
             return true;
         }
         return false;
+    }
+
+    private void RestartMain() {
+        Main.finishMain();
+        Intent fabIntent = new Intent();
+        fabIntent.setClassName("com.android.settings", "com.android.settings.Settings$MainSettingsLayoutActivity");
+        startActivity(fabIntent);
     }
 
     public static final SearchIndexProvider SEARCH_INDEX_DATA_PROVIDER =

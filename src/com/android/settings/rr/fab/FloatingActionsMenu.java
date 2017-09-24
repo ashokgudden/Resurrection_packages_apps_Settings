@@ -5,6 +5,7 @@ import android.animation.AnimatorListenerAdapter;
 import android.animation.AnimatorSet;
 import android.animation.ObjectAnimator;
 import android.content.Context;
+import android.content.ContentResolver;
 import android.content.res.TypedArray;
 import android.graphics.Canvas;
 import android.graphics.Rect;
@@ -100,7 +101,11 @@ public class FloatingActionsMenu extends ViewGroup {
     TypedArray attr = context.obtainStyledAttributes(attributeSet, R.styleable.FloatingActionsMenu, 0, 0);
     initfabcolor(attr,context);
     mAddButtonPlusColor = attr.getColor(R.styleable.FloatingActionsMenu_fab_addButtonPlusIconColor, getColor(android.R.color.white));
-    mAddButtonSize = attr.getInt(R.styleable.FloatingActionsMenu_fab_addButtonSize, FloatingActionButton.SIZE_NORMAL);
+    ContentResolver resolver = context.getContentResolver();
+    boolean mFabSize = Settings.System.getInt(resolver,
+    Settings.System.RR_OTA_SIZE, 0) == 1;
+    mAddButtonSize = attr.getInt(R.styleable.FloatingActionsMenu_fab_addButtonSize,
+        (mFabSize ? FloatingActionButton.SIZE_MINI : FloatingActionButton.SIZE_NORMAL));
     mAddButtonStrokeVisible = attr.getBoolean(R.styleable.FloatingActionsMenu_fab_addButtonStrokeVisible, true);
     mExpandDirection = attr.getInt(R.styleable.FloatingActionsMenu_fab_expandDirection, EXPAND_UP);
     mLabelsStyle = attr.getResourceId(R.styleable.FloatingActionsMenu_fab_labelStyle, 0);

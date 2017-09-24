@@ -91,7 +91,20 @@ public class MainSettingsLayout extends SettingsPreferenceFragment {
  	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         mContainer = container;
         View view = inflater.inflate(R.layout.rr_main, container, false);
+        ContentResolver resolver = getActivity().getContentResolver();
+
         mFab = (FloatingActionsMenu) view.findViewById(R.id.fab_menu);
+        boolean mFabSize = Settings.System.getInt(resolver,
+        Settings.System.RR_OTA_SIZE, 0) == 1;
+        if (mFabSize) {
+            boolean mRTL = getResources().getConfiguration().getLayoutDirection() == View.LAYOUT_DIRECTION_RTL;
+            ViewGroup.MarginLayoutParams mFabParams = (ViewGroup.MarginLayoutParams) mFab.getLayoutParams();
+            float mDensity = getActivity().getResources().getDisplayMetrics().density;
+            int mFabSideMarging = (int)(15 * mDensity);
+            int mFabBottomMarging = (int)(45 * mDensity);
+            mFabParams.setMargins(mRTL ? mFabSideMarging : 0, 0, mRTL ? 0 : mFabSideMarging, mFabBottomMarging);//left, top, right, bottom
+            mFab.setLayoutParams(mFabParams);
+        }
         mLayout = (LinearLayout) view.findViewById(R.id.main_content);
         mViewPager = (ViewPager) view.findViewById(R.id.viewpager);
         mTabs = (PagerSlidingTabStrip) view.findViewById(R.id.tabs);
@@ -107,7 +120,6 @@ public class MainSettingsLayout extends SettingsPreferenceFragment {
         mTabs.setViewPager(mViewPager);
         mSettingsObserver.observe();
         mContext = getActivity().getApplicationContext();
-        ContentResolver resolver = getActivity().getContentResolver();
         mInterceptorFrame.getBackground().setAlpha(0);
         int which = Settings.System.getInt(getActivity().getContentResolver(),
                     Settings.System.RR_CONFIG_STYLE, 0);
@@ -618,4 +630,8 @@ public class MainSettingsLayout extends SettingsPreferenceFragment {
               } catch (Exception e){}
             }
         }
+
+    public void finishMain() {
+        finish();
+    }
 }

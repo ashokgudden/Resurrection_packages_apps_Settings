@@ -112,7 +112,9 @@
   <string name="rr_title_summary">Various customizations</string>
   <string name="rr_config_main_title">RR-OS</string>
   <string name="rr_ota_fab_title">Show floating button</string>
-  <string name="rr_ota_fab_summary">Enable/disable to show/hide floating button in configurations. Enter/exit once when switch used</string>
+  <string name="rr_ota_fab_summary">Enable/disable to show/hide floating button in configurations</string>
+  <string name="rr_ota_fab_size_title">Change floating button size</string>
+  <string name="rr_ota_fab_size_summary">Enable/disable this to change floating button size to mini/normal</string>
   <string name="rr_statusbar_title">Status bar</string>
   <string name="rr_sb_gestures_title">Status bar gestures</string>
   <string name="qs_advanced_title">Advanced</string>
