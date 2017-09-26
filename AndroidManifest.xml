@@ -2714,9 +2714,6 @@
             <meta-data android:name="com.android.settings.FRAGMENT_CLASS"
                 android:value="com.android.settings.rr.MainSettingsLayout" />
         </activity>
-        <activity
-             android:name="com.android.settings.MainSettingsLayout"
-			 android:theme="@style/AppTheme" />
 
         <!-- PA Pie settings activity. -->
         <activity android:name="Settings$PieControlSettingsActivity"

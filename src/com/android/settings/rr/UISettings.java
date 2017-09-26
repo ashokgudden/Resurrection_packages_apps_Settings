@@ -14,6 +14,7 @@
 package com.android.settings.rr;
 
 import android.app.Activity;
+import android.app.ThemeManager;
 import android.content.Context;
 import android.content.ContentResolver;
 import android.content.res.Resources;
@@ -30,23 +31,28 @@ import android.provider.Settings;
 import android.telephony.TelephonyManager;
 import android.text.TextUtils;
 
-import com.android.internal.logging.MetricsProto.MetricsEvent;
 
+import com.android.internal.logging.MetricsProto.MetricsEvent;
+import com.android.settings.display.ThemePreference;
 import com.android.settings.R;
 import com.android.settings.SettingsPreferenceFragment;
 import com.android.settings.Utils;
 
 import com.android.settings.rr.SeekBarPreference;
+import com.android.settings.PreviewSeekBarPreferenceFragment;
 
-public class UISettings extends SettingsPreferenceFragment {
+public class UISettings extends SettingsPreferenceFragment implements
+    Preference.OnPreferenceChangeListener {
     private static final String TAG = "UI";
     private static final String KEY_FONT_SIZE = "font_size";
     private static final String RR_INCALL = "rr_incall";
+    private static final String KEY_THEME = "theme";
 
     private Preference mFontSizePref;
     private FingerprintManager mFingerprintManager;
     private PreferenceScreen mFingerprint;
     private PreferenceScreen mIncall;
+    private ThemePreference mThemePreference;
 
     @Override
     protected int getMetricsCategory() {
@@ -72,6 +78,22 @@ public class UISettings extends SettingsPreferenceFragment {
         if (!isVoiceCapable(getActivity())) {
             getPreferenceScreen().removePreference(mIncall);
         }
+
+        mThemePreference = (ThemePreference) findPreference(KEY_THEME);
+        if (mThemePreference != null) {
+            final int accentColorValue = Settings.Secure.getInt(getContext().getContentResolver(),
+                    Settings.Secure.THEME_ACCENT_COLOR, 0);
+            final int primaryColorValue = Settings.Secure.getInt(getContext().getContentResolver(),
+                    Settings.Secure.THEME_PRIMARY_COLOR, 0);
+            mThemePreference.setSummary(PreviewSeekBarPreferenceFragment.getInfoText(getContext(),
+                    false, accentColorValue, primaryColorValue) + ", " +
+                    PreviewSeekBarPreferenceFragment.getInfoText(getContext(), true,
+                    accentColorValue, primaryColorValue));
+            if (ThemeManager.isOverlayEnabled()) {
+                mThemePreference.setEnabled(false);
+                mThemePreference.setSummary(R.string.oms_enabled);
+            }
+        }
     }
 
     private void updateFontSizeSummary() {
@@ -90,7 +112,46 @@ public class UISettings extends SettingsPreferenceFragment {
     public void onResume() {
         super.onResume();
         updateFontSizeSummary();
+        updateThemesPref();
 	}
+
+    @Override
+    public boolean onPreferenceChange(Preference preference, Object objValue) {
+        final String key = preference.getKey();
+        if (mThemePreference != null) {
+            final int accentColorValue = Settings.Secure.getInt(getContext().getContentResolver(),
+                    Settings.Secure.THEME_ACCENT_COLOR, 0);
+            final int primaryColorValue = Settings.Secure.getInt(getContext().getContentResolver(),
+                    Settings.Secure.THEME_PRIMARY_COLOR, 0);
+            mThemePreference.setSummary(PreviewSeekBarPreferenceFragment.getInfoText(getContext(),
+                    false, accentColorValue, primaryColorValue) + ", " +
+                    PreviewSeekBarPreferenceFragment.getInfoText(getContext(), true,
+                    accentColorValue, primaryColorValue));
+            if (ThemeManager.isOverlayEnabled()) {
+                mThemePreference.setEnabled(false);
+                mThemePreference.setSummary(R.string.oms_enabled);
+            }
+        }
+
+        return true;
+    }
+
+    public void updateThemesPref() {
+        if (mThemePreference != null) {
+            final int accentColorValue = Settings.Secure.getInt(getContext().getContentResolver(),
+                    Settings.Secure.THEME_ACCENT_COLOR, 0);
+            final int primaryColorValue = Settings.Secure.getInt(getContext().getContentResolver(),
+                    Settings.Secure.THEME_PRIMARY_COLOR, 0);
+            mThemePreference.setSummary(PreviewSeekBarPreferenceFragment.getInfoText(getContext(),
+                    false, accentColorValue, primaryColorValue) + ", " +
+                    PreviewSeekBarPreferenceFragment.getInfoText(getContext(), true,
+                    accentColorValue, primaryColorValue));
+            if (ThemeManager.isOverlayEnabled()) {
+                mThemePreference.setEnabled(false);
+                mThemePreference.setSummary(R.string.oms_enabled);
+            }
+       }
+    }
 
     /**
      * Returns whether the device is voice-capable (meaning, it is also a phone).
