@@ -149,7 +149,7 @@ public class MiscSettings extends SettingsPreferenceFragment implements OnPrefer
 
     private void updateSmsSecuritySummary(int i) {
         if (i == 0) {
-            String message = "Display an alert dialog to prevent applications from sending SMS messages too frequently. Current limit: Unlimited messages in 1 minute";
+            String message = "Display an alert dialog to prevent applications from sending SMS messages too frequently. Current limit: No limit";
             mSmsSecurityCheck.setSummary(message);
         } else {        
             String message = getString(R.string.sms_security_check_limit_summary, i);
