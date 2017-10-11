@@ -2152,7 +2152,7 @@
         <item>100</item>
         <item>500</item>
         <item>1000</item>
-        <item>@string/sms_security_check_limit_unlimited</item>
+        <item>2000</item>
     </string-array>
 
     <string-array name="sms_security_check_limit_values" translatable="false">
@@ -2160,6 +2160,6 @@
         <item>100</item>
         <item>500</item>
         <item>1000</item>
-        <item>0</item>        
+        <item>2000</item>
     </string-array>
 </resources>
