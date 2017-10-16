@@ -2759,14 +2759,15 @@
  
         <!-- Ambient Display -->
         <activity android:name="Settings$AmbientDisplaySettingsActivity"
-                android:label="@string/doze_title"
+                android:label="@string/doze_settings_title"
                 android:excludeFromRecents="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
             <meta-data android:name="com.android.settings.FRAGMENT_CLASS"
-                android:value="com.android.settings.rr.ambientdisplay.AmbientSettings" />
+                android:value="com.android.settings.rr.DozeSettingsFragment" />
+
         </activity>
 
          <!-- Global DUI settings activity. -->
